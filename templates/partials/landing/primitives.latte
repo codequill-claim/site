@@ -1,0 +1,182 @@
+<section id="primitives" class="py-20 md:py-32 border-b border-white/[0.05] relative overflow-hidden">
+    {* Ambient glow *}
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.06), transparent 70%);"></div>
+
+    <div class="container relative z-10">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">02</span><span>— Primitives</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-2xl">
+                Core primitives.
+            </h2>
+            <p class="mt-4 text-white/60 max-w-xl">
+                Seven building blocks that turn source code from an assumption into inspectable, durable evidence.
+            </p>
+        </div>
+
+        {* Primitives grid *}
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05]">
+            {* Claim *}
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><polyline points="17 11 19 13 23 9"/><circle cx="8.5" cy="7" r="4"/></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Claim</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Authority becomes explicit</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Links a repository to a workspace authority (wallet).</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Who is allowed to speak for this repository?</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Recorded as durable, on-chain evidence</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Makes authorship explicit instead of implicit</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            {* Snapshot *}
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Snapshot</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Source becomes a fact</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">A deterministic, local description of a repository's source state at a commit.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Produces cryptographic identifiers</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Created locally, not by CodeQuill servers</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Path information is protected for privacy</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            {* Publish *}
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Publish</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Evidence is anchored in time</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Anchors snapshot identifiers and metadata as immutable records.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Durable, timestamped reference</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Uses Ethereum for append-only properties</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Decentralized storage for manifests</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            {* Release *}
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Release</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Explicit intent</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Declares a repository snapshot as the intended release.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Evidence of selection and release intent</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Governable and externally approvable</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Explicit, inspectable, and durable</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            {* Attest *}
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Attest</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Artifact lineage claims</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Records a statement that an artifact claims lineage from a published release.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Who made the claim</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">What artifact was referenced</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">When the claim was made</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            {* Prove / Verify *}
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Prove / Verify</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Scoped disclosure</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Cryptographic proofs that a specific file was included in a preserved source state.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Proof generation may require authority</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Verification is public, trust-free</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Balances evidence and privacy</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            {* Preserve *}
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Preserve</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Without custody</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Encrypted preservation of full source code corresponding to a published snapshot.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Client-side encryption only</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">CodeQuill never accesses plaintext</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">For audit and long-term survival</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            {* Empty filler *}
+            <div class="hidden lg:block bg-black p-8">
+                <div class="h-full flex items-center justify-center">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.1em] text-white/50 text-center">
+                        Source is evidence,<br>not intent.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
