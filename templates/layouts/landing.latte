@@ -6,6 +6,13 @@
 </head>
 <body class="landing-body">
     <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+
+    <div class="video-bg" aria-hidden="true">
+        <video class="video-bg-media" autoplay loop muted playsinline poster="/fog-poster.jpg" src="/fog.mp4"></video>
+        <img class="video-bg-fallback" src="/fog-poster.jpg" alt="">
+        <div class="video-bg-overlay"></div>
+    </div>
+
     {include '../partials/nav.latte', docsMode: false}
 
     {block content}{/block}
