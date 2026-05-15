@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://codequill.xyz/</loc></url>
+  <url><loc>https://codequill.xyz/docs/ci-cd/attestation-action/</loc></url>
+  <url><loc>https://codequill.xyz/docs/ci-cd/overview/</loc></url>
+  <url><loc>https://codequill.xyz/docs/ci-cd/snapshot-action/</loc></url>
+  <url><loc>https://codequill.xyz/docs/cli-reference/authentication/</loc></url>
+  <url><loc>https://codequill.xyz/docs/cli-reference/source-commands/</loc></url>
+  <url><loc>https://codequill.xyz/docs/cli-reference/utility-commands/</loc></url>
+  <url><loc>https://codequill.xyz/docs/cli-reference/verification-commands/</loc></url>
+  <url><loc>https://codequill.xyz/docs/concepts/attestations/</loc></url>
+  <url><loc>https://codequill.xyz/docs/concepts/claims/</loc></url>
+  <url><loc>https://codequill.xyz/docs/concepts/preservations/</loc></url>
+  <url><loc>https://codequill.xyz/docs/concepts/proofs/</loc></url>
+  <url><loc>https://codequill.xyz/docs/concepts/releases/</loc></url>
+  <url><loc>https://codequill.xyz/docs/concepts/snapshots/</loc></url>
+  <url><loc>https://codequill.xyz/docs/concepts/trust-index/</loc></url>
+  <url><loc>https://codequill.xyz/docs/concepts/workspaces/</loc></url>
+  <url><loc>https://codequill.xyz/docs/getting-started/configuration/</loc></url>
+  <url><loc>https://codequill.xyz/docs/getting-started/installation/</loc></url>
+  <url><loc>https://codequill.xyz/docs/getting-started/introduction/</loc></url>
+  <url><loc>https://codequill.xyz/docs/getting-started/quickstart/</loc></url>
+  <url><loc>https://codequill.xyz/docs/reference/faq/</loc></url>
+  <url><loc>https://codequill.xyz/docs/reference/glossary/</loc></url>
+  <url><loc>https://codequill.xyz/docs/reference/interpreting-evidence/</loc></url>
+  <url><loc>https://codequill.xyz/docs/releases/dao-governance/</loc></url>
+  <url><loc>https://codequill.xyz/docs/releases/release-lifecycle/</loc></url>
+  <url><loc>https://codequill.xyz/docs/releases/release-manifests/</loc></url>
+  <url><loc>https://codequill.xyz/docs/security/encryption-model/</loc></url>
+  <url><loc>https://codequill.xyz/docs/security/non-guarantees/</loc></url>
+  <url><loc>https://codequill.xyz/docs/security/threat-model/</loc></url>
+  <url><loc>https://codequill.xyz/docs/smart-contracts/architecture/</loc></url>
+  <url><loc>https://codequill.xyz/docs/smart-contracts/contract-reference/</loc></url>
+  <url><loc>https://codequill.xyz/docs/web-application/dashboard-repositories/</loc></url>
+  <url><loc>https://codequill.xyz/docs/web-application/settings-wallets/</loc></url>
+  <url><loc>https://codequill.xyz/docs/web-application/subscription-plans/</loc></url>
+</urlset>

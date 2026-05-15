@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="leaf-base-url" content="/docs">
+<meta name="title" content="CodeQuill — Verifiable Software Provenance &amp; Source Code Evidence">
+<meta name="description" content="Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="software provenance, code quill, artifact lineage, source code evidence, verifiable evidence">
+<link rel="canonical" href="https://codequill.xyz/">
+
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="CodeQuill">
+<link rel="manifest" href="/favicon/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://codequill.xyz/">
+<meta property="og:title" content="CodeQuill — Verifiable Software Provenance &amp; Source Code Evidence">
+<meta property="og:description" content="Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security.">
+<meta property="og:site_name" content="CodeQuill">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://codequill.xyz/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://codequill.xyz/">
+<meta name="twitter:title" content="CodeQuill — Verifiable Software Provenance &amp; Source Code Evidence">
+<meta name="twitter:description" content="Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security.">
+<meta name="twitter:image" content="https://codequill.xyz/social-card.png">
+<meta name="twitter:site" content="@CodeQuillClaim">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"CodeQuill","url":"https://codequill.xyz/","logo":"https://codequill.xyz/logo-icon.svg","sameAs":["https://x.com/CodeQuillClaim","https://www.linkedin.com/company/codequill-claim","https://t.me/codequill"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CodeQuill","url":"https://codequill.xyz/","description":"Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security."}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                deep: 'var(--bg-deep)',
+                surface: 'var(--bg-surface)',
+                elevated: 'var(--bg-elevated)',
+                border: 'var(--border)',
+                'border-accent': 'var(--border-accent)',
+                body: 'var(--text)',
+                bright: 'var(--text-bright)',
+                muted: 'var(--text-muted)',
+                accent: 'var(--accent)',
+                'accent-light': 'var(--accent-light)',
+                'accent-glow': 'var(--accent-glow)',
+                background: '#020817',
+                foreground: '#F8FAFC',
+                primary: '#7879F6',
+                success: '#22C55E',
+                error: '#EF4444',
+                warning: '#F59F0A',
+            },
+            fontFamily: {
+                body: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+            },
+            letterSpacing: {
+                hero: '-0.05em',
+                heading: '-0.025em',
+                label: '0.1em',
+            },
+        },
+    },
+}
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<link rel="stylesheet" href="/assets/css/app.css">
+<link rel="stylesheet" href="/assets/css/landing.css">
+<script src="/assets/js/theme.js"></script>
+
+<script defer src="https://cloud.umami.is/script.js" data-website-id="72ab4c4d-875b-4fd8-9221-f438ab3085fc"></script>
+    <title>CodeQuill — Verifiable Software Provenance &amp; Source Code Evidence</title>
+</head>
+<body class="landing-body">
+    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+
+    <div class="video-bg" aria-hidden="true">
+        <video class="video-bg-media" autoplay loop muted playsinline poster="/fog-poster.jpg" src="/fog.mp4"></video>
+        <img class="video-bg-fallback" src="/fog-poster.jpg" alt="">
+        <div class="video-bg-overlay"></div>
+    </div>
+
+
+<header id="siteHeader" class="landing-nav" data-mode="landing">
+    <div class="landing-nav-inner">
+        <a href="/" class="landing-nav-logo" aria-label="CodeQuill home">
+            <img src="/logo-light-horizontal.svg" alt="CodeQuill" width="148" height="26">
+        </a>
+        <nav class="landing-nav-links" aria-label="Sections">
+            <a href="#why" class="landing-nav-link" data-section="why">Overview</a>
+            <a href="#primitives" class="landing-nav-link" data-section="primitives">Primitives</a>
+            <a href="#workflow" class="landing-nav-link" data-section="workflow">Workflow</a>
+            <a href="#ecosystem" class="landing-nav-link" data-section="ecosystem">Ecosystem</a>
+        </nav>
+        <div class="landing-nav-cta">
+            <a href="https://app.codequill.xyz/login" class="btn-shiny">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>Launch App</span>
+            </a>
+        </div>
+        <button id="landingMenuToggle" class="landing-nav-mobile" type="button" aria-label="Toggle menu" aria-expanded="false">
+            <svg class="landing-nav-mobile-open" width="22" height="22" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            <svg class="landing-nav-mobile-close" width="22" height="22" viewBox="0 0 20 20" fill="currentColor" style="display:none"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+    </div>
+    <div id="landingMobileMenu" class="landing-mobile-menu" hidden>
+        <a href="#why" class="landing-mobile-link">Overview</a>
+        <a href="#primitives" class="landing-mobile-link">Primitives</a>
+        <a href="#workflow" class="landing-mobile-link">Workflow</a>
+        <a href="#ecosystem" class="landing-mobile-link">Ecosystem</a>
+        <a href="https://app.codequill.xyz/login" class="landing-mobile-link landing-mobile-cta">Launch App</a>
+    </div>
+</header>
+
+<main id="main">
+<section class="relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20 md:pt-20 md:pb-40 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-[5%] left-[15%] w-[800px] h-[500px] animate-pulse-slow" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.15), transparent 65%);"></div>
+        <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] opacity-60" style="background: radial-gradient(circle at center, rgba(120, 121, 246, 0.12), transparent 60%); animation: hero-drift 12s ease-in-out infinite alternate;"></div>
+        <div class="absolute bottom-[10%] right-[10%] w-[400px] h-[300px] opacity-40" style="background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.1), transparent 70%); animation: hero-drift 16s ease-in-out infinite alternate-reverse;"></div>
+    </div>
+
+    <div class="container relative z-10">
+        <div class="max-w-5xl">
+            <div class="mb-8">
+                <div class="hero-status" data-status-pill data-status="operational">
+                    <span class="hero-status-dot"></span>
+                    <span data-status-label>All Systems Operational</span>
+                    <span class="hero-status-sep">·</span>
+                    <span class="hero-status-meta">Built on Ethereum · Beta (Sepolia)</span>
+                </div>
+            </div>
+
+            <div>
+                <h1 class="font-medium text-5xl sm:text-7xl lg:text-[112px] leading-[0.9] tracking-hero gradient-text max-w-4xl">
+                    Memory infrastructure for software.
+                </h1>
+            </div>
+
+            <div class="mt-8 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+                <p class="text-lg text-white/60 max-w-lg leading-relaxed">
+                    Preserve verifiable, immutable evidence of what source code existed
+                    at a given point in time and under whose authority.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                    <a href="https://app.codequill.xyz/login" class="btn btn-primary">
+                        <span>Get Started</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="/docs/getting-started/introduction/" class="btn btn-ghost">
+                        <span>Read the Docs</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 whitespace-nowrap">
+        <div class="w-8 h-px bg-white/30"></div>
+        <span class="font-mono text-[11px] uppercase tracking-widest text-white/60">Scroll to explore</span>
+        <div class="w-8 h-px bg-white/30"></div>
+    </div>
+</section>
+<div class="border-y border-white/[0.05] py-6 overflow-hidden">
+    <div class="trust-marquee-track flex items-center gap-16 w-max">
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Explicit Authority</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Deterministic Snapshots</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">On-chain Anchoring</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Project Releases</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Artifact Lineage Claims</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Scoped Verification</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Encrypted Preservation</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Release Intent</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Durable Evidence</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Software Memory</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Explicit Authority</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Deterministic Snapshots</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">On-chain Anchoring</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Project Releases</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Artifact Lineage Claims</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Scoped Verification</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Encrypted Preservation</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Release Intent</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Durable Evidence</span>
+        <span class="font-mono text-sm uppercase tracking-[0.15em] text-white/50 font-medium whitespace-nowrap">Software Memory</span>
+    </div>
+</div>
+<section id="why" class="pt-20 pb-10 md:pt-32 md:pb-16">
+    <div class="container">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">01</span><span>— Why CodeQuill Exists</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-3xl">
+                The software ecosystem evolved faster than its ability to preserve evidence.
+            </h2>
+        </div>
+
+        <p class="reveal-on-scroll mt-6 text-white/60 max-w-2xl leading-relaxed">
+            AI increases the speed of software production.
+            Code can now be generated, modified, and assembled at machine speed.
+            <br><br>
+            But speed does not replace memory.
+            <br><br>
+            As software accelerates, the ecosystem's ability to preserve durable evidence has not kept pace. Modern development relies on layers of tooling, automation, and platforms. Shipping is easier than ever but answering simple questions later is harder.
+            <br><br>
+            When something goes wrong, the questions are always the same:
+        </p>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 group border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <svg width="20" height="20" class="w-5 h-5 text-white/40 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <div>
+                        <p class="text-white/80 text-[15px] leading-relaxed">What source code actually existed at a given moment?</p>
+                        <span class="font-mono text-[11px] text-white/50 mt-3 block">01</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-on-scroll bg-black p-8 group border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <svg width="20" height="20" class="w-5 h-5 text-white/40 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <div>
+                        <p class="text-white/80 text-[15px] leading-relaxed">Who was authorized to publish it?</p>
+                        <span class="font-mono text-[11px] text-white/50 mt-3 block">02</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-on-scroll bg-black p-8 group border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <svg width="20" height="20" class="w-5 h-5 text-white/40 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <div>
+                        <p class="text-white/80 text-[15px] leading-relaxed">Which release was intended?</p>
+                        <span class="font-mono text-[11px] text-white/50 mt-3 block">03</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-on-scroll bg-black p-8 group border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <svg width="20" height="20" class="w-5 h-5 text-white/40 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <div>
+                        <p class="text-white/80 text-[15px] leading-relaxed">What artifacts were claimed to originate from it?</p>
+                        <span class="font-mono text-[11px] text-white/50 mt-3 block">04</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="reveal-on-scroll mt-6 text-white/60 max-w-2xl leading-relaxed">
+            CodeQuill exists to preserve facts, not narratives.
+        </p>
+    </div>
+</section>
+<section id="scope" class="pt-0 pb-20 md:pb-32 border-b border-white/[0.05]">
+    <div class="container">
+        <div class="reveal-on-scroll">
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text max-w-3xl">
+                Evidence preservation and auditability.
+            </h2>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 lg:p-10 border border-white/[0.10]">
+                <h3 class="font-mono text-[11px] uppercase tracking-[0.1em] text-primary mb-6">What CodeQuill does</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Preserves durable, inspectable records about source code</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Records authority and release intent</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Enables decisions to be reasoned about later</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Provides source-centric provenance references</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 lg:p-10 border border-white/[0.10]">
+                <h3 class="font-mono text-[11px] uppercase tracking-[0.1em] text-white/60 mb-6">What it does not</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-white/50 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Prove how software was built</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-white/50 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Guarantee build causality</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-white/50 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Assert correctness or safety of code</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-white/50 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Replace CI systems or artifact signing</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-white/50 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <span class="text-white/60 text-[15px] leading-relaxed">Provide end-to-end supply-chain security</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="primitives" class="py-20 md:py-32 border-b border-white/[0.05] relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.06), transparent 70%);"></div>
+
+    <div class="container relative z-10">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">02</span><span>— Primitives</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-2xl">
+                Core primitives.
+            </h2>
+            <p class="mt-4 text-white/60 max-w-xl">
+                Seven building blocks that turn source code from an assumption into inspectable, durable evidence.
+            </p>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><polyline points="17 11 19 13 23 9"></polyline><circle cx="8.5" cy="7" r="4"></circle></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Claim</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Authority becomes explicit</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Links a repository to a workspace authority (wallet).</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Who is allowed to speak for this repository?</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Recorded as durable, on-chain evidence</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Makes authorship explicit instead of implicit</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Snapshot</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Source becomes a fact</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">A deterministic, local description of a repository's source state at a commit.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Produces cryptographic identifiers</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Created locally, not by CodeQuill servers</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Path information is protected for privacy</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Publish</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Evidence is anchored in time</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Anchors snapshot identifiers and metadata as immutable records.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Durable, timestamped reference</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Uses Ethereum for append-only properties</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Decentralized storage for manifests</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Release</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Explicit intent</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Declares a repository snapshot as the intended release.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Evidence of selection and release intent</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Governable and externally approvable</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Explicit, inspectable, and durable</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Attest</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Artifact lineage claims</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Records a statement that an artifact claims lineage from a published release.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Who made the claim</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">What artifact was referenced</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">When the claim was made</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Prove / Verify</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Scoped disclosure</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Cryptographic proofs that a specific file was included in a preserved source state.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Proof generation may require authority</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Verification is public, trust-free</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">Balances evidence and privacy</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="24" height="24" class="w-6 h-6 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
+                <h3 class="text-xl font-medium text-white mb-1">Preserve</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.05em] text-primary mb-4">Without custody</p>
+                <p class="text-sm text-white/60 leading-relaxed mb-5">Encrypted preservation of full source code corresponding to a published snapshot.</p>
+                <div class="space-y-0">
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">Client-side encryption only</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">01</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05]">
+                        <span class="text-[13px] text-white/60">CodeQuill never accesses plaintext</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">02</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2.5 border-b border-white/[0.05] last:border-0">
+                        <span class="text-[13px] text-white/60">For audit and long-term survival</span>
+                        <span class="font-mono text-[11px] text-white/50 ml-3">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden lg:block bg-black p-8">
+                <div class="h-full flex items-center justify-center">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.1em] text-white/50 text-center">
+                        Source is evidence,<br>not intent.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="use-cases" class="py-20 md:py-32 border-b border-white/[0.05]">
+    <div class="container">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">03</span><span>— Use Cases</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-3xl">
+                Where evidence matters.
+            </h2>
+            <p class="mt-4 text-white/60 max-w-xl">
+                Not every system needs provenance. But when it matters, reconstruction is not enough.
+            </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <h3 class="text-lg font-medium text-white mb-3">Incident response &amp; audits</h3>
+                <p class="text-sm text-white/60 leading-relaxed">When questions arise after an incident, CodeQuill provides durable evidence of what source code existed at specific moments even if logs, CI systems, or organizations have changed.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"></line><line x1="6" y1="18" x2="6" y2="11"></line><line x1="10" y1="18" x2="10" y2="11"></line><line x1="14" y1="18" x2="14" y2="11"></line><line x1="18" y1="18" x2="18" y2="11"></line><polygon points="12 2 20 7 4 7"></polygon></svg>
+                <h3 class="text-lg font-medium text-white mb-3">DAO governance &amp; releases</h3>
+                <p class="text-sm text-white/60 leading-relaxed">DAOs can reference explicit project releases as part of governance decisions, creating a stable, inspectable record of what code was approved or discussed.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+                <h3 class="text-lg font-medium text-white mb-3">Open-source stewardship</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Maintainers can preserve authoritative source snapshots and release intent without relying on any single platform as the historical record.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
+                <h3 class="text-lg font-medium text-white mb-3">Legal, compliance &amp; preservation</h3>
+                <p class="text-sm text-white/60 leading-relaxed">CodeQuill supports preserving source evidence in a way that remains verifiable years later, independent of operational systems.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"></path><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"></path></svg>
+                <h3 class="text-lg font-medium text-white mb-3">Research &amp; ecosystem memory</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Researchers and ecosystem participants can reference concrete source states instead of reconstructed narratives.</p>
+            </div>
+
+            <div class="hidden lg:block bg-black p-8 border border-white/[0.10]"></div>
+        </div>
+    </div>
+</section>
+<section id="workflow" class="py-20 md:py-32 border-b border-white/[0.05] relative overflow-hidden">
+    <div class="absolute top-1/2 -translate-y-1/2 right-0 w-[600px] h-[600px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.05), transparent 70%);"></div>
+
+    <div class="container relative z-10">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">04</span><span>— Workflow</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-3xl">
+                CLI-first, evidence-local.
+            </h2>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="reveal-on-scroll bg-black p-8 lg:p-10 border border-white/[0.10]">
+                <div class="mb-8 flex items-center gap-3 bg-white/[0.03] border border-white/[0.08] rounded-lg px-5 py-3.5">
+                    <span class="font-mono text-[13px] text-white/40 select-none">$</span>
+                    <code class="font-mono text-[13px]"><span class="text-white/50">npm install</span> <span class="text-emerald-500">codequill</span></code>
+                </div>
+
+                <p class="text-white/60 leading-relaxed mb-8">
+                    Evidence is produced locally on a developer's machine or inside
+                    CI runners. The CLI handles claims, snapshots, publishing, attestations,
+                    proofs, and preservation.
+                </p>
+
+                <p class="text-white/60 leading-relaxed mb-8">
+                    The web app configures trust and authority, surfaces evidence,
+                    and provides public views but it does not generate evidence itself.
+                </p>
+
+                <div class="border-l-2 border-white/10 pl-6 py-2">
+                    <div class="flex items-center gap-3 mb-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        <span class="font-mono text-[11px] uppercase tracking-[0.05em] text-white/60">Authority is configured in the app.</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg width="16" height="16" class="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        <span class="font-mono text-[11px] uppercase tracking-[0.05em] text-emerald-500">Evidence is produced locally.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll bg-[#0a0a0a] border border-white/[0.10] rounded-lg overflow-hidden">
+                <div class="flex items-center gap-2 px-4 py-3 bg-white/[0.03] border-b border-white/[0.06]">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-3 h-3 rounded-full bg-[#FF5F56]"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#FFBD2E]"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#27C93F]"></span>
+                    </div>
+                    <span class="font-mono text-[11px] text-white/50 ml-2">codequill</span>
+                </div>
+
+                <div class="p-6 lg:p-8">
+                    <pre aria-hidden="true" class="mb-5 select-none font-mono text-[1.5px] sm:text-[1.75px] md:text-[2px] lg:text-[2.25px] leading-[1.0] tracking-[0.01em] w-max mx-auto max-w-full text-transparent bg-clip-text bg-gradient-to-r from-[#d7b7ff] via-[#8ea2ff] to-[#caa8ff] opacity-90 drop-shadow-[0_0_14px_rgba(142,162,255,0.14)]">
+                                                                                         ++++
+                                                                                    ++++++++
+                                                                                +++++++++++
+                                                                           ++++++++++++++++
+                                                                      ++++++++++++++++++++
+                                                                  +++++++++++++++++++++++
+                                                             +++++++++++++++++++++++++++
+                                                         +++++++++++++++++++++++++++++++
+                                                    +++++++++++++++++++++++++++++++++++
+                                               +++++++++++++++++++++++++++++++++++++++
+                                           ++++++++++++++++++++++++++++++++++++++++++
+                                      ++++++++++++++++++++++++++++++++++++++++++++++
+                                  ++++++++++++++++++++++++++++++++++++++++++++++++++
+                             ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+               +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ +++++++++++++++++++++++++++++++++++++++++++++++
+  ++++++++++++++++++++++++++++++++++++++++++
+  +++++++++++++++++++++++++++++++++++++
+   +++++++++++++++++++++++++++++++
+    ++++++++++++++++++++++++++
+    +++++++++++++++++++++
+     ++++++++++++++++++++
+      ++++++++++++++++++++++
+       ++++++++++++++++++++++++
+       ++++++++++++++++++++++++++++
+        ++++++++++++++++++++++++++++++
+          ++++++++++++++++++++++++++++++++
+           +++++++++++++++++++++++++++++++++++
+            ++++++++++++++++++++++++++++++++++++++
+              +++++++++++++++++++++++++++++++++++++++
+                ++++++++++++++++++++++++++++++++++++++++
+                 ++++++++++++++++++++++++++++++++++++++++++
+                   ++++++++++++++++++++++++++++++++++++++++++
+                      ++++++++++++++++++++++++++++++++++++++++++
+                        ++++++++++++++++++++++++++++++++++++++++++
+                          +++++++++++++++++++++++++++++++++++++++++++
+                              +++++++++++++++++++++++++++++++++++++++++
+                                +++++++++++++++++++++++++++++++++++++++++
+                                   +++++++++++++++++++++++++++++++++++++++
+                                      ++++++++++++++++++++++++++++++++++++++
+                                         +++++++++++++++++++++++++++++++++++++
+                                              ++++++++++++++++++++++++++++++++
+                                                  +++++++++++++++++++++     +++++
+                                                                           +++++++
+                                                                           +++++++++
+                                                                            +++++++++
+                                                                            +++++++++
+                                                                               +++++++
+                                                                                   ++++
+                                                                                     ++
+                    </pre>
+
+                    <div class="group flex items-start gap-3 py-2">
+                        <span class="font-mono text-[13px] text-white/40 select-none shrink-0">$</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-1 sm:gap-4">
+                            <code class="font-mono text-[13px] whitespace-nowrap"><span class="text-white/70">codequill</span> <span class="text-emerald-500 group-hover:text-emerald-400 transition-colors">claim</span></code>
+                            <span class="font-mono text-[11px] text-white/50 hidden sm:block shrink-0"># Link repository to authority</span>
+                        </div>
+                    </div>
+                    <div class="group flex items-start gap-3 py-2">
+                        <span class="font-mono text-[13px] text-white/40 select-none shrink-0">$</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-1 sm:gap-4">
+                            <code class="font-mono text-[13px] whitespace-nowrap"><span class="text-white/70">codequill</span> <span class="text-emerald-500 group-hover:text-emerald-400 transition-colors">snapshot</span></code>
+                            <span class="font-mono text-[11px] text-white/50 hidden sm:block shrink-0"># Create deterministic source state</span>
+                        </div>
+                    </div>
+                    <div class="group flex items-start gap-3 py-2">
+                        <span class="font-mono text-[13px] text-white/40 select-none shrink-0">$</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-1 sm:gap-4">
+                            <code class="font-mono text-[13px] whitespace-nowrap"><span class="text-white/70">codequill</span> <span class="text-emerald-500 group-hover:text-emerald-400 transition-colors">publish</span></code>
+                            <span class="font-mono text-[11px] text-white/50 hidden sm:block shrink-0"># Anchor evidence immutably</span>
+                        </div>
+                    </div>
+                    <div class="group flex items-start gap-3 py-2">
+                        <span class="font-mono text-[13px] text-white/40 select-none shrink-0">$</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-1 sm:gap-4">
+                            <code class="font-mono text-[13px] whitespace-nowrap"><span class="text-white/70">codequill</span> <span class="text-emerald-500 group-hover:text-emerald-400 transition-colors">attest</span></code>
+                            <span class="font-mono text-[11px] text-white/50 hidden sm:block shrink-0"># Record artifact lineage</span>
+                        </div>
+                    </div>
+                    <div class="group flex items-start gap-3 py-2">
+                        <span class="font-mono text-[13px] text-white/40 select-none shrink-0">$</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-1 sm:gap-4">
+                            <code class="font-mono text-[13px] whitespace-nowrap"><span class="text-white/70">codequill</span> <span class="text-emerald-500 group-hover:text-emerald-400 transition-colors">prove</span></code>
+                            <span class="font-mono text-[11px] text-white/50 hidden sm:block shrink-0"># Generate scoped proofs</span>
+                        </div>
+                    </div>
+                    <div class="group flex items-start gap-3 py-2">
+                        <span class="font-mono text-[13px] text-white/40 select-none shrink-0">$</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-1 sm:gap-4">
+                            <code class="font-mono text-[13px] whitespace-nowrap"><span class="text-white/70">codequill</span> <span class="text-emerald-500 group-hover:text-emerald-400 transition-colors">preserve</span></code>
+                            <span class="font-mono text-[11px] text-white/50 hidden sm:block shrink-0"># Encrypted source preservation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="ecosystem" class="py-20 md:py-32 border-b border-white/[0.05]">
+    <div class="container">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">05</span><span>— Ecosystem</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-3xl">
+                Designed to complement, not replace.
+            </h2>
+            <p class="mt-4 text-white/60 max-w-2xl">
+                Provenance systems are not needed when everything works.
+                They matter when assumptions fail and CodeQuill is designed
+                to preserve facts under those conditions.
+            </p>
+        </div>
+
+        <div id="threat-model" class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <h3 class="text-lg font-medium text-white mb-3">CI systems can be compromised</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Build pipelines are trusted by default. When that trust breaks, evidence must exist elsewhere.</p>
+                <span class="font-mono text-[11px] text-white/50 mt-4 block">01</span>
+            </div>
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <h3 class="text-lg font-medium text-white mb-3">Logs and registries can be altered or lost</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Platform logs are ephemeral. Registries can be modified. Provenance needs durable anchoring.</p>
+                <span class="font-mono text-[11px] text-white/50 mt-4 block">02</span>
+            </div>
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <h3 class="text-lg font-medium text-white mb-3">Platforms and organizations can change over time</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Teams restructure, services sunset, access revokes. Evidence should outlive the systems that produced it.</p>
+                <span class="font-mono text-[11px] text-white/50 mt-4 block">03</span>
+            </div>
+        </div>
+
+        <p class="reveal-on-scroll mt-10 text-white/60 max-w-2xl">
+            CodeQuill is not a replacement for artifact signing or CI identity systems.
+            It complements tools like Sigstore by providing a stable, source-centric reference
+            that artifacts can point to.
+        </p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 lg:p-10 border border-white/[0.10] hover:border-[#7879F6]/30 transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"></path><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="m2 2 7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                <h3 class="font-mono text-[11px] uppercase tracking-[0.1em] text-white/60 mb-4">Artifact Signing</h3>
+                <p class="text-lg text-white/70 leading-relaxed italic">"Who signed this artifact?"</p>
+                <p class="mt-4 text-sm text-white/60 leading-relaxed">Answers questions about the identity attached to a built artifact. Operates at the output layer of the supply chain.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 lg:p-10 border border-white/[0.10] hover:border-[#7879F6]/30 transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-primary mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="11.5" cy="14.5" r="2.5"></circle><line x1="13.27" y1="16.27" x2="15" y2="18"></line></svg>
+                <h3 class="font-mono text-[11px] uppercase tracking-[0.1em] text-primary mb-4">CodeQuill</h3>
+                <p class="text-lg text-white/70 leading-relaxed italic">"What exact source state and release is this artifact claiming lineage from?"</p>
+                <p class="mt-4 text-sm text-white/60 leading-relaxed">Answers questions about the source code origin of an artifact. Operates at the input layer before anything is built or signed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="on-chain" class="py-20 md:py-32 border-b border-white/[0.05] relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.08), transparent 70%);"></div>
+
+    <div class="container relative z-10">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">06</span><span>— On-Chain</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-3xl">
+                On-chain infrastructure.
+            </h2>
+            <p class="mt-4 text-white/60 max-w-2xl">
+                CodeQuill's core primitives are implemented as public, permissionless Ethereum smart contracts.
+                They define how authority, source evidence, project releases, and attestations are recorded
+                independently of any application layer.
+            </p>
+            <p class="mt-3 text-white/60 max-w-2xl">
+                The contracts are intentionally minimal and designed for long-term inspectability.
+            </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <h3 class="text-lg font-medium text-white mb-2">Authority</h3>
+                <p class="text-sm text-white/60 leading-relaxed">On-chain claims that bind a repository to a wallet. Explicit, revocable, and auditable.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <h3 class="text-lg font-medium text-white mb-2">Source Evidence</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Anchored snapshot identifiers and metadata. Immutable records of what existed and when.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                <h3 class="text-lg font-medium text-white mb-2">Project Releases</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Coordinated groupings of source snapshots into coherent, versioned release units.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg>
+                <h3 class="text-lg font-medium text-white mb-2">Attestations</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Recorded claims that artifacts originate from a specific published release.</p>
+            </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+            <a href="https://github.com/codequill-claim/contracts" target="_blank" rel="noopener noreferrer" class="reveal-on-scroll shiny-border border border-white/[0.15] px-10 py-4 text-xs tracking-[0.05em] text-white hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                <span class="relative z-10">Smart Contracts</span>
+            </a>
+            <a href="https://github.com/codequill-claim/contracts/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer" class="reveal-on-scroll shiny-border border border-white/[0.15] px-10 py-4 text-xs tracking-[0.05em] text-white hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                <span class="relative z-10">Architecture</span>
+            </a>
+        </div>
+    </div>
+</section>
+<section id="collaborators" class="py-20 md:py-32 border-b border-white/[0.05]">
+    <div class="container">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">07</span><span>— Collaborators</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-3xl">
+                Shared commitments.
+            </h2>
+            <p class="mt-4 text-white/60 max-w-xl">
+                Collaborating with projects that care about long-term integrity, governance, and cultural continuity.
+            </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.05]">
+            <a href="https://bookofeth.xyz" target="_blank" rel="noopener noreferrer" class="reveal-on-scroll group bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <img src="/collaborators/booe.png" alt="Book of Ethereum" loading="lazy" class="h-10 mb-5 grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-300">
+                <h3 class="text-lg font-medium text-white mb-3">Book of Ethereum</h3>
+                <p class="text-sm text-white/60 leading-relaxed mb-4">A cultural project exploring Ethereum's history and collective memory.</p>
+                <p class="text-sm text-white/50 leading-relaxed">A shared interest in preserving meaning, authorship, and context over time.</p>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="py-20 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-[1000px] h-[800px] rounded-full animate-pulse-slow" style="background: radial-gradient(circle, rgba(120, 121, 246, 0.14), transparent 70%);"></div>
+    </div>
+
+    <div class="container relative z-10">
+        <div class="reveal-on-scroll text-center max-w-3xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-heading text-white leading-[1.1]">
+                Source is evidence, not intent.
+            </h2>
+            <p class="mt-4 text-lg text-white/60">
+                Evidence should outlive systems.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://app.codequill.xyz/login" class="btn-shiny">
+                    <span>Get Started</span>
+                </a>
+                <a href="/docs/getting-started/introduction/" class="btn btn-ghost">
+                    <span>Read the Docs</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+
+            <p class="mt-8 font-mono text-[10px] uppercase tracking-[0.1em] text-white/50">
+                Quiet infrastructure. Preserved facts.
+            </p>
+        </div>
+    </div>
+</section>
+</main>
+<style>
+    .landing-footer {
+        position: relative;
+        background: #000;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .landing-footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 600px;
+        height: 1px;
+        pointer-events: none;
+        background: linear-gradient(90deg, transparent, rgba(120, 121, 246, 0.4), transparent);
+    }
+    .landing-footer-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+    @media (min-width: 768px) {
+        .landing-footer-inner {
+            flex-direction: row;
+        }
+    }
+    .landing-footer-logo {
+        flex-shrink: 0;
+        display: inline-flex;
+    }
+    .landing-footer-logo img {
+        height: 28px;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+    }
+    .landing-footer-logo:hover img {
+        opacity: 1;
+    }
+    .landing-footer-socials {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.25rem;
+    }
+    .landing-footer-social {
+        color: rgba(255, 255, 255, 0.5);
+        transition: color 0.2s ease;
+        display: inline-flex;
+    }
+    .landing-footer-social:hover {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .landing-footer-social svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+    }
+    .landing-footer-tagline {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.02em;
+    }
+    .landing-footer-copy {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+</style>
+
+<footer class="landing-footer">
+    <div class="landing-footer-inner">
+        <a href="/" class="landing-footer-logo" aria-label="CodeQuill home">
+            <img src="/logo-light-horizontal.svg" alt="CodeQuill">
+        </a>
+
+        <div class="landing-footer-socials">
+            <a href="https://x.com/CodeQuillClaim" target="_blank" rel="noopener noreferrer" aria-label="X" class="landing-footer-social">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+            </a>
+            <a href="https://t.me/codequill" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="landing-footer-social">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/codequill-claim" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="landing-footer-social">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+            </a>
+            <a href="https://github.com/codequill-claim" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="landing-footer-social">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+            </a>
+        </div>
+
+        <span class="landing-footer-tagline">Quiet infrastructure. Preserved facts.</span>
+
+        <span class="landing-footer-copy">&copy; 2026 Ophelios Studio</span>
+    </div>
+</footer>
+
+    <script defer src="/assets/js/landing.js"></script>
+</body>
+</html>

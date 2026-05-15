@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="leaf-base-url" content="/docs">
+<meta name="title" content="CodeQuill — Verifiable Software Provenance &amp; Source Code Evidence">
+<meta name="description" content="Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="software provenance, code quill, artifact lineage, source code evidence, verifiable evidence">
+<link rel="canonical" href="https://codequill.xyz/">
+
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="CodeQuill">
+<link rel="manifest" href="/favicon/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://codequill.xyz/">
+<meta property="og:title" content="CodeQuill — Verifiable Software Provenance &amp; Source Code Evidence">
+<meta property="og:description" content="Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security.">
+<meta property="og:site_name" content="CodeQuill">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://codequill.xyz/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://codequill.xyz/">
+<meta name="twitter:title" content="CodeQuill — Verifiable Software Provenance &amp; Source Code Evidence">
+<meta name="twitter:description" content="Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security.">
+<meta name="twitter:image" content="https://codequill.xyz/social-card.png">
+<meta name="twitter:site" content="@CodeQuillClaim">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"CodeQuill","url":"https://codequill.xyz/","logo":"https://codequill.xyz/logo-icon.svg","sameAs":["https://x.com/CodeQuillClaim","https://www.linkedin.com/company/codequill-claim","https://t.me/codequill"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CodeQuill","url":"https://codequill.xyz/","description":"Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security."}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                deep: 'var(--bg-deep)',
+                surface: 'var(--bg-surface)',
+                elevated: 'var(--bg-elevated)',
+                border: 'var(--border)',
+                'border-accent': 'var(--border-accent)',
+                body: 'var(--text)',
+                bright: 'var(--text-bright)',
+                muted: 'var(--text-muted)',
+                accent: 'var(--accent)',
+                'accent-light': 'var(--accent-light)',
+                'accent-glow': 'var(--accent-glow)',
+                background: '#020817',
+                foreground: '#F8FAFC',
+                primary: '#7879F6',
+                success: '#22C55E',
+                error: '#EF4444',
+                warning: '#F59F0A',
+            },
+            fontFamily: {
+                body: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+            },
+            letterSpacing: {
+                hero: '-0.05em',
+                heading: '-0.025em',
+                label: '0.1em',
+            },
+        },
+    },
+}
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<link rel="stylesheet" href="/assets/css/app.css">
+<link rel="stylesheet" href="/assets/css/landing.css">
+<script src="/assets/js/theme.js"></script>
+
+<script defer src="https://cloud.umami.is/script.js" data-website-id="72ab4c4d-875b-4fd8-9221-f438ab3085fc"></script>
+    <title>CodeQuill — Verifiable Software Provenance &amp; Source Code Evidence</title>
+</head>
+<body class="landing-body">
+    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+
+    <div class="video-bg" aria-hidden="true">
+        <video class="video-bg-media" autoplay loop muted playsinline poster="/fog-poster.jpg" src="/fog.mp4"></video>
+        <img class="video-bg-fallback" src="/fog-poster.jpg" alt="">
+        <div class="video-bg-overlay"></div>
+    </div>
+
+
+<header id="siteHeader" class="landing-nav" data-mode="landing">
+    <div class="landing-nav-inner">
+        <a href="/" class="landing-nav-logo" aria-label="CodeQuill home">
+            <img src="/logo-light-horizontal.svg" alt="CodeQuill" width="148" height="26">
+        </a>
+        <nav class="landing-nav-links" aria-label="Sections">
+            <a href="#why" class="landing-nav-link" data-section="why">Overview</a>
+            <a href="#primitives" class="landing-nav-link" data-section="primitives">Primitives</a>
+            <a href="#workflow" class="landing-nav-link" data-section="workflow">Workflow</a>
+            <a href="#ecosystem" class="landing-nav-link" data-section="ecosystem">Ecosystem</a>
+        </nav>
+        <div class="landing-nav-cta">
+            <a href="https://app.codequill.xyz/login" class="btn-shiny">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>Launch App</span>
+            </a>
+        </div>
+        <button id="landingMenuToggle" class="landing-nav-mobile" type="button" aria-label="Toggle menu" aria-expanded="false">
+            <svg class="landing-nav-mobile-open" width="22" height="22" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            <svg class="landing-nav-mobile-close" width="22" height="22" viewBox="0 0 20 20" fill="currentColor" style="display:none"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+    </div>
+    <div id="landingMobileMenu" class="landing-mobile-menu" hidden>
+        <a href="#why" class="landing-mobile-link">Overview</a>
+        <a href="#primitives" class="landing-mobile-link">Primitives</a>
+        <a href="#workflow" class="landing-mobile-link">Workflow</a>
+        <a href="#ecosystem" class="landing-mobile-link">Ecosystem</a>
+        <a href="https://app.codequill.xyz/login" class="landing-mobile-link landing-mobile-cta">Launch App</a>
+    </div>
+</header>
+
+<div class="error-container">
+    <div class="text-center">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page not found</h1>
+        <p class="error-message">
+            The page you're looking for doesn't exist or has been moved.
+            Maybe it was blown away by a gentle breeze.
+        </p>
+        <div class="error-links">
+            <a href="/docs/" class="error-link-primary">Documentation</a>
+        </div>
+    </div>
+</div>
+
+    <script defer src="/assets/js/landing.js"></script>
+</body>
+</html>
