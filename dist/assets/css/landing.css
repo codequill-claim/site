@@ -296,6 +296,31 @@
     50% { opacity: 0.6; }
 }
 
+/* ── Strip bundled Leaf code/pre chrome on landing ────────
+   The bundled app.css adds bg + border + padding to <code> and <pre> for
+   docs prose. Reset those on the landing so install lines and CLI commands
+   render as plain mono text (matching the live React source). */
+.landing-body code,
+.landing-body code:not(pre code) {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    color: inherit;
+    font-size: inherit;
+}
+.landing-body pre,
+.landing-body pre:not(.prose pre) {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0;
+    overflow: visible;
+    font-size: inherit;
+    line-height: inherit;
+}
+
 /* ── Workflow terminal ───────────────────────────────────── */
 .wf-terminal {
     background: #0a0a0a;
