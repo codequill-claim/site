@@ -5,6 +5,16 @@
 
 {if $docs}
 {* ─── Docs nav ─── *}
+<style>
+    .cq-logo img { display: block; }
+    .cq-logo .cq-logo-light { display: none; }
+    [data-theme="light"] .cq-logo .cq-logo-dark { display: none; }
+    [data-theme="light"] .cq-logo .cq-logo-light { display: block; }
+    @media (prefers-color-scheme: light) {
+        :root:not([data-theme="dark"]) .cq-logo .cq-logo-dark { display: none; }
+        :root:not([data-theme="dark"]) .cq-logo .cq-logo-light { display: block; }
+    }
+</style>
 <header class="site-nav" data-mode="docs">
     <div class="nav-container">
         <div class="nav-left">
@@ -12,8 +22,9 @@
                 <svg class="nav-toggle-open" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
                 <svg class="nav-toggle-close" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="display:none"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
             </button>
-            <a href="/" class="nav-logo" aria-label="CodeQuill home">
-                <img src="/logo-light-horizontal.svg" alt="CodeQuill" width="140" height="24">
+            <a href="/" class="nav-logo cq-logo" aria-label="CodeQuill home">
+                <img class="cq-logo-dark" src="/logo-light-horizontal.svg" alt="CodeQuill" width="140" height="24">
+                <img class="cq-logo-light" src="/logo-dark-horizontal.svg" alt="CodeQuill" width="140" height="24">
             </a>
         </div>
         <nav class="nav-links">
