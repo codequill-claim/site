@@ -1,0 +1,112 @@
+{var $isLanding = ($section ?? '') === ''}
+{var $siteName = $leafName ?? 'CodeQuill'}
+{var $tagline = 'Verifiable Software Provenance & Source Code Evidence'}
+{var $defaultDescription = 'Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security.'}
+{var $prodUrl = $leafProductionUrl ?? 'https://codequill.xyz'}
+
+{if $isLanding}
+    {var $metaTitle = $siteName . ' — ' . $tagline}
+    {var $metaDescription = $defaultDescription}
+    {var $canonical = $prodUrl . '/'}
+    {var $ogTitle = $metaTitle}
+{else}
+    {var $metaTitle = ($title ?? 'Docs') . ' — ' . $siteName}
+    {var $metaDescription = ($pageDescription ?? '') !== '' ? $pageDescription : $defaultDescription}
+    {var $docPath = ($section ?? '') !== '' && ($slug ?? '') !== '' ? '/docs/' . $section . '/' . $slug . '/' : '/docs/'}
+    {var $canonical = $prodUrl . $docPath}
+    {var $ogTitle = $metaTitle}
+{/if}
+
+{var $ogImage = $prodUrl . '/social-card.png'}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="leaf-base-url" content="{$leafBaseUrl}">
+<meta name="title" content="{$metaTitle}">
+<meta name="description" content="{$metaDescription}">
+<meta name="robots" content="index, follow">
+{if $isLanding}
+<meta name="keywords" content="software provenance, code quill, artifact lineage, source code evidence, verifiable evidence">
+{/if}
+<link rel="canonical" href="{$canonical}">
+
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="{$siteName}">
+<link rel="manifest" href="/favicon/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="{$canonical}">
+<meta property="og:title" content="{$ogTitle}">
+<meta property="og:description" content="{$metaDescription}">
+<meta property="og:site_name" content="{$siteName}">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="{$ogImage}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{$canonical}">
+<meta name="twitter:title" content="{$ogTitle}">
+<meta name="twitter:description" content="{$metaDescription}">
+<meta name="twitter:image" content="{$ogImage}">
+<meta name="twitter:site" content="@CodeQuillClaim">
+
+{if $isLanding}
+<script type="application/ld+json" n:syntax="off">{"@context":"https://schema.org","@type":"Organization","name":"CodeQuill","url":"https://codequill.xyz/","logo":"https://codequill.xyz/logo-icon.svg","sameAs":["https://x.com/CodeQuillClaim","https://www.linkedin.com/company/codequill-claim","https://t.me/codequill"]}</script>
+<script type="application/ld+json" n:syntax="off">{"@context":"https://schema.org","@type":"WebSite","name":"CodeQuill","url":"https://codequill.xyz/","description":"Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security."}</script>
+{/if}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                deep: 'var(--bg-deep)',
+                surface: 'var(--bg-surface)',
+                elevated: 'var(--bg-elevated)',
+                border: 'var(--border)',
+                'border-accent': 'var(--border-accent)',
+                body: 'var(--text)',
+                bright: 'var(--text-bright)',
+                muted: 'var(--text-muted)',
+                accent: 'var(--accent)',
+                'accent-light': 'var(--accent-light)',
+                'accent-glow': 'var(--accent-glow)',
+                background: '#020817',
+                foreground: '#F8FAFC',
+                primary: '#7879F6',
+                success: '#22C55E',
+                error: '#EF4444',
+                warning: '#F59F0A',
+            },
+            fontFamily: {
+                body: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+            },
+            letterSpacing: {
+                hero: '-0.05em',
+                heading: '-0.025em',
+                label: '0.1em',
+            },
+        },
+    },
+}
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<link rel="stylesheet" href="/assets/css/app.css">
+{if $isLanding}
+<link rel="stylesheet" href="/assets/css/landing.css">
+{/if}
+<script src="/assets/js/theme.js"></script>
+
+<script defer src="https://cloud.umami.is/script.js" data-website-id="72ab4c4d-875b-4fd8-9221-f438ab3085fc"></script>
