@@ -1,0 +1,58 @@
+<section id="on-chain" class="py-20 md:py-32 border-b border-white/[0.05] relative overflow-hidden">
+    {* Ambient glow *}
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.08), transparent 70%);"></div>
+
+    <div class="container relative z-10">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">06</span><span>— On-Chain</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-3xl">
+                On-chain infrastructure.
+            </h2>
+            <p class="mt-4 text-white/60 max-w-2xl">
+                CodeQuill's core primitives are implemented as public, permissionless Ethereum smart contracts.
+                They define how authority, source evidence, project releases, and attestations are recorded
+                independently of any application layer.
+            </p>
+            <p class="mt-3 text-white/60 max-w-2xl">
+                The contracts are intentionally minimal and designed for long-term inspectability.
+            </p>
+        </div>
+
+        {* Contract cards *}
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <h3 class="text-lg font-medium text-white mb-2">Authority</h3>
+                <p class="text-sm text-white/60 leading-relaxed">On-chain claims that bind a repository to a wallet. Explicit, revocable, and auditable.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <h3 class="text-lg font-medium text-white mb-2">Source Evidence</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Anchored snapshot identifiers and metadata. Immutable records of what existed and when.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                <h3 class="text-lg font-medium text-white mb-2">Project Releases</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Coordinated groupings of source snapshots into coherent, versioned release units.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>
+                <h3 class="text-lg font-medium text-white mb-2">Attestations</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Recorded claims that artifacts originate from a specific published release.</p>
+            </div>
+        </div>
+
+        {* Links *}
+        <div class="mt-10 flex flex-wrap gap-4">
+            <a href="https://github.com/codequill-claim/contracts" target="_blank" rel="noopener noreferrer" class="reveal-on-scroll shiny-border border border-white/[0.15] px-10 py-4 text-xs tracking-[0.05em] text-white hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                <span class="relative z-10">Smart Contracts</span>
+            </a>
+            <a href="https://github.com/codequill-claim/contracts/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer" class="reveal-on-scroll shiny-border border border-white/[0.15] px-10 py-4 text-xs tracking-[0.05em] text-white hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                <span class="relative z-10">Architecture</span>
+            </a>
+        </div>
+    </div>
+</section>

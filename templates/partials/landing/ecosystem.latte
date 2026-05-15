@@ -1,0 +1,61 @@
+<section id="ecosystem" class="py-20 md:py-32 border-b border-white/[0.05]">
+    <div class="container">
+        <div class="reveal-on-scroll">
+            <div class="section-label"><span class="section-label-number">05</span><span>— Ecosystem</span></div>
+            <h2 class="font-medium text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-heading gradient-text mt-4 max-w-3xl">
+                Designed to complement, not replace.
+            </h2>
+            <p class="mt-4 text-white/60 max-w-2xl">
+                Provenance systems are not needed when everything works.
+                They matter when assumptions fail and CodeQuill is designed
+                to preserve facts under those conditions.
+            </p>
+        </div>
+
+        {* Threat assumption cards *}
+        <div id="threat-model" class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <h3 class="text-lg font-medium text-white mb-3">CI systems can be compromised</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Build pipelines are trusted by default. When that trust breaks, evidence must exist elsewhere.</p>
+                <span class="font-mono text-[11px] text-white/50 mt-4 block">01</span>
+            </div>
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <h3 class="text-lg font-medium text-white mb-3">Logs and registries can be altered or lost</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Platform logs are ephemeral. Registries can be modified. Provenance needs durable anchoring.</p>
+                <span class="font-mono text-[11px] text-white/50 mt-4 block">02</span>
+            </div>
+            <div class="reveal-on-scroll bg-black p-8 border border-white/[0.10] hover:border-[#7879F6]/30 hover:bg-white/[0.02] transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/40 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <h3 class="text-lg font-medium text-white mb-3">Platforms and organizations can change over time</h3>
+                <p class="text-sm text-white/60 leading-relaxed">Teams restructure, services sunset, access revokes. Evidence should outlive the systems that produced it.</p>
+                <span class="font-mono text-[11px] text-white/50 mt-4 block">03</span>
+            </div>
+        </div>
+
+        {* Bridging text *}
+        <p class="reveal-on-scroll mt-10 text-white/60 max-w-2xl">
+            CodeQuill is not a replacement for artifact signing or CI identity systems.
+            It complements tools like Sigstore by providing a stable, source-centric reference
+            that artifacts can point to.
+        </p>
+
+        {* Comparison cards *}
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.05]">
+            <div class="reveal-on-scroll bg-black p-8 lg:p-10 border border-white/[0.10] hover:border-[#7879F6]/30 transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-white/50 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                <h3 class="font-mono text-[11px] uppercase tracking-[0.1em] text-white/60 mb-4">Artifact Signing</h3>
+                <p class="text-lg text-white/70 leading-relaxed italic">"Who signed this artifact?"</p>
+                <p class="mt-4 text-sm text-white/60 leading-relaxed">Answers questions about the identity attached to a built artifact. Operates at the output layer of the supply chain.</p>
+            </div>
+
+            <div class="reveal-on-scroll bg-black p-8 lg:p-10 border border-white/[0.10] hover:border-[#7879F6]/30 transition-all duration-300">
+                <svg width="20" height="20" class="w-5 h-5 text-primary mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="11.5" cy="14.5" r="2.5"/><line x1="13.27" y1="16.27" x2="15" y2="18"/></svg>
+                <h3 class="font-mono text-[11px] uppercase tracking-[0.1em] text-primary mb-4">CodeQuill</h3>
+                <p class="text-lg text-white/70 leading-relaxed italic">"What exact source state and release is this artifact claiming lineage from?"</p>
+                <p class="mt-4 text-sm text-white/60 leading-relaxed">Answers questions about the source code origin of an artifact. Operates at the input layer before anything is built or signed.</p>
+            </div>
+        </div>
+    </div>
+</section>
