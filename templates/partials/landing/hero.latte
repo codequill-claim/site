@@ -1,44 +1,44 @@
-<section class="relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20 md:pt-20 md:pb-40 overflow-hidden">
+<section class="hero-section relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20 md:pt-20 md:pb-40 overflow-hidden">
     {* Ambient glow layers *}
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-[5%] left-[15%] w-[800px] h-[500px] animate-pulse-slow" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.15), transparent 65%);"></div>
+        <div class="absolute top-[5%] left-[15%] w-[800px] h-[500px]" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.15), transparent 65%); animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>
         <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] opacity-60" style="background: radial-gradient(circle at center, rgba(120, 121, 246, 0.12), transparent 60%); animation: hero-drift 12s ease-in-out infinite alternate;"></div>
         <div class="absolute bottom-[10%] right-[10%] w-[400px] h-[300px] opacity-40" style="background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.1), transparent 70%); animation: hero-drift 16s ease-in-out infinite alternate-reverse;"></div>
     </div>
 
     <div class="container relative z-10">
         <div class="max-w-5xl">
-            {* Status pill *}
+            {* Status pill — port of StatusPill.tsx *}
             <div class="mb-8">
-                <div class="hero-status" data-status-pill data-status="operational">
-                    <span class="hero-status-dot"></span>
-                    <span data-status-label>All Systems Operational</span>
-                    <span class="hero-status-sep">·</span>
-                    <span class="hero-status-meta">Built on Ethereum · Beta (Sepolia)</span>
+                <div class="status-pill" data-status-pill data-status="loading">
+                    <svg class="status-pill-eth" viewBox="0 0 320 512" fill="currentColor" aria-hidden="true">
+                        <path d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"/>
+                    </svg>
+                    <span class="status-pill-label">Built on Ethereum</span>
+                    <span class="status-pill-sep"></span>
+                    <span class="status-pill-version-wrap">
+                        <span class="status-pill-version">Beta (Sepolia)</span>
+                        <span class="status-pill-dot" aria-hidden="true"></span>
+                    </span>
                 </div>
             </div>
 
-            {* Main heading *}
-            <div>
-                <h1 class="font-medium text-5xl sm:text-7xl lg:text-[112px] leading-[0.9] tracking-hero gradient-text max-w-4xl">
-                    Memory infrastructure for software.
-                </h1>
-            </div>
+            {* Main heading — GradientHeading size=hero *}
+            <h1 class="hero-h1 gradient-text">Memory infrastructure for software.</h1>
 
             {* Body + CTA *}
             <div class="mt-8 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-                <p class="text-lg text-white/60 max-w-lg leading-relaxed">
-                    Preserve verifiable, immutable evidence of what source code existed
-                    at a given point in time and under whose authority.
+                <p class="hero-body">
+                    Preserve verifiable, immutable evidence of what source code existed at a given point in time and under whose authority.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 items-center">
-                    <a href="https://app.codequill.xyz/login" class="btn btn-primary">
+                    <a href="https://app.codequill.xyz/login" target="_blank" rel="noopener" class="btn btn-primary">
                         <span>Get Started</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                     <a href="/docs/getting-started/introduction/" class="btn btn-ghost">
                         <span>Read the Docs</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
             </div>
