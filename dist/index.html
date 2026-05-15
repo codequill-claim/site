@@ -99,41 +99,65 @@ tailwind.config = {
     </div>
 
 
-<header id="siteHeader" class="landing-nav" data-mode="landing">
-    <div class="landing-nav-inner">
-        <a href="/" class="landing-nav-logo" aria-label="CodeQuill home">
-            <img src="/logo-light-horizontal.svg" alt="CodeQuill" width="148" height="26">
-        </a>
-        <nav class="landing-nav-links" aria-label="Sections">
-            <a href="#why" class="landing-nav-link" data-section="why">Overview</a>
-            <a href="#primitives" class="landing-nav-link" data-section="primitives">Primitives</a>
-            <a href="#workflow" class="landing-nav-link" data-section="workflow">Workflow</a>
-            <a href="#ecosystem" class="landing-nav-link" data-section="ecosystem">Ecosystem</a>
-        </nav>
-        <div class="landing-nav-cta">
-            <a href="https://app.codequill.xyz/login" class="btn-shiny">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+<nav id="siteHeader" class="ld-nav" data-mode="landing">
+    <div class="ld-nav-spread">
+        <div class="ld-nav-spread-row">
+            <a href="/" class="ld-nav-logo-link" aria-label="CodeQuill home">
+                <img src="/logo-light-horizontal.svg" alt="CodeQuill" class="ld-nav-logo-img">
+            </a>
+
+            <div class="ld-nav-pill">
+                <a href="#why" class="ld-nav-link" data-section="why" data-also="scope">Overview</a>
+                <a href="#primitives" class="ld-nav-link" data-section="primitives" data-also="use-cases">Primitives</a>
+                <a href="#workflow" class="ld-nav-link" data-section="workflow">Workflow</a>
+                <a href="#ecosystem" class="ld-nav-link" data-section="ecosystem" data-also="threat-model on-chain collaborators">Ecosystem</a>
+            </div>
+
+            <a href="https://app.codequill.xyz/login" target="_blank" rel="noopener" class="ld-launch">
+                <svg class="ld-launch-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
                 <span>Launch App</span>
             </a>
         </div>
-        <button id="landingMenuToggle" class="landing-nav-mobile" type="button" aria-label="Toggle menu" aria-expanded="false">
-            <svg class="landing-nav-mobile-open" width="22" height="22" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-            <svg class="landing-nav-mobile-close" width="22" height="22" viewBox="0 0 20 20" fill="currentColor" style="display:none"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+    </div>
+
+    <div class="ld-nav-pill-wrap" aria-hidden="true">
+        <div class="ld-nav-pill ld-nav-pill-scrolled">
+            <a href="/" class="ld-nav-icon-link" aria-label="CodeQuill home" tabindex="-1">
+                <img src="/logo-icon.svg" alt="" class="ld-nav-icon-img">
+            </a>
+            <a href="#why" class="ld-nav-link" data-section="why" data-also="scope" tabindex="-1">Overview</a>
+            <a href="#primitives" class="ld-nav-link" data-section="primitives" data-also="use-cases" tabindex="-1">Primitives</a>
+            <a href="#workflow" class="ld-nav-link" data-section="workflow" tabindex="-1">Workflow</a>
+            <a href="#ecosystem" class="ld-nav-link" data-section="ecosystem" data-also="threat-model on-chain collaborators" tabindex="-1">Ecosystem</a>
+            <div class="ld-nav-sep"></div>
+            <a href="https://app.codequill.xyz/login" target="_blank" rel="noopener" class="ld-nav-link ld-nav-login" tabindex="-1">Login</a>
+        </div>
+    </div>
+
+    <div class="ld-nav-mobile">
+        <a href="/" class="ld-nav-logo-link"><img src="/logo-light-horizontal.svg" alt="CodeQuill" class="ld-nav-logo-img-mobile"></a>
+        <button id="landingMenuToggle" class="ld-nav-mobile-btn" type="button" aria-label="Toggle menu" aria-expanded="false">
+            <svg class="ld-nav-mobile-open" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            <svg class="ld-nav-mobile-close" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="display:none"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </button>
     </div>
-    <div id="landingMobileMenu" class="landing-mobile-menu" hidden>
-        <a href="#why" class="landing-mobile-link">Overview</a>
-        <a href="#primitives" class="landing-mobile-link">Primitives</a>
-        <a href="#workflow" class="landing-mobile-link">Workflow</a>
-        <a href="#ecosystem" class="landing-mobile-link">Ecosystem</a>
-        <a href="https://app.codequill.xyz/login" class="landing-mobile-link landing-mobile-cta">Launch App</a>
+    <div id="landingMobileMenu" class="ld-nav-mobile-menu" hidden>
+        <a href="#why" class="ld-nav-mobile-link">Overview</a>
+        <a href="#primitives" class="ld-nav-mobile-link">Primitives</a>
+        <a href="#workflow" class="ld-nav-mobile-link">Workflow</a>
+        <a href="#ecosystem" class="ld-nav-mobile-link">Ecosystem</a>
+        <div class="ld-nav-mobile-sep"></div>
+        <a href="https://app.codequill.xyz/login" target="_blank" rel="noopener" class="ld-nav-mobile-launch">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
+            <span>Launch App</span>
+        </a>
     </div>
-</header>
+</nav>
 
 <main id="main">
-<section class="relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20 md:pt-20 md:pb-40 overflow-hidden">
+<section class="hero-section relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20 md:pt-20 md:pb-40 overflow-hidden">
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-[5%] left-[15%] w-[800px] h-[500px] animate-pulse-slow" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.15), transparent 65%);"></div>
+        <div class="absolute top-[5%] left-[15%] w-[800px] h-[500px]" style="background: radial-gradient(ellipse at center, rgba(120, 121, 246, 0.15), transparent 65%); animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>
         <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] opacity-60" style="background: radial-gradient(circle at center, rgba(120, 121, 246, 0.12), transparent 60%); animation: hero-drift 12s ease-in-out infinite alternate;"></div>
         <div class="absolute bottom-[10%] right-[10%] w-[400px] h-[300px] opacity-40" style="background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.1), transparent 70%); animation: hero-drift 16s ease-in-out infinite alternate-reverse;"></div>
     </div>
@@ -141,33 +165,33 @@ tailwind.config = {
     <div class="container relative z-10">
         <div class="max-w-5xl">
             <div class="mb-8">
-                <div class="hero-status" data-status-pill data-status="operational">
-                    <span class="hero-status-dot"></span>
-                    <span data-status-label>All Systems Operational</span>
-                    <span class="hero-status-sep">·</span>
-                    <span class="hero-status-meta">Built on Ethereum · Beta (Sepolia)</span>
+                <div class="status-pill" data-status-pill data-status="loading">
+                    <svg class="status-pill-eth" viewBox="0 0 320 512" fill="currentColor" aria-hidden="true">
+                        <path d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"></path>
+                    </svg>
+                    <span class="status-pill-label">Built on Ethereum</span>
+                    <span class="status-pill-sep"></span>
+                    <span class="status-pill-version-wrap">
+                        <span class="status-pill-version">Beta (Sepolia)</span>
+                        <span class="status-pill-dot" aria-hidden="true"></span>
+                    </span>
                 </div>
             </div>
 
-            <div>
-                <h1 class="font-medium text-5xl sm:text-7xl lg:text-[112px] leading-[0.9] tracking-hero gradient-text max-w-4xl">
-                    Memory infrastructure for software.
-                </h1>
-            </div>
+            <h1 class="hero-h1 gradient-text">Memory infrastructure for software.</h1>
 
             <div class="mt-8 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-                <p class="text-lg text-white/60 max-w-lg leading-relaxed">
-                    Preserve verifiable, immutable evidence of what source code existed
-                    at a given point in time and under whose authority.
+                <p class="hero-body">
+                    Preserve verifiable, immutable evidence of what source code existed at a given point in time and under whose authority.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 items-center">
-                    <a href="https://app.codequill.xyz/login" class="btn btn-primary">
+                    <a href="https://app.codequill.xyz/login" target="_blank" rel="noopener" class="btn btn-primary">
                         <span>Get Started</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
                     <a href="/docs/getting-started/introduction/" class="btn btn-ghost">
                         <span>Read the Docs</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
                 </div>
             </div>
@@ -587,18 +611,18 @@ tailwind.config = {
                 </div>
             </div>
 
-            <div class="reveal-on-scroll bg-[#0a0a0a] border border-white/[0.10] rounded-lg overflow-hidden">
-                <div class="flex items-center gap-2 px-4 py-3 bg-white/[0.03] border-b border-white/[0.06]">
-                    <div class="flex items-center gap-1.5">
-                        <span class="w-3 h-3 rounded-full bg-[#FF5F56]"></span>
-                        <span class="w-3 h-3 rounded-full bg-[#FFBD2E]"></span>
-                        <span class="w-3 h-3 rounded-full bg-[#27C93F]"></span>
+            <div class="reveal-on-scroll wf-terminal">
+                <div class="wf-term-bar">
+                    <div class="wf-term-dots">
+                        <span class="wf-term-dot wf-term-dot-red"></span>
+                        <span class="wf-term-dot wf-term-dot-yellow"></span>
+                        <span class="wf-term-dot wf-term-dot-green"></span>
                     </div>
-                    <span class="font-mono text-[11px] text-white/50 ml-2">codequill</span>
+                    <span class="wf-term-title">codequill</span>
                 </div>
 
-                <div class="p-6 lg:p-8">
-                    <pre aria-hidden="true" class="mb-5 select-none font-mono text-[1.5px] sm:text-[1.75px] md:text-[2px] lg:text-[2.25px] leading-[1.0] tracking-[0.01em] w-max mx-auto max-w-full text-transparent bg-clip-text bg-gradient-to-r from-[#d7b7ff] via-[#8ea2ff] to-[#caa8ff] opacity-90 drop-shadow-[0_0_14px_rgba(142,162,255,0.14)]">
+                <div class="wf-term-body">
+                    <pre aria-hidden="true" class="wf-ascii">
                                                                                          ++++
                                                                                     ++++++++
                                                                                 +++++++++++
