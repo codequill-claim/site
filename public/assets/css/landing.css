@@ -400,14 +400,19 @@
     white-space: normal;
 }
 
-/* ── Reveal-on-scroll ────────────────────────────────────── */
+/* ── Reveal-on-scroll (progressive enhancement) ──────────── */
+/* Default: fully visible (no-JS / pre-JS / Playwright full-page screenshots). */
 .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+/* Only when landing.js marks the doc as ready do we start hidden. */
+.js-anim .reveal-on-scroll:not(.is-visible) {
     opacity: 0;
     transform: translateY(1.5rem);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    will-change: opacity, transform;
 }
-.reveal-on-scroll.is-visible {
+.js-anim .reveal-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }

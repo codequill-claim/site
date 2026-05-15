@@ -57,9 +57,12 @@
         sections.forEach(function (s) { obs.observe(s); });
     }
 
-    // ── Reveal-on-scroll ────────────────────────────────────
+    // ── Reveal-on-scroll (progressive enhancement) ──────────
+    // Default is opacity 1; only elements still BELOW the fold get the hidden state.
+    // Above-the-fold elements stay visible. As scrolling reveals more, IO swaps each in.
     if ('IntersectionObserver' in window && !prefersReducedMotion) {
-        var revealEls = document.querySelectorAll('.reveal-on-scroll');
+        document.documentElement.classList.add('js-anim');
+        var vh = window.innerHeight;
         var revealObs = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
                 if (e.isIntersecting) {
@@ -67,11 +70,14 @@
                     revealObs.unobserve(e.target);
                 }
             });
-        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-        revealEls.forEach(function (el) { revealObs.observe(el); });
-    } else {
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
         document.querySelectorAll('.reveal-on-scroll').forEach(function (el) {
-            el.classList.add('is-visible');
+            var rect = el.getBoundingClientRect();
+            if (rect.top < vh) {
+                el.classList.add('is-visible');
+            } else {
+                revealObs.observe(el);
+            }
         });
     }
 
