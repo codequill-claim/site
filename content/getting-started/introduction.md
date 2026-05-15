@@ -1,102 +1,69 @@
 ---
 title: Introduction
+description: "CodeQuill is memory infrastructure for software. Learn what it does, how it works, and why evidence preservation matters."
 order: 1
 ---
 
 # Introduction
 
-Welcome to your new **Zephyrus Leaf** site. This page lives at `content/getting-started/introduction.md`. Edit it, save, and watch the browser reload.
+CodeQuill is memory infrastructure for software. It preserves verifiable, immutable evidence of what source code existed at a given point in time -- and under whose authority.
 
-## What you just got
+## Why CodeQuill Exists
 
-- A working documentation site at `localhost:8080`
-- Live reload when you edit anything under `content/`, `templates/`, or `public/`
-- Full-text search (press <kbd>⌘</kbd>+<kbd>K</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd>)
-- Dark and light themes (toggle in the nav)
-- A build command that produces deployable HTML in `dist/`
+The software ecosystem evolved faster than its ability to preserve evidence. Code can now be generated, modified, and assembled at machine speed. Shipping is easier than ever. But answering simple questions later is harder than it should be:
 
-## Add a page
+- What source code actually existed at a given moment?
+- Who was authorized to publish it?
+- Which release was intended?
+- What artifacts were claimed to originate from it?
 
-Drop a new `.md` file anywhere under `content/`:
+These are not hypothetical concerns. When incidents occur, when audits are performed, when legal questions arise -- the answers depend on evidence that often no longer exists. Logs rotate. CI systems are ephemeral. Platforms change ownership. Organizations restructure.
 
-```
-content/
-  getting-started/
-    introduction.md     <-- you are here
-  guides/
-    my-first-guide.md   <-- new page
-```
+CodeQuill exists to preserve facts, not narratives.
 
-Every page needs front matter:
+## What CodeQuill Does
 
-```yaml
----
-title: My First Guide
-order: 1
----
+CodeQuill provides a set of **primitives** for recording durable, inspectable evidence about source code:
 
-# My First Guide
+- **Claims** -- Explicit on-chain records linking a repository to a workspace authority (wallet). Who is allowed to speak for this repository.
+- **Snapshots** -- Deterministic cryptographic fingerprints of a repository's source state at a specific commit. Created locally, never uploaded.
+- **Releases** -- Named, versioned references to a single snapshot with a full governance lifecycle. Draft, publish, accept, revoke, supersede.
+- **Attestations** -- Recorded statements that a build artifact claims lineage from a specific published release.
+- **Preservations** -- Encrypted archives of source code tied to published snapshots. Client-side encryption only -- CodeQuill never accesses plaintext.
+- **Proofs** -- Cryptographic Merkle proofs that a specific file was included in a preserved source state.
 
-Hello world.
-```
+Each primitive is anchored on-chain using Ethereum smart contracts, creating append-only, tamper-evident records that outlive any single platform or organization.
 
-## Add a section
+## What CodeQuill Does Not Do
 
-Sections are top-level folders under `content/`. Register them in `config.yml`:
+CodeQuill is evidence infrastructure. It is deliberately scoped:
 
-```yaml
-leaf:
-  sections:
-    getting-started: "Getting Started"
-    guides: "Guides"            # new section
-    api: "API Reference"        # and another
-```
+- It does **not** prove how software was built.
+- It does **not** guarantee build causality or correctness.
+- It does **not** replace CI systems, artifact signing, or reproducible builds.
+- It does **not** provide end-to-end supply-chain security.
+- It does **not** validate code quality or safety.
 
-The order in the YAML determines the sidebar order.
+CodeQuill preserves facts. What you do with those facts -- in audits, governance decisions, incident response, or compliance -- is up to you.
 
-## Markdown features
+## Architecture
 
-All standard Markdown works, plus a few extras:
+CodeQuill separates **authority** from **execution**:
 
-### Code blocks with syntax highlighting
+- The **web application** ([app.codequill.xyz](https://app.codequill.xyz)) is where you configure trust: workspaces, wallets, collaborators, DAO governance, encryption, and subscription plans. It surfaces evidence and provides public views -- but it does not generate evidence itself.
+- The **CLI** (`codequill`) is where evidence is produced. Snapshots, attestations, preservations, and proofs are all created locally -- on a developer's machine or inside CI runners.
+- **Smart contracts** on Ethereum provide the on-chain layer: immutable records of claims, snapshots, releases, attestations, and preservations. No admin keys. No pause mechanism. Fully permissionless once deployed.
+- **GitHub Actions** automate evidence production in CI pipelines. Snapshots on push, attestations on release approval.
 
-```php
-function hello(string $name): string
-{
-    return "Hello, {$name}";
-}
-```
+This separation ensures that even if CodeQuill's servers were compromised, the evidence layer remains independently verifiable.
 
-```javascript
-const multiply = (a, b) => a * b;
-console.log(multiply(3, 4));
-```
+## Getting Started
 
-### Tables
+If you are new to CodeQuill, the recommended path is:
 
-| Feature | Binary | Composer |
-|---------|--------|----------|
-| One-command install | ✓ | — |
-| Custom controllers | via `leaf eject` | ✓ |
-| Composer packages | via `leaf eject` | ✓ |
-| Zero runtime deps | ✓ | requires PHP + Composer |
+1. Read the [Quickstart](/getting-started/quickstart) to go from zero to a published snapshot.
+2. Explore [Concepts](/concepts/workspaces) to understand the building blocks.
+3. Refer to the [CLI Reference](/cli-reference/authentication) for complete command documentation.
+4. Set up [CI/CD Integration](/ci-cd/overview) for automated evidence production.
 
-### Callouts
-
-> **Tip:** You can overlay any default template by dropping it at the same path under `templates/`. Try `templates/partials/nav.latte` to override the site navigation.
-
-### Inline code and links
-
-Reference commands inline with backticks: `leaf build`, `leaf dev`, `leaf init`.
-
-Links work with relative paths: see the [page anatomy guide](/getting-started/writing-content) for how to structure a page.
-
-## Next steps
-
-1. Edit `config.yml` — set your project name, version, author, GitHub URL.
-2. Drop your logo into `public/assets/images/` and reference it in your templates.
-3. Write more pages under `content/`.
-4. Run `leaf build` to produce the deployable site in `dist/`.
-5. Push `dist/` to any static host: Netlify, Vercel, GitHub Pages, Cloudflare Pages, or your own server.
-
-When you're ready for more, check [Writing Content](/getting-started/writing-content) and [Deployment](/getting-started/deployment).
+If you are evaluating CodeQuill for security or compliance purposes, start with the [Threat Model](/security/threat-model) and [Explicit Non-Guarantees](/security/non-guarantees).
