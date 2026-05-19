@@ -131,6 +131,7 @@
 }
 .btn-primary:hover {
     background: rgba(255, 255, 255, 0.9);
+    color: #000000;
     box-shadow: 0 0 30px rgba(120, 121, 246, 0.25);
 }
 
@@ -146,8 +147,12 @@
 .btn-ghost:hover { color: #FFFFFF; }
 
 /* shiny — animated conic-gradient border ring */
-.btn-shiny {
+.btn-shiny,
+.shiny-border {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
     overflow: hidden;
     border-radius: 9999px;
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -156,9 +161,12 @@
     font-size: 0.75rem;
     letter-spacing: 0.05em;
     background: transparent;
+    text-decoration: none;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
     isolation: isolate;
 }
-.btn-shiny::before {
+.btn-shiny::before,
+.shiny-border::before {
     content: '';
     position: absolute;
     inset: -2px;
@@ -167,7 +175,8 @@
     animation: border-spin 3s linear infinite;
     z-index: -2;
 }
-.btn-shiny::after {
+.btn-shiny::after,
+.shiny-border::after {
     content: '';
     position: absolute;
     inset: 1px;
@@ -175,8 +184,14 @@
     border-radius: 9999px;
     z-index: -1;
 }
-.btn-shiny > * { position: relative; z-index: 1; }
-.btn-shiny:hover { box-shadow: 0 0 40px rgba(255, 255, 255, 0.1); }
+.btn-shiny > *,
+.shiny-border > * { position: relative; z-index: 1; }
+.btn-shiny:hover,
+.shiny-border:hover {
+    color: #FFFFFF;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+}
 
 /* ── Video background (full-page, behind everything) ─────── */
 .video-bg {
