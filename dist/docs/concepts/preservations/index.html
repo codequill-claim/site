@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -415,7 +415,7 @@ tailwind.config = {
 <li><strong>No admin backdoor</strong> -- There is no recovery mechanism. If the passkey is lost, the preservation cannot be decrypted.</li>
 <li><strong>Snapshot-bound</strong> -- Each preservation is linked to a specific snapshot, with the content root verified before encryption.</li>
 </ul>
-<p>For full technical details, see <a href="/docs/docs/security/encryption-model">Encryption Model</a>.</p>
+<p>For full technical details, see <a href="/docs/security/encryption-model">Encryption Model</a>.</p>
 <h2 id="using-the-cli"><a href="#using-the-cli" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Using the CLI</h2>
 <h3 id="create-a-preservation"><a href="#create-a-preservation" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Create a Preservation</h3>
 <pre><code class="language-bash">codequill preserve &lt;snapshot-id&gt;
@@ -522,7 +522,7 @@ Preservation complete.
 </ul>
 <p>The on-chain record proves that an encrypted archive with a specific plaintext hash was stored at a specific time. It does not reveal the archive contents.</p>
 <h2 id="auditor-context"><a href="#auditor-context" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Auditor Context</h2>
-<p>For auditors: a preservation proves that an encrypted archive was created and stored at a specific time, bound to a specific snapshot. The plaintext hash allows verification that a decrypted archive matches the on-chain record. However, decryption requires the workspace authority's cooperation. See <a href="/docs/docs/reference/interpreting-evidence">Interpreting Evidence</a>.</p>
+<p>For auditors: a preservation proves that an encrypted archive was created and stored at a specific time, bound to a specific snapshot. The plaintext hash allows verification that a decrypted archive matches the on-chain record. However, decryption requires the workspace authority's cooperation. See <a href="/docs/reference/interpreting-evidence">Interpreting Evidence</a>.</p>
 
     </div>
 

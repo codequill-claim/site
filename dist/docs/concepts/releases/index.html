@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -426,7 +426,7 @@ tailwind.config = {
 <p>A revoked release can be <strong>superseded</strong> by a new release. This creates an explicit on-chain link from the old release to its replacement, providing a clear upgrade path.</p>
 <h2 id="dao-only-governance"><a href="#dao-only-governance" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>DAO-Only Governance</h2>
 <p>Releases can be configured as <strong>DAO-only</strong>. When this flag is set, only the workspace's DAO executor address can accept or reject the release. This enables integration with external governance systems like Aragon, Governor contracts, or multisig wallets.</p>
-<p>For detailed information about DAO governance setup, see <a href="/docs/docs/releases/dao-governance">DAO Governance</a>.</p>
+<p>For detailed information about DAO governance setup, see <a href="/docs/releases/dao-governance">DAO Governance</a>.</p>
 <h2 id="release-manifests"><a href="#release-manifests" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Release Manifests</h2>
 <p>Each published release has a manifest stored on IPFS. The manifest follows the <code>codequill-release:v1</code> schema and contains:</p>
 <ul>
@@ -436,14 +436,14 @@ tailwind.config = {
 <li>Source snapshot data (Merkle root, commit hash, manifest CID)</li>
 <li>Supersession information (if replacing a revoked release)</li>
 </ul>
-<p>For more details, see <a href="/docs/docs/releases/release-manifests">Release Manifests</a>.</p>
+<p>For more details, see <a href="/docs/releases/release-manifests">Release Manifests</a>.</p>
 <h2 id="cicd-integration"><a href="#cicd-integration" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>CI/CD Integration</h2>
 <p>When a release is anchored or accepted, CodeQuill can trigger GitHub Actions workflows via the bot <code>codequill-authorship[bot]</code>. This enables powerful automation pipelines:</p>
 <ol>
 <li>Release is anchored → GitHub Issue created → CI can build the artifact.</li>
 <li>Release is accepted by governance → GitHub Issue created → CI runs attestation → deploys to production.</li>
 </ol>
-<p>See <a href="/docs/docs/ci-cd/overview">CI/CD Integration</a> for the complete workflow.</p>
+<p>See <a href="/docs/ci-cd/overview">CI/CD Integration</a> for the complete workflow.</p>
 
     </div>
 

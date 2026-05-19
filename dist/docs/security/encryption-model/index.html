@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -488,7 +488,7 @@ X25519 Key Pair
 <li>Each file path is hashed as <code>keccak256(salt || path)</code> before inclusion in the Merkle tree.</li>
 <li>The manifest contains only these salted path hashes, not plaintext paths.</li>
 </ol>
-<p>This ensures that snapshot manifests -- which are stored on IPFS and publicly retrievable -- do not reveal the directory structure of the repository. Verifying that a specific file was included in a snapshot requires knowledge of the salt, which in turn requires workspace authority. See <a href="/docs/docs/concepts/proofs">Proofs</a> for how selective disclosure works.</p>
+<p>This ensures that snapshot manifests -- which are stored on IPFS and publicly retrievable -- do not reveal the directory structure of the repository. Verifying that a specific file was included in a snapshot requires knowledge of the salt, which in turn requires workspace authority. See <a href="/docs/concepts/proofs">Proofs</a> for how selective disclosure works.</p>
 <h2 id="cryptographic-primitives-summary"><a href="#cryptographic-primitives-summary" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Cryptographic Primitives Summary</h2>
 <table>
 <thead>

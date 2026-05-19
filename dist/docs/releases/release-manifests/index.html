@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -519,7 +519,7 @@ tailwind.config = {
 </tr>
 </tbody>
 </table>
-<p>The supersession fields are only populated when the release was created with a supersession target (a previously revoked release). See <a href="/docs/docs/releases/release-lifecycle">Release Lifecycle</a> for details on supersession.</p>
+<p>The supersession fields are only populated when the release was created with a supersession target (a previously revoked release). See <a href="/docs/releases/release-lifecycle">Release Lifecycle</a> for details on supersession.</p>
 <h2 id="downloading-manifests"><a href="#downloading-manifests" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Downloading Manifests</h2>
 <p>Release manifests can be downloaded from the CodeQuill web application. Navigate to the release detail page and select <strong>Download Manifest</strong>. The downloaded file is the raw gzip-compressed JSON as stored on IPFS.</p>
 <p>[Screenshot: Release detail page showing the Download Manifest button and manifest CID]</p>
@@ -566,7 +566,7 @@ gunzip manifest.json.gz
 <p>Release manifests deliberately exclude certain information:</p>
 <ul>
 <li><strong>Source code.</strong> Manifests contain hashes, not file contents. Source code is never stored in or transmitted through the manifest.</li>
-<li><strong>Build artifacts.</strong> Manifests describe source state, not compiled output. Artifacts are linked to releases through <a href="/docs/docs/concepts/attestations">Attestations</a>, not manifests.</li>
+<li><strong>Build artifacts.</strong> Manifests describe source state, not compiled output. Artifacts are linked to releases through <a href="/docs/concepts/attestations">Attestations</a>, not manifests.</li>
 <li><strong>Governance decisions.</strong> The manifest records the state at the time of anchoring. Whether the release was later accepted, rejected, or revoked is recorded on-chain, not in the manifest. The manifest is immutable; governance state changes over time.</li>
 </ul>
 <p>A manifest is a snapshot of intent: &quot;This authority released this source state, with this metadata, at this time.&quot; Everything that happens after anchoring is recorded elsewhere.</p>

@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -400,7 +400,7 @@ tailwind.config = {
 <li><strong>What</strong> artifact was referenced (its SHA-256 digest).</li>
 <li><strong>When</strong> the claim was made (on-chain timestamp).</li>
 </ol>
-<p>An attestation does not prove the artifact was correctly built from the source. It records the claim that it was. The difference matters -- see <a href="/docs/docs/security/non-guarantees">Non-Guarantees</a>.</p>
+<p>An attestation does not prove the artifact was correctly built from the source. It records the claim that it was. The difference matters -- see <a href="/docs/security/non-guarantees">Non-Guarantees</a>.</p>
 <h2 id="what-an-attestation-contains"><a href="#what-an-attestation-contains" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>What an Attestation Contains</h2>
 <p>When you attest an artifact, the following is recorded on the <code>CodeQuillAttestationRegistry</code> smart contract:</p>
 <ul>
@@ -541,7 +541,7 @@ tailwind.config = {
 <h2 id="attestation-revocation"><a href="#attestation-revocation" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Attestation Revocation</h2>
 <p>Attestations can be revoked if they are found to be incorrect or compromised. Revocation is recorded on-chain and marks the attestation as no longer valid.</p>
 <h2 id="auditor-context"><a href="#auditor-context" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Auditor Context</h2>
-<p>For auditors and legal reviewers: an attestation is a <strong>claim</strong>, not a <strong>proof</strong>. It records that a specific party asserted a relationship between an artifact and a source release. Whether that assertion is truthful depends on the integrity of the build process, which is outside CodeQuill's scope. See <a href="/docs/docs/reference/interpreting-evidence">Interpreting Evidence</a> for guidance.</p>
+<p>For auditors and legal reviewers: an attestation is a <strong>claim</strong>, not a <strong>proof</strong>. It records that a specific party asserted a relationship between an artifact and a source release. Whether that assertion is truthful depends on the integrity of the build process, which is outside CodeQuill's scope. See <a href="/docs/reference/interpreting-evidence">Interpreting Evidence</a> for guidance.</p>
 
     </div>
 

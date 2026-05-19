@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -409,7 +409,7 @@ tailwind.config = {
 <p><strong>CI integrity.</strong> CodeQuill does not monitor, audit, or validate CI pipelines. If a CI system is compromised, CodeQuill cannot detect or prevent the compromise. It can only provide an independent record of what source code existed at the time, which a forensic investigation could use as a reference point.</p>
 <p><strong>Code quality.</strong> CodeQuill does not analyze source code for bugs, vulnerabilities, or style violations. It preserves facts about existence and authorship, not assessments of merit.</p>
 <p><strong>Platform security.</strong> CodeQuill does not protect GitHub accounts, secure wallet private keys, or harden deployment infrastructure. It operates alongside these systems, not in place of them.</p>
-<p>For a complete enumeration of what CodeQuill does not guarantee, see <a href="/docs/docs/security/non-guarantees">Non-Guarantees</a>.</p>
+<p>For a complete enumeration of what CodeQuill does not guarantee, see <a href="/docs/security/non-guarantees">Non-Guarantees</a>.</p>
 <h2 id="composability"><a href="#composability" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Composability</h2>
 <p>CodeQuill is designed to be one layer in a larger security architecture, not a standalone solution. It provides the source-centric reference layer that other tools can point to:</p>
 <p><strong>Reproducible builds</strong> prove that a build process is deterministic -- that given the same source, the same artifact is produced. CodeQuill proves what the source was. Together, they answer both &quot;what was built from?&quot; and &quot;is the build process faithful?&quot;</p>
@@ -427,7 +427,7 @@ tailwind.config = {
 </li>
 </ul>
 <p>This separation has a specific security property: <strong>even if CodeQuill servers are compromised, the on-chain records remain independently verifiable.</strong> An attacker who gains access to the CodeQuill web application cannot alter records that have already been anchored on the blockchain. They cannot forge Merkle roots, backdate timestamps, or tamper with IPFS manifests that have already been pinned. The worst case is that future operations are disrupted -- past evidence remains intact and verifiable by anyone.</p>
-<p>The encryption model reinforces this boundary. CodeQuill never possesses the private key needed to decrypt preservations. The key is derived from the user's passkey via the WebAuthn PRF extension and never leaves the device. Even full server compromise does not expose preserved source code. See <a href="/docs/docs/security/encryption-model">Encryption Model</a> for details.</p>
+<p>The encryption model reinforces this boundary. CodeQuill never possesses the private key needed to decrypt preservations. The key is derived from the user's passkey via the WebAuthn PRF extension and never leaves the device. Even full server compromise does not expose preserved source code. See <a href="/docs/security/encryption-model">Encryption Model</a> for details.</p>
 
     </div>
 

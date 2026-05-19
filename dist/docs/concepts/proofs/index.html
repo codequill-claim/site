@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -537,7 +537,7 @@ tailwind.config = {
 </code></pre>
 <p>The <code>file.path</code> field is only present if <code>--disclose</code> was used during generation.</p>
 <h2 id="auditor-context"><a href="#auditor-context" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Auditor Context</h2>
-<p>For auditors: a verified proof demonstrates that a file with a specific content hash was included in a snapshot with a specific Merkle root. Combined with the on-chain anchor of that Merkle root, this constitutes evidence that the file existed at the time of anchoring. See <a href="/docs/docs/reference/interpreting-evidence">Interpreting Evidence</a>.</p>
+<p>For auditors: a verified proof demonstrates that a file with a specific content hash was included in a snapshot with a specific Merkle root. Combined with the on-chain anchor of that Merkle root, this constitutes evidence that the file existed at the time of anchoring. See <a href="/docs/reference/interpreting-evidence">Interpreting Evidence</a>.</p>
 
     </div>
 

@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -409,7 +409,7 @@ tailwind.config = {
 <h3 id="clearing-the-dao-executor"><a href="#clearing-the-dao-executor" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Clearing the DAO Executor</h3>
 <p>To remove the DAO executor configuration, clear the address field and save. This sets the on-chain executor address to <code>0x0000000000000000000000000000000000000000</code>, which effectively disables DAO-only governance. Releases created with the DAO-only flag after clearing the executor will have no valid executor, and no address will be able to accept or reject them through the DAO path.</p>
 <h2 id="creating-a-dao-only-release"><a href="#creating-a-dao-only-release" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Creating a DAO-Only Release</h2>
-<p>When creating a release (see <a href="/docs/docs/releases/release-lifecycle">Release Lifecycle</a>), the creation form includes a <strong>DAO-Only Governance</strong> toggle. This corresponds to the <code>gouvernance_dao_only</code> flag in the release configuration.</p>
+<p>When creating a release (see <a href="/docs/releases/release-lifecycle">Release Lifecycle</a>), the creation form includes a <strong>DAO-Only Governance</strong> toggle. This corresponds to the <code>gouvernance_dao_only</code> flag in the release configuration.</p>
 <p>When this flag is enabled:</p>
 <ul>
 <li><strong>Only the DAO executor address</strong> can accept or reject the release. The workspace's regular governance authority cannot act on this release.</li>

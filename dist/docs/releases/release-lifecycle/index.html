@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -435,7 +435,7 @@ tailwind.config = {
 <tr>
 <td>DAO-Only Governance</td>
 <td>No</td>
-<td>When enabled, only the workspace's DAO executor address can accept or reject this release. See <a href="/docs/docs/releases/dao-governance">DAO Governance</a>.</td>
+<td>When enabled, only the workspace's DAO executor address can accept or reject this release. See <a href="/docs/releases/dao-governance">DAO Governance</a>.</td>
 </tr>
 <tr>
 <td>Supersedes Release</td>
@@ -453,7 +453,7 @@ tailwind.config = {
 <p>Anchoring a release is the transition from draft to on-chain record. When you anchor a release, the following sequence occurs:</p>
 <ol>
 <li>
-<p><strong>Manifest construction.</strong> The web application builds a release manifest conforming to the <code>codequill-release:v1</code> schema. This manifest contains the repository information, release metadata, authority address, source snapshot data, and supersession information. See <a href="/docs/docs/releases/release-manifests">Release Manifests</a> for the full schema.</p>
+<p><strong>Manifest construction.</strong> The web application builds a release manifest conforming to the <code>codequill-release:v1</code> schema. This manifest contains the repository information, release metadata, authority address, source snapshot data, and supersession information. See <a href="/docs/releases/release-manifests">Release Manifests</a> for the full schema.</p>
 </li>
 <li>
 <p><strong>IPFS upload.</strong> The manifest is gzip-compressed and uploaded to IPFS via Lighthouse (pinned to Filecoin for long-term persistence). The resulting CID becomes the permanent, content-addressed identifier for this manifest.</p>
@@ -477,7 +477,7 @@ tailwind.config = {
 <p>Who qualifies as the governance authority depends on the release's configuration:</p>
 <ul>
 <li><strong>Standard governance:</strong> The workspace's governance authority address can accept or reject.</li>
-<li><strong>DAO-only governance:</strong> Only the workspace's DAO executor address can accept or reject. The regular governance authority cannot act on DAO-only releases. See <a href="/docs/docs/releases/dao-governance">DAO Governance</a>.</li>
+<li><strong>DAO-only governance:</strong> Only the workspace's DAO executor address can accept or reject. The regular governance authority cannot act on DAO-only releases. See <a href="/docs/releases/dao-governance">DAO Governance</a>.</li>
 </ul>
 <p>Governance decisions are final. A release that has been accepted cannot later be rejected (though it can be revoked). A rejected release cannot be accepted.</p>
 <h3 id="github-issue-on-acceptance"><a href="#github-issue-on-acceptance" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>GitHub Issue on Acceptance</h3>

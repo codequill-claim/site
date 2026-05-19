@@ -110,7 +110,7 @@ tailwind.config = {
             </a>
         </div>
         <nav class="nav-links">
-            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs">
+            <button id="searchTrigger" class="nav-search" type="button" aria-label="Search docs" onclick="window.openSearch && window.openSearch()">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 <span class="nav-search-text">Search</span>
                 <kbd class="nav-search-kbd">⌘K</kbd>
@@ -410,7 +410,7 @@ tailwind.config = {
 <h2 id="does-codequill-guarantee-my-builds-are-secure"><a href="#does-codequill-guarantee-my-builds-are-secure" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Does CodeQuill guarantee my builds are secure?</h2>
 <p>No. CodeQuill does not observe, validate, or constrain build processes. It does not verify that a build is correct, deterministic, or free from tampering.</p>
 <p>A CodeQuill snapshot proves what source code existed. A CodeQuill attestation records that someone claimed an artifact was built from a specific release. Whether that claim is truthful depends on the integrity of the build process, which is outside CodeQuill's scope.</p>
-<p>For build security, consider reproducible build frameworks, build provenance standards (SLSA), and CI pipeline hardening. CodeQuill provides the source reference that these tools can point to. See <a href="/docs/docs/security/non-guarantees">Non-Guarantees</a> for a full discussion.</p>
+<p>For build security, consider reproducible build frameworks, build provenance standards (SLSA), and CI pipeline hardening. CodeQuill provides the source reference that these tools can point to. See <a href="/docs/security/non-guarantees">Non-Guarantees</a> for a full discussion.</p>
 <h2 id="do-i-need-reproducible-builds-to-use-codequill"><a href="#do-i-need-reproducible-builds-to-use-codequill" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Do I need reproducible builds to use CodeQuill?</h2>
 <p>No. CodeQuill operates independently of how your software is built.</p>
 <p>Reproducible builds and CodeQuill are complementary. Reproducible builds prove that a build process is deterministic -- given the same inputs, the same output is produced. CodeQuill proves what the inputs were -- which source code existed at the time of the snapshot.</p>
@@ -418,7 +418,7 @@ tailwind.config = {
 <h2 id="is-source-code-stored-on-the-blockchain"><a href="#is-source-code-stored-on-the-blockchain" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Is source code stored on the blockchain?</h2>
 <p>No. Only cryptographic hashes and identifiers are stored on-chain.</p>
 <p>Specifically, the blockchain stores: Merkle roots (representing file tree state), manifest CIDs (pointers to IPFS-stored manifests), commit hashes, wallet addresses, timestamps, and governance decisions. No file contents, file paths, or source code are written to the blockchain.</p>
-<p>Snapshot manifests -- which contain per-file hashes and salted path hashes, but not file contents -- are stored on IPFS. The actual source code remains on your local machine or in your repository. If you create a <a href="/docs/docs/concepts/preservations">preservation</a>, an encrypted copy of the source archive is stored on IPFS, but it is encrypted with keys that only the workspace authority possesses.</p>
+<p>Snapshot manifests -- which contain per-file hashes and salted path hashes, but not file contents -- are stored on IPFS. The actual source code remains on your local machine or in your repository. If you create a <a href="/docs/concepts/preservations">preservation</a>, an encrypted copy of the source archive is stored on IPFS, but it is encrypted with keys that only the workspace authority possesses.</p>
 <h2 id="is-preservation-mandatory"><a href="#is-preservation-mandatory" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Is preservation mandatory?</h2>
 <p>No. Preservation is an optional feature. Snapshots, releases, attestations, and proofs all function independently of preservation.</p>
 <p>A snapshot captures the cryptographic state of your source code without storing the source itself. This is sufficient for most evidence needs: proving what existed, governing releases, and attesting artifacts.</p>
@@ -437,7 +437,7 @@ tailwind.config = {
 <li>When the release is accepted by governance, a GitHub Issue is created by the CodeQuill bot, which can trigger a CI workflow.</li>
 <li>The CI workflow builds the artifact and runs <code>codequill attest</code> to create an on-chain attestation linking the artifact to the release.</li>
 </ol>
-<p>The CLI supports non-interactive operation (<code>--no-confirm</code>, <code>--json</code>) for CI environments. Authentication in CI uses session tokens obtained through the <code>codequill auth</code> flow. See <a href="/docs/docs/ci-cd/overview">CI/CD Integration</a> for detailed setup instructions.</p>
+<p>The CLI supports non-interactive operation (<code>--no-confirm</code>, <code>--json</code>) for CI environments. Authentication in CI uses session tokens obtained through the <code>codequill auth</code> flow. See <a href="/docs/ci-cd/overview">CI/CD Integration</a> for detailed setup instructions.</p>
 <h2 id="who-is-codequill-for"><a href="#who-is-codequill-for" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Who is CodeQuill for?</h2>
 <p>CodeQuill is designed for anyone who needs durable, verifiable evidence about source code:</p>
 <p><strong>Developers</strong> who want a tamper-evident record of what they built and when. Snapshots provide proof of prior art, and attestations create a verifiable link between source and artifact.</p>
