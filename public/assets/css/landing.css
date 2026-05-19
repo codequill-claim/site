@@ -162,7 +162,7 @@
     letter-spacing: 0.05em;
     background: transparent;
     text-decoration: none;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease;
     isolation: isolate;
 }
 .btn-shiny::before,
@@ -190,7 +190,6 @@
 .shiny-border:hover {
     color: #FFFFFF;
     box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-    transform: scale(1.02);
 }
 
 /* ── Video background (full-page, behind everything) ─────── */
