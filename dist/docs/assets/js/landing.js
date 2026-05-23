@@ -3,10 +3,10 @@
 
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // ── Service-status pill ────────────────────────────────
+    // ── Service-status (hero pill + footer link) ───────────
     function refreshStatus() {
-        var pill = document.querySelector('[data-status-pill]');
-        if (!pill) return;
+        var targets = document.querySelectorAll('[data-status-pill], [data-status-footer]');
+        if (!targets.length) return;
         fetch('https://status.codequill.xyz/api/status-page/codequill', { cache: 'no-store' })
             .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
             .then(function (data) {
@@ -15,9 +15,11 @@
                 var status = hasIncident ? 'down' : underMaintenance ? 'degraded' : 'operational';
                 var label = status === 'operational' ? 'All Systems Operational'
                     : status === 'degraded' ? 'Under Maintenance' : 'Active Incident';
-                pill.setAttribute('data-status', status);
-                var labelEl = pill.querySelector('[data-status-label]');
-                if (labelEl) labelEl.textContent = label;
+                targets.forEach(function (el) {
+                    el.setAttribute('data-status', status);
+                    var labelEl = el.querySelector('[data-status-label]');
+                    if (labelEl) labelEl.textContent = label;
+                });
             })
             .catch(function () { /* keep current state silently */ });
     }

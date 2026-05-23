@@ -72,6 +72,44 @@
         font-size: 11px;
         color: rgba(255, 255, 255, 0.5);
     }
+    .landing-footer-status {
+        display: none;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .landing-footer-status[data-status="operational"],
+    .landing-footer-status[data-status="degraded"],
+    .landing-footer-status[data-status="down"] {
+        display: inline-flex;
+    }
+    .landing-footer-status:hover {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    .landing-footer-status-dot {
+        position: relative;
+        display: inline-block;
+        width: 0.625rem;
+        height: 0.625rem;
+        border-radius: 9999px;
+        background: #22C55E;
+    }
+    .landing-footer-status-dot::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 9999px;
+        background: rgba(34, 197, 94, 0.75);
+        animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    .landing-footer-status[data-status="degraded"] .landing-footer-status-dot { background: #F59F0A; }
+    .landing-footer-status[data-status="degraded"] .landing-footer-status-dot::before { background: rgba(245, 159, 10, 0.75); }
+    .landing-footer-status[data-status="down"] .landing-footer-status-dot { background: #EF4444; }
+    .landing-footer-status[data-status="down"] .landing-footer-status-dot::before { background: rgba(239, 68, 68, 0.75); }
 </style>
 
 <footer class="landing-footer">
@@ -96,6 +134,11 @@
         </div>
 
         <span class="landing-footer-tagline">Quiet infrastructure. Preserved facts.</span>
+
+        <a href="https://status.codequill.xyz/" target="_blank" rel="noopener noreferrer" class="landing-footer-status" data-status-footer data-status="loading" aria-label="Service status">
+            <span class="landing-footer-status-dot" aria-hidden="true"></span>
+            <span data-status-label>All Systems Operational</span>
+        </a>
 
         <span class="landing-footer-copy">&copy; 2026 Ophelios Studio</span>
     </div>
