@@ -671,6 +671,12 @@
     transform: translateY(0);
 }
 
+/* ── Trust marquee ────────────────────────────────────────── */
+.trust-marquee-track {
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+}
+
 /* ── Keyframes ───────────────────────────────────────────── */
 @keyframes marquee {
     0% { transform: translateX(0); }
