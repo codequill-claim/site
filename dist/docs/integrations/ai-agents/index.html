@@ -448,11 +448,11 @@ tailwind.config = {
 <h3 id="2-attest-the-build-at-distclitgz-against-release-v0110"><a href="#2-attest-the-build-at-distclitgz-against-release-v0110" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>2. &quot;Attest the build at <code>dist/cli.tgz</code> against release v0.11.0&quot;</h3>
 <p>The agent will:</p>
 <ol>
-<li>Resolve <code>v0.11.0</code> to a release ID and confirm it is in <strong>ACCEPTED</strong> state (a server-side requirement).</li>
-<li>Run <code>codequill attest dist/cli.tgz &lt;releaseId&gt;</code> to record the artifact-to-release lineage on-chain.</li>
+<li>Run <code>codequill attest dist/cli.tgz v0.11.0</code> directly. The CLI accepts the release name and looks it up against the repository's ACCEPTED releases via <code>GET /v1/cli/releases?repo_name=…&amp;gouvernance=ACCEPTED</code>, resolving to a UUID before the attestation is built. A UUID can be passed in lieu of the name and skips the lookup.</li>
+<li>The server still enforces the ACCEPTED constraint at attest time — the resolver pre-filters, but the API is authoritative.</li>
 <li>Report back the attestation ID.</li>
 </ol>
-<p>If the release is not yet ACCEPTED, the agent stops and asks you to drive the governance step in the <a href="https://app.codequill.xyz">web app</a>. Attestations cannot bypass governance.</p>
+<p>If no ACCEPTED release matches <code>v0.11.0</code>, the agent fails with a clear message and asks you to drive the governance step in the <a href="https://app.codequill.xyz">web app</a>. The agent can call <code>codequill releases</code> (or <code>codequill releases --accepted --json</code>) to surface the current options. Attestations cannot bypass governance.</p>
 <h3 id="3-prove-that-srcmaints-was-in-snapshot-snapshotid"><a href="#3-prove-that-srcmaints-was-in-snapshot-snapshotid" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>3. &quot;Prove that <code>src/main.ts</code> was in snapshot <code>&lt;snapshotId&gt;</code>&quot;</h3>
 <p>The agent will:</p>
 <ol>

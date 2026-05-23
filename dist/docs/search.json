@@ -139,6 +139,12 @@
             "Example",
             "Wait for multiple confirmations with a custom timeout",
             "Notes",
+            "codequill releases",
+            "Syntax",
+            "Options",
+            "Default output",
+            "Examples",
+            "Notes",
             "codequill why",
             "Syntax",
             "Arguments",
@@ -275,7 +281,8 @@
             "Superseded",
             "DAO-Only Governance",
             "Release Manifests",
-            "CI\/CD Integration"
+            "CI\/CD Integration",
+            "Listing releases from the CLI"
         ]
     },
     {
