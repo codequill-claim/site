@@ -73,11 +73,11 @@ The agent will:
 
 The agent will:
 
-1. Resolve `v0.11.0` to a release ID and confirm it is in **ACCEPTED** state (a server-side requirement).
-2. Run `codequill attest dist/cli.tgz <releaseId>` to record the artifact-to-release lineage on-chain.
+1. Run `codequill attest dist/cli.tgz v0.11.0` directly. The CLI accepts the release name and looks it up against the repository's ACCEPTED releases via `GET /v1/cli/releases?repo_name=…&gouvernance=ACCEPTED`, resolving to a UUID before the attestation is built. A UUID can be passed in lieu of the name and skips the lookup.
+2. The server still enforces the ACCEPTED constraint at attest time — the resolver pre-filters, but the API is authoritative.
 3. Report back the attestation ID.
 
-If the release is not yet ACCEPTED, the agent stops and asks you to drive the governance step in the [web app](https://app.codequill.xyz). Attestations cannot bypass governance.
+If no ACCEPTED release matches `v0.11.0`, the agent fails with a clear message and asks you to drive the governance step in the [web app](https://app.codequill.xyz). The agent can call `codequill releases` (or `codequill releases --accepted --json`) to surface the current options. Attestations cannot bypass governance.
 
 ### 3. "Prove that `src/main.ts` was in snapshot `<snapshotId>`"
 
