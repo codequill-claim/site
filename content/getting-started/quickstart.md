@@ -19,13 +19,13 @@ Before you begin, you will need:
 
 ## Step 1: Sign In to the Web Application
 
-Visit [app.codequill.xyz](https://app.codequill.xyz) and sign in with your GitHub account. This creates your workspace -- the organizational unit that ties together your repositories, wallets, and collaborators.
+Visit [app.codequill.xyz](https://app.codequill.xyz) and sign in with your GitHub account. This creates your workspace - the organizational unit that ties together your repositories, wallets, and collaborators.
 
 After signing in, you will be guided through a setup flow:
 
-1. **Connect a wallet** -- Your wallet becomes the on-chain authority for your workspace. CodeQuill uses Sign-In with Ethereum (SIWE) to verify wallet ownership, then registers your authority on-chain.
-2. **Set up encryption** -- Register a passkey (hardware key, biometric, or platform authenticator) that will be used to derive encryption keys for preservations and proofs.
-3. **Install the GitHub App** -- This syncs your repositories into CodeQuill so you can claim and snapshot them.
+1. **Connect a wallet** - Your wallet becomes the on-chain authority for your workspace. CodeQuill uses Sign-In with Ethereum (SIWE) to verify wallet ownership, then registers your authority on-chain.
+2. **Set up encryption** - Register a passkey (hardware key, biometric, or platform authenticator) that will be used to derive encryption keys for preservations and proofs.
+3. **Install the GitHub App** - This syncs your repositories into CodeQuill so you can claim and snapshot them.
 
 [Screenshot: Workspace setup flow showing wallet connection and GitHub App installation]
 
@@ -69,7 +69,7 @@ cd my-project
 codequill claim
 ```
 
-Claiming records an on-chain evidence statement that your workspace authority is associated with this repository. It does not transfer ownership or restrict access -- it establishes a verifiable record of authorship.
+Claiming records an on-chain evidence statement that your workspace authority is associated with this repository. It does not transfer ownership or restrict access - it establishes a verifiable record of authorship.
 
 The CLI will display a confirmation prompt showing the repository name and your workspace. Approve it, and the claim transaction is submitted to the blockchain.
 
@@ -95,7 +95,7 @@ codequill snapshot
 
 This runs entirely locally. It reads every tracked file, hashes them individually, and builds a Merkle tree. The resulting manifest is written to `.codequill/snapshots/`.
 
-No source code is uploaded. The snapshot captures structure and content hashes -- not the content itself.
+No source code is uploaded. The snapshot captures structure and content hashes - not the content itself.
 
 ## Step 6: Publish the Snapshot
 
@@ -132,14 +132,14 @@ After completing these steps, you have:
 
 This is the foundation. From here, you can:
 
-- **Create releases** -- Bind a snapshot to a named version with governance workflows. See [Releases](/concepts/releases).
-- **Attest artifacts** -- Link build artifacts to releases, creating a verifiable lineage chain. See [Attestations](/concepts/attestations).
-- **Preserve source** -- Create encrypted archives tied to snapshots for long-term survival. See [Preservations](/concepts/preservations).
-- **Generate proofs** -- Prove that a specific file was included in a snapshot without revealing the full tree. See [Proofs](/concepts/proofs).
-- **Automate in CI** -- Set up GitHub Actions to snapshot and attest automatically. See [CI/CD Integration](/ci-cd/overview).
+- **Create releases** - Bind a snapshot to a named version with governance workflows. See [Releases](/concepts/releases).
+- **Attest artifacts** - Link build artifacts to releases, creating a verifiable lineage chain. See [Attestations](/concepts/attestations).
+- **Preserve source** - Create encrypted archives tied to snapshots for long-term survival. See [Preservations](/concepts/preservations).
+- **Generate proofs** - Prove that a specific file was included in a snapshot without revealing the full tree. See [Proofs](/concepts/proofs).
+- **Automate in CI** - Set up GitHub Actions to snapshot and attest automatically. See [CI/CD Integration](/ci-cd/overview).
 
 ## Mental Model
 
-Think of CodeQuill as producing **software receipts**. Like a receipt from a transaction, a CodeQuill snapshot is a verifiable record of what existed and when. It does not control what happens next -- it preserves what already happened.
+Think of CodeQuill as producing **software receipts**. Like a receipt from a transaction, a CodeQuill snapshot is a verifiable record of what existed and when. It does not control what happens next - it preserves what already happened.
 
 CodeQuill is infrastructure. It should feel boring, restrained, and precise. The value is not in the tooling itself, but in the evidence it preserves.

@@ -10,7 +10,7 @@ CodeQuill uses a zero-custody encryption design to protect preserved source code
 
 ## Purpose
 
-Preservations store encrypted copies of full source archives on decentralized storage (IPFS via Lighthouse). The encryption model ensures that these archives are opaque to everyone except the workspace authority -- including CodeQuill itself.
+Preservations store encrypted copies of full source archives on decentralized storage (IPFS via Lighthouse). The encryption model ensures that these archives are opaque to everyone except the workspace authority - including CodeQuill itself.
 
 This matters because preservations are stored on public infrastructure. Without encryption, anyone with the IPFS CID could retrieve and read the source code. The encryption model transforms a public storage layer into a private vault, with access controlled entirely by the workspace's passkey.
 
@@ -20,9 +20,9 @@ The encryption key hierarchy begins with the user's passkey. CodeQuill uses the 
 
 The PRF extension allows a relying party to request a deterministic, credential-bound secret during a WebAuthn assertion. This secret is:
 
-- **Deterministic** -- The same passkey, same credential, and same PRF input always produce the same output.
-- **Credential-bound** -- Different passkeys produce different outputs. The secret cannot be derived without the specific credential.
-- **Hardware-protected** -- On devices with platform authenticators (Touch ID, Windows Hello, hardware security keys), the PRF computation occurs within the authenticator. The underlying key material is never exposed to software.
+- **Deterministic** - The same passkey, same credential, and same PRF input always produce the same output.
+- **Credential-bound** - Different passkeys produce different outputs. The secret cannot be derived without the specific credential.
+- **Hardware-protected** - On devices with platform authenticators (Touch ID, Windows Hello, hardware security keys), the PRF computation occurs within the authenticator. The underlying key material is never exposed to software.
 
 This PRF output serves as the master secret from which all workspace encryption keys are derived.
 
@@ -65,7 +65,7 @@ When a preservation is created, the CLI uses the `codequill-envelope:v1` encrypt
 
 3. **DEK generation.** A random Data Encryption Key (32 bytes) and Initialization Vector (12 bytes) are generated using a cryptographically secure random number generator.
 
-4. **Archive encryption.** The archive is encrypted with **AES-256-GCM** using the DEK and IV. AES-256-GCM provides authenticated encryption -- it ensures both confidentiality and integrity. Any tampering with the ciphertext is detected during decryption.
+4. **Archive encryption.** The archive is encrypted with **AES-256-GCM** using the DEK and IV. AES-256-GCM provides authenticated encryption - it ensures both confidentiality and integrity. Any tampering with the ciphertext is detected during decryption.
 
 5. **DEK wrapping.** The DEK is wrapped using an **X25519 sealed box** (`crypto_box_seal` from libsodium). A sealed box encrypts a message to a recipient's public key such that only the holder of the corresponding private key can decrypt it. The sender cannot decrypt it after the fact, and the sealed box does not authenticate the sender.
 
@@ -105,7 +105,7 @@ The encryption key also plays a role in snapshot privacy. File paths in snapshot
 2. Each file path is hashed as `keccak256(salt || path)` before inclusion in the Merkle tree.
 3. The manifest contains only these salted path hashes, not plaintext paths.
 
-This ensures that snapshot manifests -- which are stored on IPFS and publicly retrievable -- do not reveal the directory structure of the repository. Verifying that a specific file was included in a snapshot requires knowledge of the salt, which in turn requires workspace authority. See [Proofs](/concepts/proofs) for how selective disclosure works.
+This ensures that snapshot manifests - which are stored on IPFS and publicly retrievable - do not reveal the directory structure of the repository. Verifying that a specific file was included in a snapshot requires knowledge of the salt, which in turn requires workspace authority. See [Proofs](/concepts/proofs) for how selective disclosure works.
 
 ## Cryptographic Primitives Summary
 

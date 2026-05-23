@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Preservations — CodeQuill">
+<meta name="title" content="Preservations · CodeQuill">
 <meta name="description" content="Preservations are encrypted, zero-custody archives of source code tied to published snapshots for long-term survival and recovery.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/concepts/preservations/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/concepts/preservations/">
-<meta property="og:title" content="Preservations — CodeQuill">
+<meta property="og:title" content="Preservations · CodeQuill">
 <meta property="og:description" content="Preservations are encrypted, zero-custody archives of source code tied to published snapshots for long-term survival and recovery.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/concepts/preservations/">
-<meta name="twitter:title" content="Preservations — CodeQuill">
+<meta name="twitter:title" content="Preservations · CodeQuill">
 <meta name="twitter:description" content="Preservations are encrypted, zero-custody archives of source code tied to published snapshots for long-term survival and recovery.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Preservations — CodeQuill</title>
+    <title>Preservations · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -402,7 +402,7 @@ tailwind.config = {
 <article class="docs-content">
     <div class="prose">
         <h1>Preservations</h1>
-<p>A preservation is an encrypted archive of a repository's full source code, tied to a specific published snapshot. It enables long-term source survival without requiring trust in any custodian -- not even CodeQuill.</p>
+<p>A preservation is an encrypted archive of a repository's full source code, tied to a specific published snapshot. It enables long-term source survival without requiring trust in any custodian - not even CodeQuill.</p>
 <h2 id="why-preservations-exist"><a href="#why-preservations-exist" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Why Preservations Exist</h2>
 <p>Snapshots record <strong>hashes</strong> of source files, not the files themselves. This is by design: the snapshot proves what existed without requiring disclosure. But there are scenarios where having the actual source code available decades later matters: legal discovery, audit obligations, disaster recovery, or historical research.</p>
 <p>Preservations solve this by encrypting the full source archive and storing it on decentralized storage (IPFS via Lighthouse). The encryption uses keys that only the workspace authority can access, ensuring zero-custody: CodeQuill never sees the plaintext.</p>
@@ -421,10 +421,10 @@ tailwind.config = {
 <p>To decrypt, the workspace authority uses their passkey to derive the X25519 private key, unwrap the DEK, and decrypt the archive.</p>
 <p>Key properties:</p>
 <ul>
-<li><strong>Zero-custody</strong> -- CodeQuill never possesses the decryption key.</li>
-<li><strong>Passkey-bound</strong> -- The encryption key is derived from a WebAuthn passkey using the PRF extension.</li>
-<li><strong>No admin backdoor</strong> -- There is no recovery mechanism. If the passkey is lost, the preservation cannot be decrypted.</li>
-<li><strong>Snapshot-bound</strong> -- Each preservation is linked to a specific snapshot, with the content root verified before encryption.</li>
+<li><strong>Zero-custody</strong> - CodeQuill never possesses the decryption key.</li>
+<li><strong>Passkey-bound</strong> - The encryption key is derived from a WebAuthn passkey using the PRF extension.</li>
+<li><strong>No admin backdoor</strong> - There is no recovery mechanism. If the passkey is lost, the preservation cannot be decrypted.</li>
+<li><strong>Snapshot-bound</strong> - Each preservation is linked to a specific snapshot, with the content root verified before encryption.</li>
 </ul>
 <p>For full technical details, see <a href="/docs/security/encryption-model">Encryption Model</a>.</p>
 <h2 id="using-the-cli"><a href="#using-the-cli" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Using the CLI</h2>
@@ -525,10 +525,10 @@ Preservation complete.
 <h2 id="on-chain-record"><a href="#on-chain-record" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>On-Chain Record</h2>
 <p>The <code>CodeQuillPreservationRegistry</code> smart contract stores:</p>
 <ul>
-<li><strong>Snapshot Merkle Root</strong> -- Links the preservation to a specific snapshot.</li>
-<li><strong>Archive SHA-256</strong> -- Hash of the plaintext archive (before encryption), proving content integrity.</li>
-<li><strong>Metadata SHA-256</strong> -- Hash of the preservation metadata.</li>
-<li><strong>Preservation CID</strong> -- IPFS CID of the encrypted payload.</li>
+<li><strong>Snapshot Merkle Root</strong> - Links the preservation to a specific snapshot.</li>
+<li><strong>Archive SHA-256</strong> - Hash of the plaintext archive (before encryption), proving content integrity.</li>
+<li><strong>Metadata SHA-256</strong> - Hash of the preservation metadata.</li>
+<li><strong>Preservation CID</strong> - IPFS CID of the encrypted payload.</li>
 <li><strong>Author and timestamp</strong>.</li>
 </ul>
 <p>The on-chain record proves that an encrypted archive with a specific plaintext hash was stored at a specific time. It does not reveal the archive contents.</p>

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Dashboard &amp; Repositories — CodeQuill">
+<meta name="title" content="Dashboard &amp; Repositories · CodeQuill">
 <meta name="description" content="Manage repositories, view activity timelines, track snapshots, and configure CI/CD integration from the CodeQuill web dashboard.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/web-application/dashboard-repositories/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/web-application/dashboard-repositories/">
-<meta property="og:title" content="Dashboard &amp; Repositories — CodeQuill">
+<meta property="og:title" content="Dashboard &amp; Repositories · CodeQuill">
 <meta property="og:description" content="Manage repositories, view activity timelines, track snapshots, and configure CI/CD integration from the CodeQuill web dashboard.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/web-application/dashboard-repositories/">
-<meta name="twitter:title" content="Dashboard &amp; Repositories — CodeQuill">
+<meta name="twitter:title" content="Dashboard &amp; Repositories · CodeQuill">
 <meta name="twitter:description" content="Manage repositories, view activity timelines, track snapshots, and configure CI/CD integration from the CodeQuill web dashboard.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Dashboard &amp; Repositories — CodeQuill</title>
+    <title>Dashboard &amp; Repositories · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -408,11 +408,11 @@ tailwind.config = {
 <h3 id="activity-timeline"><a href="#activity-timeline" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Activity Timeline</h3>
 <p>The main panel displays a reverse-chronological timeline of recent activity across the workspace. Each entry corresponds to a discrete event:</p>
 <ul>
-<li><strong>Snapshot recorded</strong> -- A new snapshot was anchored on-chain for a repository.</li>
-<li><strong>Attestation published</strong> -- A build artifact attestation was registered.</li>
-<li><strong>Preservation completed</strong> -- An encrypted source archive was stored.</li>
-<li><strong>Claim registered</strong> -- A repository was claimed on-chain.</li>
-<li><strong>Release lifecycle event</strong> -- A release was drafted, published, accepted, revoked, or superseded.</li>
+<li><strong>Snapshot recorded</strong> - A new snapshot was anchored on-chain for a repository.</li>
+<li><strong>Attestation published</strong> - A build artifact attestation was registered.</li>
+<li><strong>Preservation completed</strong> - An encrypted source archive was stored.</li>
+<li><strong>Claim registered</strong> - A repository was claimed on-chain.</li>
+<li><strong>Release lifecycle event</strong> - A release was drafted, published, accepted, revoked, or superseded.</li>
 </ul>
 <p>Each timeline entry includes the repository name, the actor (wallet or collaborator), the chain, and a timestamp. Clicking an entry navigates to the relevant detail page.</p>
 <p>[Screenshot: Dashboard activity timeline showing recent snapshots and attestations]</p>
@@ -421,17 +421,17 @@ tailwind.config = {
 <h3 id="getting-started-checklist"><a href="#getting-started-checklist" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Getting Started Checklist</h3>
 <p>For new workspaces, the dashboard displays a five-milestone checklist that tracks initial setup progress:</p>
 <ol>
-<li><strong>Repositories</strong> -- At least one GitHub repository has been synced.</li>
-<li><strong>Releases</strong> -- At least one release has been created.</li>
-<li><strong>Snapshots</strong> -- At least one snapshot has been recorded on-chain.</li>
-<li><strong>Attestations</strong> -- At least one attestation has been published.</li>
-<li><strong>Preservations</strong> -- At least one encrypted archive has been stored.</li>
+<li><strong>Repositories</strong> - At least one GitHub repository has been synced.</li>
+<li><strong>Releases</strong> - At least one release has been created.</li>
+<li><strong>Snapshots</strong> - At least one snapshot has been recorded on-chain.</li>
+<li><strong>Attestations</strong> - At least one attestation has been published.</li>
+<li><strong>Preservations</strong> - At least one encrypted archive has been stored.</li>
 </ol>
 <p>Each milestone shows its completion state. The checklist disappears once all five milestones are met, or it can be dismissed manually.</p>
 <p>[Screenshot: Getting started checklist with two of five milestones completed]</p>
 <h2 id="repository-management"><a href="#repository-management" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Repository Management</h2>
 <h3 id="syncing-repositories"><a href="#syncing-repositories" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Syncing Repositories</h3>
-<p>Repositories are synced into CodeQuill via the GitHub App. Once the app is installed on a GitHub account or organization, repositories become available in the workspace. CodeQuill does not clone or store source code -- syncing imports repository metadata (name, ID, default branch, visibility) and establishes the link required for claiming and evidence production.</p>
+<p>Repositories are synced into CodeQuill via the GitHub App. Once the app is installed on a GitHub account or organization, repositories become available in the workspace. CodeQuill does not clone or store source code - syncing imports repository metadata (name, ID, default branch, visibility) and establishes the link required for claiming and evidence production.</p>
 <p>New repositories appear automatically as they are created on GitHub, provided the GitHub App has access.</p>
 <h3 id="repository-list"><a href="#repository-list" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Repository List</h3>
 <p>The repository list displays all synced repositories with pagination. Each entry shows:</p>
@@ -462,8 +462,8 @@ tailwind.config = {
 <h4 id="badges"><a href="#badges" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Badges</h4>
 <p>The badges page provides embeddable SVG badges for the repository. Two badge types are available:</p>
 <ul>
-<li><strong>Claim badge</strong> -- Displays whether the repository has been claimed on-chain.</li>
-<li><strong>Snapshot badge</strong> -- Displays the most recent snapshot status.</li>
+<li><strong>Claim badge</strong> - Displays whether the repository has been claimed on-chain.</li>
+<li><strong>Snapshot badge</strong> - Displays the most recent snapshot status.</li>
 </ul>
 <p>Badges follow the <a href="https://shields.io">shields.io</a> format and can be embedded in README files, documentation sites, or any surface that renders images. Each badge includes a copyable markdown snippet and a direct image URL.</p>
 <p>[Screenshot: Badge configuration page showing claim and snapshot badges with embed code]</p>
@@ -483,10 +483,10 @@ tailwind.config = {
 <h2 id="public-workspace-profiles"><a href="#public-workspace-profiles" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Public Workspace Profiles</h2>
 <p>Every workspace has a public profile accessible at <code>app.codequill.xyz/w/{login}</code>, where <code>{login}</code> is the workspace's GitHub login. Public profiles display:</p>
 <ul>
-<li><strong>Repositories</strong> -- All claimed public repositories in the workspace.</li>
-<li><strong>Snapshots</strong> -- A feed of recent public snapshots across all repositories.</li>
-<li><strong>Attestations</strong> -- Recent public attestations.</li>
-<li><strong>Activity</strong> -- A public subset of the workspace's activity timeline.</li>
+<li><strong>Repositories</strong> - All claimed public repositories in the workspace.</li>
+<li><strong>Snapshots</strong> - A feed of recent public snapshots across all repositories.</li>
+<li><strong>Attestations</strong> - Recent public attestations.</li>
+<li><strong>Activity</strong> - A public subset of the workspace's activity timeline.</li>
 </ul>
 <p>Public profiles serve as a verifiable, external-facing record of a workspace's evidence history. They require no authentication to view.</p>
 <p>[Screenshot: Public workspace profile showing claimed repositories and recent activity]</p>

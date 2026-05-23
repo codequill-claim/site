@@ -58,7 +58,7 @@ codequill claim --no-confirm --json
 
 - The CLI auto-detects the repository from the git remote origin.
 - A repository can only be claimed once. If it is already claimed by another workspace, the command will fail.
-- The claim transaction is gasless -- it is relayed through CodeQuill's infrastructure, so you do not need ETH in your wallet to claim.
+- The claim transaction is gasless - it is relayed through CodeQuill's infrastructure, so you do not need ETH in your wallet to claim.
 - Use `--no-confirm` and `--json` together for CI/CD pipelines where no interactive prompt is available.
 
 ---
@@ -105,7 +105,7 @@ codequill snapshot --commit 9f3e2a1 --salt a1b2c3d4e5f6...0000 --print-salt
 ### Notes
 
 - The snapshot reads every tracked file in the repository at the specified commit, hashes each file individually, and constructs a Merkle tree.
-- The resulting manifest is written to `.codequill/snapshots/` and contains file hashes and the tree structure -- not the file contents themselves.
+- The resulting manifest is written to `.codequill/snapshots/` and contains file hashes and the tree structure - not the file contents themselves.
 - The `--salt` option accepts exactly 64 hexadecimal characters. This salt is incorporated into the leaf hashes, making the Merkle root unpredictable to anyone who does not know the salt. If omitted, a random salt is generated.
 - Use `--print-salt` to display the generated or provided salt. This is important if you plan to generate proofs later, as the salt is required for proof construction.
 - The `--concurrency` option controls parallelism during file hashing. Increase it on machines with fast I/O; decrease it if you encounter resource limits.

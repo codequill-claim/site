@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Architecture — CodeQuill">
+<meta name="title" content="Architecture · CodeQuill">
 <meta name="description" content="Seven Solidity contracts form a four-tier DAG deployed on EVM-compatible chains. No admin keys, no pause mechanism, fully permissionless.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/smart-contracts/architecture/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/smart-contracts/architecture/">
-<meta property="og:title" content="Architecture — CodeQuill">
+<meta property="og:title" content="Architecture · CodeQuill">
 <meta property="og:description" content="Seven Solidity contracts form a four-tier DAG deployed on EVM-compatible chains. No admin keys, no pause mechanism, fully permissionless.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/smart-contracts/architecture/">
-<meta name="twitter:title" content="Architecture — CodeQuill">
+<meta name="twitter:title" content="Architecture · CodeQuill">
 <meta name="twitter:description" content="Seven Solidity contracts form a four-tier DAG deployed on EVM-compatible chains. No admin keys, no pause mechanism, fully permissionless.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Architecture — CodeQuill</title>
+    <title>Architecture · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -406,7 +406,7 @@ tailwind.config = {
 <p>The development framework is Hardhat with Ignition for deterministic deployment. The sole external dependency is OpenZeppelin Contracts v5.4.0, used for <code>ECDSA</code> signature recovery and <code>EIP712</code> structured-data hashing.</p>
 <h2 id="dependency-dag"><a href="#dependency-dag" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Dependency DAG</h2>
 <p>The contracts form a strict four-tier directed acyclic graph. Each tier depends only on tiers below it; no circular references exist.</p>
-<h3 id="tier-1----identity--access"><a href="#tier-1----identity--access" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Tier 1 -- Identity &amp; Access</h3>
+<h3 id="tier-1---identity--access"><a href="#tier-1---identity--access" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Tier 1 - Identity &amp; Access</h3>
 <table>
 <thead>
 <tr>
@@ -426,7 +426,7 @@ tailwind.config = {
 </tbody>
 </table>
 <p>These contracts have no CodeQuill contract dependencies. They are deployed first and provide the identity and authorization primitives consumed by every tier above.</p>
-<h3 id="tier-2----repository--snapshots"><a href="#tier-2----repository--snapshots" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Tier 2 -- Repository &amp; Snapshots</h3>
+<h3 id="tier-2---repository--snapshots"><a href="#tier-2---repository--snapshots" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Tier 2 - Repository &amp; Snapshots</h3>
 <table>
 <thead>
 <tr>
@@ -446,7 +446,7 @@ tailwind.config = {
 </tbody>
 </table>
 <p>Tier 2 introduces data registration: binding repositories to owners and anchoring cryptographic snapshots of source code.</p>
-<h3 id="tier-3----releases--preservations"><a href="#tier-3----releases--preservations" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Tier 3 -- Releases &amp; Preservations</h3>
+<h3 id="tier-3---releases--preservations"><a href="#tier-3---releases--preservations" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Tier 3 - Releases &amp; Preservations</h3>
 <table>
 <thead>
 <tr>
@@ -466,7 +466,7 @@ tailwind.config = {
 </tbody>
 </table>
 <p>Tier 3 builds on snapshot data to support release lifecycle governance and encrypted archive anchoring.</p>
-<h3 id="tier-4----trust--verification"><a href="#tier-4----trust--verification" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Tier 4 -- Trust &amp; Verification</h3>
+<h3 id="tier-4---trust--verification"><a href="#tier-4---trust--verification" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Tier 4 - Trust &amp; Verification</h3>
 <table>
 <thead>
 <tr>
@@ -496,7 +496,7 @@ tailwind.config = {
 <h3 id="5-no-admin-keys"><a href="#5-no-admin-keys" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>5. No admin keys</h3>
 <p>There is no <code>owner</code>, no <code>admin</code> role, no <code>pause</code> function. Once deployed, the contracts are fully permissionless. No privileged address can alter behavior, freeze state, or upgrade logic.</p>
 <h3 id="6-append-only-with-soft-revocation"><a href="#6-append-only-with-soft-revocation" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>6. Append-only with soft revocation</h3>
-<p>Records are append-only. Snapshots, releases, attestations, and preservations can never be deleted from contract storage. Where lifecycle transitions are needed -- revoking a release, superseding it with a newer version, or revoking an attestation -- the contract marks the record's status without removing the underlying data.</p>
+<p>Records are append-only. Snapshots, releases, attestations, and preservations can never be deleted from contract storage. Where lifecycle transitions are needed - revoking a release, superseding it with a newer version, or revoking an attestation - the contract marks the record's status without removing the underlying data.</p>
 <h2 id="delegation-scopes"><a href="#delegation-scopes" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Delegation Scopes</h2>
 <p>The delegation system uses a bitmask to grant fine-grained permissions. Each scope corresponds to a single bit:</p>
 <table>
@@ -565,16 +565,16 @@ tailwind.config = {
                 <a href="#dependency-dag" class="toc-link">Dependency DAG</a>
             </li>
             <li class="toc-item toc-item-sub">
-                <a href="#tier-1----identity--access" class="toc-link">Tier 1 -- Identity &amp; Access</a>
+                <a href="#tier-1---identity--access" class="toc-link">Tier 1 - Identity &amp; Access</a>
             </li>
             <li class="toc-item toc-item-sub">
-                <a href="#tier-2----repository--snapshots" class="toc-link">Tier 2 -- Repository &amp; Snapshots</a>
+                <a href="#tier-2---repository--snapshots" class="toc-link">Tier 2 - Repository &amp; Snapshots</a>
             </li>
             <li class="toc-item toc-item-sub">
-                <a href="#tier-3----releases--preservations" class="toc-link">Tier 3 -- Releases &amp; Preservations</a>
+                <a href="#tier-3---releases--preservations" class="toc-link">Tier 3 - Releases &amp; Preservations</a>
             </li>
             <li class="toc-item toc-item-sub">
-                <a href="#tier-4----trust--verification" class="toc-link">Tier 4 -- Trust &amp; Verification</a>
+                <a href="#tier-4---trust--verification" class="toc-link">Tier 4 - Trust &amp; Verification</a>
             </li>
             <li class="toc-item toc-item-sub">
                 <a href="#deployment-order" class="toc-link">Deployment order</a>

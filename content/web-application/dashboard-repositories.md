@@ -16,11 +16,11 @@ The dashboard is the first screen after authentication. It serves two purposes: 
 
 The main panel displays a reverse-chronological timeline of recent activity across the workspace. Each entry corresponds to a discrete event:
 
-- **Snapshot recorded** -- A new snapshot was anchored on-chain for a repository.
-- **Attestation published** -- A build artifact attestation was registered.
-- **Preservation completed** -- An encrypted source archive was stored.
-- **Claim registered** -- A repository was claimed on-chain.
-- **Release lifecycle event** -- A release was drafted, published, accepted, revoked, or superseded.
+- **Snapshot recorded** - A new snapshot was anchored on-chain for a repository.
+- **Attestation published** - A build artifact attestation was registered.
+- **Preservation completed** - An encrypted source archive was stored.
+- **Claim registered** - A repository was claimed on-chain.
+- **Release lifecycle event** - A release was drafted, published, accepted, revoked, or superseded.
 
 Each timeline entry includes the repository name, the actor (wallet or collaborator), the chain, and a timestamp. Clicking an entry navigates to the relevant detail page.
 
@@ -34,11 +34,11 @@ A summary panel displays aggregate counts for the current billing period: total 
 
 For new workspaces, the dashboard displays a five-milestone checklist that tracks initial setup progress:
 
-1. **Repositories** -- At least one GitHub repository has been synced.
-2. **Releases** -- At least one release has been created.
-3. **Snapshots** -- At least one snapshot has been recorded on-chain.
-4. **Attestations** -- At least one attestation has been published.
-5. **Preservations** -- At least one encrypted archive has been stored.
+1. **Repositories** - At least one GitHub repository has been synced.
+2. **Releases** - At least one release has been created.
+3. **Snapshots** - At least one snapshot has been recorded on-chain.
+4. **Attestations** - At least one attestation has been published.
+5. **Preservations** - At least one encrypted archive has been stored.
 
 Each milestone shows its completion state. The checklist disappears once all five milestones are met, or it can be dismissed manually.
 
@@ -48,7 +48,7 @@ Each milestone shows its completion state. The checklist disappears once all fiv
 
 ### Syncing Repositories
 
-Repositories are synced into CodeQuill via the GitHub App. Once the app is installed on a GitHub account or organization, repositories become available in the workspace. CodeQuill does not clone or store source code -- syncing imports repository metadata (name, ID, default branch, visibility) and establishes the link required for claiming and evidence production.
+Repositories are synced into CodeQuill via the GitHub App. Once the app is installed on a GitHub account or organization, repositories become available in the workspace. CodeQuill does not clone or store source code - syncing imports repository metadata (name, ID, default branch, visibility) and establishes the link required for claiming and evidence production.
 
 New repositories appear automatically as they are created on GitHub, provided the GitHub App has access.
 
@@ -101,8 +101,8 @@ The CI/CD page provides integration tooling for GitHub Actions. CodeQuill genera
 
 The badges page provides embeddable SVG badges for the repository. Two badge types are available:
 
-- **Claim badge** -- Displays whether the repository has been claimed on-chain.
-- **Snapshot badge** -- Displays the most recent snapshot status.
+- **Claim badge** - Displays whether the repository has been claimed on-chain.
+- **Snapshot badge** - Displays the most recent snapshot status.
 
 Badges follow the [shields.io](https://shields.io) format and can be embedded in README files, documentation sites, or any surface that renders images. Each badge includes a copyable markdown snippet and a direct image URL.
 
@@ -131,10 +131,10 @@ The claim requires a connected wallet with an active delegation and membership i
 
 Every workspace has a public profile accessible at `app.codequill.xyz/w/{login}`, where `{login}` is the workspace's GitHub login. Public profiles display:
 
-- **Repositories** -- All claimed public repositories in the workspace.
-- **Snapshots** -- A feed of recent public snapshots across all repositories.
-- **Attestations** -- Recent public attestations.
-- **Activity** -- A public subset of the workspace's activity timeline.
+- **Repositories** - All claimed public repositories in the workspace.
+- **Snapshots** - A feed of recent public snapshots across all repositories.
+- **Attestations** - Recent public attestations.
+- **Activity** - A public subset of the workspace's activity timeline.
 
 Public profiles serve as a verifiable, external-facing record of a workspace's evidence history. They require no authentication to view.
 

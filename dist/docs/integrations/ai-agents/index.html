@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="AI Agents — CodeQuill">
-<meta name="description" content="Wire AI coding agents (Claude Code, Anthropic API) to CodeQuill so they can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
+<meta name="title" content="AI Agents · CodeQuill">
+<meta name="description" content="Install the CodeQuill agent skill so any agentskills.io-compatible coding assistant can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/integrations/ai-agents/">
 
@@ -19,19 +19,19 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/integrations/ai-agents/">
-<meta property="og:title" content="AI Agents — CodeQuill">
-<meta property="og:description" content="Wire AI coding agents (Claude Code, Anthropic API) to CodeQuill so they can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
+<meta property="og:title" content="AI Agents · CodeQuill">
+<meta property="og:description" content="Install the CodeQuill agent skill so any agentskills.io-compatible coding assistant can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/integrations/ai-agents/">
-<meta name="twitter:title" content="AI Agents — CodeQuill">
-<meta name="twitter:description" content="Wire AI coding agents (Claude Code, Anthropic API) to CodeQuill so they can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
+<meta name="twitter:title" content="AI Agents · CodeQuill">
+<meta name="twitter:description" content="Install the CodeQuill agent skill so any agentskills.io-compatible coding assistant can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
 
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>AI Agents — CodeQuill</title>
+    <title>AI Agents · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -402,46 +402,36 @@ tailwind.config = {
 <article class="docs-content">
     <div class="prose">
         <h1>AI Agents</h1>
-<p>AI agents generate and edit code. CodeQuill records what existed and who authorized it. This page explains how to connect the two so an agent's output can be backed by on-chain evidence inside the same loop — no separate &quot;now run CodeQuill&quot; step required.</p>
+<p>AI agents generate and edit code. CodeQuill records what existed and who authorized it. This page explains how to wire the two together so an agent's output can be backed by on-chain evidence inside the same loop.</p>
 <h2 id="why-this-matters"><a href="#why-this-matters" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Why this matters</h2>
 <ul>
-<li><strong>Agent-generated code needs the same provenance guarantees as human-written code.</strong> If your release pipeline already requires snapshots and attestations, agent-driven contributions should not bypass that requirement.</li>
-<li><strong>The CodeQuill CLI is the integration surface.</strong> Agents invoke <code>codequill</code> exactly the way a developer would. There is no separate &quot;agent API&quot; — anything documented in the <a href="/docs/cli-reference/authentication">CLI Reference</a> works.</li>
-<li><strong>A pre-written skill primes the agent</strong> so you don't need to re-teach CodeQuill in every session. The skill ships triggers, the seven primitives, the CLI surface, and the gotchas.</li>
+<li>Agent-generated code needs the same provenance guarantees as human-written code. If your release pipeline already requires snapshots and attestations, agent-driven contributions should not bypass that.</li>
+<li>The CodeQuill CLI is the integration surface. Agents invoke <code>codequill</code> exactly the way a developer would. There is no separate &quot;agent API&quot; - anything documented in the <a href="/docs/cli-reference/authentication">CLI Reference</a> works.</li>
+<li>A pre-written skill primes the agent so you don't need to re-teach CodeQuill in every session. The skill ships the triggers, the seven primitives, the CLI surface, and the gotchas.</li>
 </ul>
-<h2 id="the-codequill-claude-code-skill"><a href="#the-codequill-claude-code-skill" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>The CodeQuill Claude Code skill</h2>
-<p>A maintained <a href="https://claude.com/claude-code">Claude Code</a> skill lives at:</p>
-<p><strong><a href="https://github.com/ophelios-studio/skills/tree/main/skills/codequill">github.com/ophelios-studio/skills/tree/main/skills/codequill</a></strong></p>
-<p>License: MIT. The skill is a single <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus a markdown body. The <code>description</code> field encodes the trigger surface — Claude reads it on every session and decides when the skill is relevant. The body teaches CodeQuill's concepts, CLI surface, manifest schemas, and known gotchas.</p>
-<h2 id="install-in-claude-code"><a href="#install-in-claude-code" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Install in Claude Code</h2>
-<p>Drop the skill folder into your Claude Code skills directory:</p>
-<pre><code class="language-bash">mkdir -p ~/.claude/skills
-git clone https://github.com/ophelios-studio/skills.git /tmp/ophelios-skills
-cp -R /tmp/ophelios-skills/skills/codequill ~/.claude/skills/codequill
+<h2 id="the-codequill-agent-skill"><a href="#the-codequill-agent-skill" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>The CodeQuill agent skill</h2>
+<p>A maintained agent skill lives at:</p>
+<p><strong><a href="https://github.com/ophelios-studio/skills">github.com/ophelios-studio/skills</a></strong> (folder: <code>skills/codequill</code>)</p>
+<p>The skill implements the <a href="https://agentskills.io">agentskills.io</a> spec and works with any compatible coding assistant - <strong>Claude Code, Cursor, Codex, Cline, Gemini CLI</strong>, and any other tool that follows the spec. It is a single <code>SKILL.md</code> file: YAML frontmatter (<code>name</code>, <code>description</code>) plus a markdown body. The <code>description</code> field encodes the trigger surface so the agent knows when the skill is relevant; the body teaches CodeQuill's concepts, CLI surface, manifest schemas, and known gotchas.</p>
+<p>License: MIT.</p>
+<h2 id="install"><a href="#install" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Install</h2>
+<p>The canonical install uses the <code>skills</code> CLI:</p>
+<pre><code class="language-bash">npx skills add ophelios-studio/skills --skill codequill
 </code></pre>
-<p>Or pull just the CodeQuill subtree directly:</p>
-<pre><code class="language-bash">mkdir -p ~/.claude/skills/codequill
-curl -fsSL https://raw.githubusercontent.com/ophelios-studio/skills/main/skills/codequill/SKILL.md \
-  -o ~/.claude/skills/codequill/SKILL.md
+<p>This installs the skill to <code>~/.agents/skills/codequill/</code> and symlinks it into your agent's skill directory (for example <code>~/.claude/skills/</code>, <code>~/.cursor/skills/</code>, etc.). The CLI handles the per-agent symlink so the same skill works across every assistant you use.</p>
+<p>To pull every Ophelios skill at once (CodeQuill, Leaf, Zephyrus, Kintsugi, 0g, AXL, AXL-pubsub):</p>
+<pre><code class="language-bash">npx skills add ophelios-studio/skills
 </code></pre>
-<p>Restart Claude Code (or open a new session) and the skill is auto-discovered. Claude will pull it into context when your prompt mentions any CodeQuill command, primitive, or framing.</p>
-<p>To verify it loaded, start a session and ask: <em>&quot;What CodeQuill skill do you have available?&quot;</em> — Claude should respond with the skill name and a one-line summary.</p>
-<h2 id="use-from-the-anthropic-api-or-sdks"><a href="#use-from-the-anthropic-api-or-sdks" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Use from the Anthropic API or SDKs</h2>
-<p>The same <code>SKILL.md</code> is portable beyond Claude Code:</p>
-<ul>
-<li><strong>Anthropic API Skills</strong>: load <code>SKILL.md</code> as a skill resource for <code>claude-sonnet</code>, <code>claude-opus</code>, etc. See Anthropic's <a href="https://docs.anthropic.com/en/docs/build-with-claude/skills">Skills documentation</a> for the request shape.</li>
-<li><strong>Inline system prompt</strong>: paste <code>SKILL.md</code> into a <code>system</code> message. Cheap and effective when you can't yet use the Skills API.</li>
-<li><strong>Agent SDK / framework of your choice</strong>: any framework that supports tool descriptions or system primers will accept the markdown verbatim.</li>
-</ul>
+<p>Restart your agent or open a new session and the skill is auto-discovered. To confirm it loaded, ask the agent: <em>&quot;What CodeQuill skill do you have available?&quot;</em> It should respond with the skill name and a one-line summary.</p>
 <h2 id="what-the-skill-teaches-the-agent"><a href="#what-the-skill-teaches-the-agent" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>What the skill teaches the agent</h2>
 <p>Once loaded, the skill primes the agent with:</p>
 <ul>
-<li><strong>The seven primitives</strong> — claims, snapshots, releases, attestations, preservations, proofs, and the trust index — and the order in which they apply.</li>
-<li><strong>The full 16-command CLI surface</strong> — <code>login</code>, <code>who</code>, <code>quota</code>, <code>status</code>, <code>log</code>, <code>claim</code>, <code>snapshot</code>, <code>publish</code>, <code>pull</code>, <code>attest</code>, <code>prove</code>, <code>verify-proof</code>, <code>verify-attestation</code>, <code>preserve</code>, <code>wait</code>, <code>why</code> — with their flags and what they touch.</li>
-<li><strong>The two GitHub Actions</strong> — <code>codequill-claim/actions-snapshot@v1</code> and <code>codequill-claim/actions-attest@v1</code> — for CI-driven evidence.</li>
-<li><strong>The workspace layout</strong> — what lives in <code>.codequill/</code> (snapshots, proofs, config, index) and how repo-local config beats global.</li>
-<li><strong>The manifest schemas</strong> — <code>codequill-snapshot:v1</code>, <code>codequill-attestation:v1</code>, <code>codequill-proof:v1</code>, <code>codequill-backup:v1</code>, <code>codequill-envelope:v1</code>.</li>
-<li><strong>The loud non-guarantees</strong> — what CodeQuill does <em>not</em> prove, so the agent doesn't oversell.</li>
+<li>The seven primitives - claims, snapshots, releases, attestations, preservations, proofs, and the trust index - and the order in which they apply.</li>
+<li>The full 16-command CLI surface - <code>login</code>, <code>who</code>, <code>quota</code>, <code>status</code>, <code>log</code>, <code>claim</code>, <code>snapshot</code>, <code>publish</code>, <code>pull</code>, <code>attest</code>, <code>prove</code>, <code>verify-proof</code>, <code>verify-attestation</code>, <code>preserve</code>, <code>wait</code>, <code>why</code>.</li>
+<li>The two GitHub Actions - <code>codequill-claim/actions-snapshot@v1</code> and <code>codequill-claim/actions-attest@v1</code> - for CI-driven evidence.</li>
+<li>The workspace layout - what lives in <code>.codequill/</code> (snapshots, proofs, config, index) and how repo-local config beats global.</li>
+<li>The manifest schemas - <code>codequill-snapshot:v1</code>, <code>codequill-attestation:v1</code>, <code>codequill-proof:v1</code>, <code>codequill-backup:v1</code>, <code>codequill-envelope:v1</code>.</li>
+<li>The loud non-guarantees - what CodeQuill does <em>not</em> prove, so the agent doesn't oversell.</li>
 </ul>
 <p>The full reference lives in the <a href="https://github.com/ophelios-studio/skills/tree/main/skills/codequill">skill source</a>.</p>
 <h2 id="example-prompts"><a href="#example-prompts" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Example prompts</h2>
@@ -452,7 +442,7 @@ curl -fsSL https://raw.githubusercontent.com/ophelios-studio/skills/main/skills/
 <li>Run <code>codequill login</code> if no valid token is on disk.</li>
 <li>Run <code>codequill claim</code> to bind the GitHub repository to the workspace authority (gasless, one-time).</li>
 <li>Run <code>codequill snapshot --commit &lt;sha&gt;</code> to compute the deterministic source state locally.</li>
-<li>Run <code>codequill publish</code> to upload the manifest to IPFS and anchor the Merkle root on Ethereum.</li>
+<li>Run <code>codequill publish</code> to upload the manifest to IPFS and anchor the Merkle root on-chain.</li>
 <li>Report back the snapshot ID and the published transaction.</li>
 </ol>
 <h3 id="2-attest-the-build-at-distclitgz-against-release-v0110"><a href="#2-attest-the-build-at-distclitgz-against-release-v0110" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>2. &quot;Attest the build at <code>dist/cli.tgz</code> against release v0.11.0&quot;</h3>
@@ -467,7 +457,7 @@ curl -fsSL https://raw.githubusercontent.com/ophelios-studio/skills/main/skills/
 <p>The agent will:</p>
 <ol>
 <li>Run <code>codequill prove src/main.ts &lt;snapshotId&gt;</code>.</li>
-<li>Walk you through the second device-code flow — <code>prove</code> requires the workspace authority's passkey to derive the path-salted hash.</li>
+<li>Walk you through the second device-code flow - <code>prove</code> requires the workspace authority's passkey to derive the path-salted hash.</li>
 <li>Save the resulting proof under <code>.codequill/proofs/</code> and report its filename so you can share or verify it offline.</li>
 </ol>
 <h2 id="authentication-notes"><a href="#authentication-notes" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Authentication notes</h2>
@@ -475,23 +465,24 @@ curl -fsSL https://raw.githubusercontent.com/ophelios-studio/skills/main/skills/
 <ul>
 <li>First run: <code>codequill login</code> opens a browser device-code flow. Tokens land in <code>~/.codequill/tokens.json</code> (path overridable via <code>CODEQUILL_CONFIG_DIR</code>).</li>
 <li>Subsequent runs: refresh is automatic, serialized by an on-disk lock to avoid token-rotation races.</li>
-<li><strong>Headless / CI / sandboxed agents</strong>: set <code>CODEQUILL_TOKEN</code> to a pre-minted token instead of running the device flow.</li>
+<li>Headless, CI, or sandboxed agents: set <code>CODEQUILL_TOKEN</code> to a pre-minted token instead of running the device flow.</li>
 </ul>
 <p>Full details in the <a href="/docs/cli-reference/authentication">authentication reference</a>.</p>
 <h2 id="limits-and-gotchas"><a href="#limits-and-gotchas" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Limits and gotchas</h2>
 <ul>
-<li><strong><code>prove</code> and <code>preserve</code> require the workspace authority's passkey.</strong> Agents cannot unilaterally decrypt preservations or sign proofs — those operations always loop a human in via a device-code prompt.</li>
-<li><strong><code>attest</code> requires the release in ACCEPTED state.</strong> Governance is human-driven by design; an agent cannot self-approve a release before attesting against it.</li>
-<li><strong>Don't commit secrets.</strong> <code>~/.codequill/tokens.json</code> and any environment-set <code>CODEQUILL_TOKEN</code> must stay out of the repo. The skill reinforces this rule, but it's worth restating.</li>
-<li><strong>The CLI is the integration surface today.</strong> Agents shell out; there is no separate &quot;agent API&quot; yet. Treat the CLI commands as your interface contract.</li>
+<li><code>prove</code> and <code>preserve</code> require the workspace authority's passkey. Agents cannot unilaterally decrypt preservations or sign proofs; those operations always loop a human in via a device-code prompt.</li>
+<li><code>attest</code> requires the release in ACCEPTED state. Governance is human-driven by design; an agent cannot self-approve a release before attesting against it.</li>
+<li>Agents must not commit <code>~/.codequill/tokens.json</code> or any environment-set <code>CODEQUILL_TOKEN</code> to the repo. The skill reinforces this rule, but it is worth restating.</li>
+<li>The CLI is the integration surface today. Agents shell out; there is no separate &quot;agent API&quot; yet. Treat the CLI commands as your interface contract.</li>
 </ul>
 <h2 id="references"><a href="#references" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>References</h2>
 <ul>
-<li><strong>Skill repository</strong> — <a href="https://github.com/ophelios-studio/skills/tree/main/skills/codequill">github.com/ophelios-studio/skills/tree/main/skills/codequill</a></li>
-<li><strong>CLI package</strong> — <a href="https://www.npmjs.com/package/codequill">npmjs.com/package/codequill</a></li>
-<li><strong>CLI reference</strong> — <a href="/docs/cli-reference/authentication">Authentication</a>, <a href="/docs/cli-reference/source-commands">Source commands</a>, <a href="/docs/cli-reference/verification-commands">Verification commands</a></li>
-<li><strong>CI/CD</strong> — <a href="/docs/ci-cd/overview">Overview</a>, <a href="/docs/ci-cd/snapshot-action">Snapshot action</a>, <a href="/docs/ci-cd/attestation-action">Attestation action</a></li>
-<li><strong>Anthropic Skills documentation</strong> — <a href="https://docs.anthropic.com/en/docs/build-with-claude/skills">docs.anthropic.com — Skills</a></li>
+<li><strong>Skill collection</strong> - <a href="https://github.com/ophelios-studio/skills">github.com/ophelios-studio/skills</a></li>
+<li><strong>CodeQuill skill</strong> - <a href="https://github.com/ophelios-studio/skills/tree/main/skills/codequill">skills/codequill/SKILL.md</a></li>
+<li><strong>Spec</strong> - <a href="https://agentskills.io">agentskills.io</a></li>
+<li><strong>CLI package</strong> - <a href="https://www.npmjs.com/package/codequill">npmjs.com/package/codequill</a></li>
+<li><strong>CLI reference</strong> - <a href="/docs/cli-reference/authentication">Authentication</a>, <a href="/docs/cli-reference/source-commands">Source commands</a>, <a href="/docs/cli-reference/verification-commands">Verification commands</a></li>
+<li><strong>CI/CD</strong> - <a href="/docs/ci-cd/overview">Overview</a>, <a href="/docs/ci-cd/snapshot-action">Snapshot action</a>, <a href="/docs/ci-cd/attestation-action">Attestation action</a></li>
 </ul>
 
     </div>
@@ -517,13 +508,10 @@ curl -fsSL https://raw.githubusercontent.com/ophelios-studio/skills/main/skills/
                 <a href="#why-this-matters" class="toc-link">Why this matters</a>
             </li>
             <li class="toc-item">
-                <a href="#the-codequill-claude-code-skill" class="toc-link">The CodeQuill Claude Code skill</a>
+                <a href="#the-codequill-agent-skill" class="toc-link">The CodeQuill agent skill</a>
             </li>
             <li class="toc-item">
-                <a href="#install-in-claude-code" class="toc-link">Install in Claude Code</a>
-            </li>
-            <li class="toc-item">
-                <a href="#use-from-the-anthropic-api-or-sdks" class="toc-link">Use from the Anthropic API or SDKs</a>
+                <a href="#install" class="toc-link">Install</a>
             </li>
             <li class="toc-item">
                 <a href="#what-the-skill-teaches-the-agent" class="toc-link">What the skill teaches the agent</a>

@@ -16,8 +16,8 @@ This action eliminates manual CLI invocations for the snapshot-and-publish phase
 
 | Input | Required | Default | Description |
 |---|---|---|---|
-| `token` | Yes | — | CodeQuill repo-scoped bearer token. |
-| `github_id` | Yes | — | GitHub repository numeric ID. Use `github.repository_id`. |
+| `token` | Yes | - | CodeQuill repo-scoped bearer token. |
+| `github_id` | Yes | - | GitHub repository numeric ID. Use `github.repository_id`. |
 | `api_base_url` | No | `""` | Override CodeQuill API base URL. |
 | `cli_version` | No | `""` | Specific npm version for the `codequill` CLI. |
 | `working_directory` | No | `"."` | Working directory for commands. |
@@ -40,9 +40,9 @@ Installs the `codequill` CLI globally via npm. If `cli_version` is specified, it
 
 Exports the following environment variables for the CLI:
 
-- `CODEQUILL_TOKEN` — from the `token` input.
-- `CODEQUILL_GITHUB_ID` — from the `github_id` input.
-- `CODEQUILL_API_BASE_URL` — from the `api_base_url` input, if provided.
+- `CODEQUILL_TOKEN` - from the `token` input.
+- `CODEQUILL_GITHUB_ID` - from the `github_id` input.
+- `CODEQUILL_API_BASE_URL` - from the `api_base_url` input, if provided.
 
 ### 3. Snapshot
 

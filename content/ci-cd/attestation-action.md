@@ -14,18 +14,18 @@ This action enables a **two-phase conformity pipeline** for software releases. W
 
 The two phases are:
 
-1. **Release Anchored** — The release has been submitted to the blockchain. Use this event to build your project and deploy to a **staging** environment. This gives you the opportunity to validate the release before governance accepts it.
+1. **Release Anchored** - The release has been submitted to the blockchain. Use this event to build your project and deploy to a **staging** environment. This gives you the opportunity to validate the release before governance accepts it.
 
-2. **Release Approved** — Governance has accepted the release. This is when you deploy to **production** and run `codequill attest` to create a verifiable, on-chain link between your build artifacts and the approved source release.
+2. **Release Approved** - Governance has accepted the release. This is when you deploy to **production** and run `codequill attest` to create a verifiable, on-chain link between your build artifacts and the approved source release.
 
-Attestation only runs during the approval phase. The anchoring phase is informational -- it signals that a release exists and is pending governance, giving your CI pipeline a head start on building and validating.
+Attestation only runs during the approval phase. The anchoring phase is informational - it signals that a release exists and is pending governance, giving your CI pipeline a head start on building and validating.
 
 ## Inputs
 
 | Input | Required | Default | Description |
 |---|---|---|---|
-| `token` | Yes | — | CodeQuill repo-scoped bearer token. |
-| `github_id` | Yes | — | GitHub repository numeric ID. |
+| `token` | Yes | - | CodeQuill repo-scoped bearer token. |
+| `github_id` | Yes | - | GitHub repository numeric ID. |
 | `hmac_secret` | No | `""` | Shared secret for HMAC-SHA256 verification. Strongly recommended. |
 | `build_path` | No | `""` | Path to build artifact or directory to attest. |
 | `release_id` | No | `""` | Release ID. Extracted from the issue body if not provided. |
@@ -50,20 +50,20 @@ Use these outputs in subsequent workflow steps to conditionally run build, deplo
 
 When the triggering GitHub event is `issues`, the action performs verification checks:
 
-1. **Bot identity** — Verifies that the issue was created by `codequill-authorship[bot]` (exact login match). If the issue author is any other user or bot, the action exits silently.
+1. **Bot identity** - Verifies that the issue was created by `codequill-authorship[bot]` (exact login match). If the issue author is any other user or bot, the action exits silently.
 
-2. **Label verification** — Verifies that the issue carries the `codequill:release` label.
+2. **Label verification** - Verifies that the issue carries the `codequill:release` label.
 
-3. **Payload parsing** — Parses the issue body as JSON. The body contains an object with two fields: `payload` (the event data) and `signature` (the HMAC-SHA256 digest).
+3. **Payload parsing** - Parses the issue body as JSON. The body contains an object with two fields: `payload` (the event data) and `signature` (the HMAC-SHA256 digest).
 
-4. **HMAC verification** — If `hmac_secret` is provided, the action computes the HMAC-SHA256 of the `payload` field using the shared secret and compares it against the `signature` field. If verification fails, the action exits with an error.
+4. **HMAC verification** - If `hmac_secret` is provided, the action computes the HMAC-SHA256 of the `payload` field using the shared secret and compares it against the `signature` field. If verification fails, the action exits with an error.
 
 ### 2. Set Outputs
 
 The action sets two outputs from the parsed payload:
 
-- `event_type` — either `release_anchored` or `release_approved`.
-- `release_id` — the unique identifier of the release.
+- `event_type` - either `release_anchored` or `release_approved`.
+- `release_id` - the unique identifier of the release.
 
 These outputs are available to subsequent workflow steps for conditional logic. This is how you differentiate between the two phases in your pipeline.
 
@@ -76,7 +76,7 @@ If the event type is `release_anchored`, the action:
 3. Closes the issue.
 4. Returns early. **No attestation is performed.**
 
-This is the staging phase. The action itself does not build or deploy anything -- it simply sets the `event_type` output so your downstream workflow steps can react. Use this event to build your project, run tests, and deploy to a staging environment for validation.
+This is the staging phase. The action itself does not build or deploy anything - it simply sets the `event_type` output so your downstream workflow steps can react. Use this event to build your project, run tests, and deploy to a staging environment for validation.
 
 ### 4. Handle `release_approved`
 
@@ -93,8 +93,8 @@ This is the production phase. Attestation creates an on-chain record linking you
 
 ### 5. Issue Lifecycle
 
-- **On success** — The action comments on the issue with a success message and closes it.
-- **On failure** — The action comments on the issue with the error details but does **not** close it. The issue remains open for investigation.
+- **On success** - The action comments on the issue with a success message and closes it.
+- **On failure** - The action comments on the issue with the error details but does **not** close it. The issue remains open for investigation.
 
 ## Workflow Example
 
@@ -153,9 +153,9 @@ The `if` condition on the job ensures the workflow only runs for issues created 
 
 ### How It Works
 
-1. **On `release_anchored`** — The attestation step verifies the issue, sets the outputs, closes the issue, and returns without performing attestation. The "Build and deploy to staging" step runs, giving you the chance to validate the release in a staging environment before governance decides.
+1. **On `release_anchored`** - The attestation step verifies the issue, sets the outputs, closes the issue, and returns without performing attestation. The "Build and deploy to staging" step runs, giving you the chance to validate the release in a staging environment before governance decides.
 
-2. **On `release_approved`** — The attestation step verifies the issue, runs `codequill attest` to create the on-chain attestation, and closes the issue. The "Deploy to production" step runs, deploying the governance-approved release to production.
+2. **On `release_approved`** - The attestation step verifies the issue, runs `codequill attest` to create the on-chain attestation, and closes the issue. The "Deploy to production" step runs, deploying the governance-approved release to production.
 
 This two-phase pattern ensures that:
 

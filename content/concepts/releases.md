@@ -10,7 +10,7 @@ A release is a named, versioned unit of software that binds a single source snap
 
 ## Why Releases Exist
 
-Snapshots capture what source code existed at a moment. But software is not shipped as snapshots -- it is shipped as releases. A release represents a deliberate act: someone decided that this particular source state, at this particular time, should be treated as a version.
+Snapshots capture what source code existed at a moment. But software is not shipped as snapshots - it is shipped as releases. A release represents a deliberate act: someone decided that this particular source state, at this particular time, should be treated as a version.
 
 Releases add **intent** to evidence. They say: "This snapshot is not just a point-in-time capture. It is the selected source state for version X, and it carries governance and approval processes."
 
@@ -44,8 +44,8 @@ Once anchored, a release is immutable. Its name, associated snapshot, and metada
 
 After anchoring, the release enters a **governance phase** with status `PENDING`. The designated governance authority (or DAO executor, if configured) can then:
 
-- **Accept** the release -- confirming it as the approved version.
-- **Reject** the release -- declining it.
+- **Accept** the release - confirming it as the approved version.
+- **Reject** the release - declining it.
 
 Governance decisions are recorded on-chain via the `accept()` or `reject()` functions on the `CodeQuillReleaseRegistry`.
 

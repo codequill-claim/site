@@ -1,16 +1,16 @@
 {var $isLanding = ($section ?? '') === ''}
 {var $siteName = $leafName ?? 'CodeQuill'}
 {var $tagline = 'Verifiable Software Provenance & Source Code Evidence'}
-{var $defaultDescription = 'Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security.'}
+{var $defaultDescription = 'Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage - built for developers, auditors, and supply chain security.'}
 {var $prodUrl = $leafProductionUrl ?? 'https://codequill.xyz'}
 
 {if $isLanding}
-    {var $metaTitle = $siteName . ' — ' . $tagline}
+    {var $metaTitle = $siteName . ' · ' . $tagline}
     {var $metaDescription = $defaultDescription}
     {var $canonical = $prodUrl . '/'}
     {var $ogTitle = $metaTitle}
 {else}
-    {var $metaTitle = ($title ?? 'Docs') . ' — ' . $siteName}
+    {var $metaTitle = ($title ?? 'Docs') . ' · ' . $siteName}
     {var $metaDescription = ($pageDescription ?? '') !== '' ? $pageDescription : $defaultDescription}
     {var $docPath = ($section ?? '') !== '' && ($slug ?? '') !== '' ? '/docs/' . $section . '/' . $slug . '/' : '/docs/'}
     {var $canonical = $prodUrl . $docPath}
@@ -46,7 +46,7 @@
 <meta property="og:image" content="{$ogImage}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="{$canonical}">
@@ -57,7 +57,7 @@
 
 {if $isLanding}
 <script type="application/ld+json" n:syntax="off">{"@context":"https://schema.org","@type":"Organization","name":"CodeQuill","url":"https://codequill.xyz/","logo":"https://codequill.xyz/logo-icon.svg","sameAs":["https://x.com/CodeQuillClaim","https://www.linkedin.com/company/codequill-claim","https://t.me/codequill"]}</script>
-<script type="application/ld+json" n:syntax="off">{"@context":"https://schema.org","@type":"WebSite","name":"CodeQuill","url":"https://codequill.xyz/","description":"Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage — built for developers, auditors, and supply chain security."}</script>
+<script type="application/ld+json" n:syntax="off">{"@context":"https://schema.org","@type":"WebSite","name":"CodeQuill","url":"https://codequill.xyz/","description":"Prove the origin of your code. CodeQuill provides cryptographic evidence of source code states and artifact lineage - built for developers, auditors, and supply chain security."}</script>
 {/if}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">

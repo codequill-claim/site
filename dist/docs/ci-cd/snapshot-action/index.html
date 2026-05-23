@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Snapshot Action — CodeQuill">
+<meta name="title" content="Snapshot Action · CodeQuill">
 <meta name="description" content="The Snapshot Action automates codequill snapshot and publish in GitHub Actions. Configure inputs, workflow YAML, and optional preservation.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/ci-cd/snapshot-action/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/ci-cd/snapshot-action/">
-<meta property="og:title" content="Snapshot Action — CodeQuill">
+<meta property="og:title" content="Snapshot Action · CodeQuill">
 <meta property="og:description" content="The Snapshot Action automates codequill snapshot and publish in GitHub Actions. Configure inputs, workflow YAML, and optional preservation.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/ci-cd/snapshot-action/">
-<meta name="twitter:title" content="Snapshot Action — CodeQuill">
+<meta name="twitter:title" content="Snapshot Action · CodeQuill">
 <meta name="twitter:description" content="The Snapshot Action automates codequill snapshot and publish in GitHub Actions. Configure inputs, workflow YAML, and optional preservation.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Snapshot Action — CodeQuill</title>
+    <title>Snapshot Action · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -419,13 +419,13 @@ tailwind.config = {
 <tr>
 <td><code>token</code></td>
 <td>Yes</td>
-<td>—</td>
+<td>-</td>
 <td>CodeQuill repo-scoped bearer token.</td>
 </tr>
 <tr>
 <td><code>github_id</code></td>
 <td>Yes</td>
-<td>—</td>
+<td>-</td>
 <td>GitHub repository numeric ID. Use <code>github.repository_id</code>.</td>
 </tr>
 <tr>
@@ -469,9 +469,9 @@ tailwind.config = {
 <h3 id="2-set-environment-variables"><a href="#2-set-environment-variables" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>2. Set Environment Variables</h3>
 <p>Exports the following environment variables for the CLI:</p>
 <ul>
-<li><code>CODEQUILL_TOKEN</code> — from the <code>token</code> input.</li>
-<li><code>CODEQUILL_GITHUB_ID</code> — from the <code>github_id</code> input.</li>
-<li><code>CODEQUILL_API_BASE_URL</code> — from the <code>api_base_url</code> input, if provided.</li>
+<li><code>CODEQUILL_TOKEN</code> - from the <code>token</code> input.</li>
+<li><code>CODEQUILL_GITHUB_ID</code> - from the <code>github_id</code> input.</li>
+<li><code>CODEQUILL_API_BASE_URL</code> - from the <code>api_base_url</code> input, if provided.</li>
 </ul>
 <h3 id="3-snapshot"><a href="#3-snapshot" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>3. Snapshot</h3>
 <p>Runs <code>codequill snapshot</code> in the configured working directory. This computes the Merkle root of the repository at the current commit and writes the manifest to <code>.codequill/snapshots/</code>.</p>

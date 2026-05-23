@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Claims — CodeQuill">
+<meta name="title" content="Claims · CodeQuill">
 <meta name="description" content="A claim is an on-chain record linking a GitHub repository to a workspace authority. Learn how to claim repos and what claims represent.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/concepts/claims/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/concepts/claims/">
-<meta property="og:title" content="Claims — CodeQuill">
+<meta property="og:title" content="Claims · CodeQuill">
 <meta property="og:description" content="A claim is an on-chain record linking a GitHub repository to a workspace authority. Learn how to claim repos and what claims represent.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/concepts/claims/">
-<meta name="twitter:title" content="Claims — CodeQuill">
+<meta name="twitter:title" content="Claims · CodeQuill">
 <meta name="twitter:description" content="A claim is an on-chain record linking a GitHub repository to a workspace authority. Learn how to claim repos and what claims represent.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Claims — CodeQuill</title>
+    <title>Claims · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -410,10 +410,10 @@ tailwind.config = {
 <h2 id="what-a-claim-contains"><a href="#what-a-claim-contains" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>What a Claim Contains</h2>
 <p>When you claim a repository, the following is recorded on the <code>CodeQuillRepositoryRegistry</code> smart contract:</p>
 <ul>
-<li><strong>Repository ID</strong> -- A <code>bytes32</code> identifier derived from the GitHub repository's numeric ID.</li>
-<li><strong>Context ID</strong> -- The workspace's on-chain identifier.</li>
-<li><strong>Owner</strong> -- The wallet address claiming the repository.</li>
-<li><strong>Metadata</strong> -- Additional context (typically the repository name).</li>
+<li><strong>Repository ID</strong> - A <code>bytes32</code> identifier derived from the GitHub repository's numeric ID.</li>
+<li><strong>Context ID</strong> - The workspace's on-chain identifier.</li>
+<li><strong>Owner</strong> - The wallet address claiming the repository.</li>
+<li><strong>Metadata</strong> - Additional context (typically the repository name).</li>
 </ul>
 <p>Claims are unique: a repository can only be claimed once. If a repository is already claimed, a new claim will fail unless the existing owner transfers it.</p>
 <h2 id="claiming-a-repository"><a href="#claiming-a-repository" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Claiming a Repository</h2>

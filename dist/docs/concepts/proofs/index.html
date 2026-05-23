@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Proofs — CodeQuill">
+<meta name="title" content="Proofs · CodeQuill">
 <meta name="description" content="Merkle proofs-of-inclusion demonstrate that a specific file was part of a published snapshot without revealing the full file tree.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/concepts/proofs/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/concepts/proofs/">
-<meta property="og:title" content="Proofs — CodeQuill">
+<meta property="og:title" content="Proofs · CodeQuill">
 <meta property="og:description" content="Merkle proofs-of-inclusion demonstrate that a specific file was part of a published snapshot without revealing the full file tree.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/concepts/proofs/">
-<meta name="twitter:title" content="Proofs — CodeQuill">
+<meta name="twitter:title" content="Proofs · CodeQuill">
 <meta name="twitter:description" content="Merkle proofs-of-inclusion demonstrate that a specific file was part of a published snapshot without revealing the full file tree.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Proofs — CodeQuill</title>
+    <title>Proofs · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -404,7 +404,7 @@ tailwind.config = {
         <h1>Proofs</h1>
 <p>A proof is a cryptographic Merkle proof-of-inclusion that demonstrates a specific file was part of a published snapshot. Proofs enable selective disclosure: you can prove the existence and content of individual files without revealing the full file tree.</p>
 <h2 id="why-proofs-exist"><a href="#why-proofs-exist" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Why Proofs Exist</h2>
-<p>Snapshots anchor a Merkle root representing the entire repository state. But sometimes you need to demonstrate that a specific file -- a license, a configuration, a critical module -- was present in a specific version, without disclosing everything else.</p>
+<p>Snapshots anchor a Merkle root representing the entire repository state. But sometimes you need to demonstrate that a specific file - a license, a configuration, a critical module - was present in a specific version, without disclosing everything else.</p>
 <p>Proofs let you answer the question: &quot;Was this exact file, with this exact content, included in this snapshot?&quot; The answer is cryptographically verifiable by anyone, without needing access to the full snapshot or the CodeQuill platform.</p>
 <h2 id="how-proofs-work"><a href="#how-proofs-work" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>How Proofs Work</h2>
 <p>A Merkle proof-of-inclusion works by providing the minimal set of sibling hashes needed to reconstruct the root from a specific leaf:</p>
@@ -417,13 +417,13 @@ tailwind.config = {
 <h2 id="privacy-considerations"><a href="#privacy-considerations" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Privacy Considerations</h2>
 <p>Because file paths are salted before hashing, generating a proof requires knowledge of the salt. The salt is derived from the workspace encryption key, which means:</p>
 <ul>
-<li><strong>Proof generation requires authority</strong> -- You must be a workspace member with passkey access.</li>
-<li><strong>Proof verification is public</strong> -- Once generated, anyone can verify the proof without any authentication.</li>
+<li><strong>Proof generation requires authority</strong> - You must be a workspace member with passkey access.</li>
+<li><strong>Proof verification is public</strong> - Once generated, anyone can verify the proof without any authentication.</li>
 </ul>
 <p>When generating a proof, the CLI initiates a device-approval flow (similar to the login flow) where you approve the path resolution using your passkey in the browser. This ensures the salt is never exposed to the CLI directly.</p>
 <h3 id="the---disclose-option"><a href="#the---disclose-option" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>The <code>--disclose</code> Option</h3>
 <p>By default, proofs do not include the plaintext file path. They contain only the salted path hash, which is sufficient for cryptographic verification but does not reveal which file was proven.</p>
-<p>If you want the proof to include the plaintext path (for human readability), use the <code>--disclose</code> flag. This is a privacy tradeoff -- the proof becomes more informative but reveals the file's location in the repository.</p>
+<p>If you want the proof to include the plaintext path (for human readability), use the <code>--disclose</code> flag. This is a privacy tradeoff - the proof becomes more informative but reveals the file's location in the repository.</p>
 <h2 id="using-the-cli"><a href="#using-the-cli" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Using the CLI</h2>
 <h3 id="generate-a-proof"><a href="#generate-a-proof" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Generate a Proof</h3>
 <pre><code class="language-bash">codequill prove &lt;file&gt; &lt;snapshot-id&gt;

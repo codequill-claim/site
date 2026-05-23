@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Snapshots — CodeQuill">
+<meta name="title" content="Snapshots · CodeQuill">
 <meta name="description" content="Snapshots are deterministic cryptographic fingerprints of your source code at a specific commit. Learn how they work and how to publish them.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/concepts/snapshots/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/concepts/snapshots/">
-<meta property="og:title" content="Snapshots — CodeQuill">
+<meta property="og:title" content="Snapshots · CodeQuill">
 <meta property="og:description" content="Snapshots are deterministic cryptographic fingerprints of your source code at a specific commit. Learn how they work and how to publish them.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/concepts/snapshots/">
-<meta name="twitter:title" content="Snapshots — CodeQuill">
+<meta name="twitter:title" content="Snapshots · CodeQuill">
 <meta name="twitter:description" content="Snapshots are deterministic cryptographic fingerprints of your source code at a specific commit. Learn how they work and how to publish them.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Snapshots — CodeQuill</title>
+    <title>Snapshots · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -402,17 +402,17 @@ tailwind.config = {
 <article class="docs-content">
     <div class="prose">
         <h1>Snapshots</h1>
-<p>A snapshot is a deterministic cryptographic fingerprint of a repository's source code at a specific git commit. It is the foundational building block of CodeQuill -- releases, attestations, and preservations all reference snapshots.</p>
+<p>A snapshot is a deterministic cryptographic fingerprint of a repository's source code at a specific git commit. It is the foundational building block of CodeQuill - releases, attestations, and preservations all reference snapshots.</p>
 <h2 id="why-snapshots-exist"><a href="#why-snapshots-exist" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Why Snapshots Exist</h2>
 <p>Source code is mutable. Files change, commits are amended, branches are rebased, repositories are deleted. When you need to answer &quot;what source code existed at this moment?&quot;, the answer often depends on systems that may no longer be available.</p>
-<p>A CodeQuill snapshot captures the state of a repository at a precise point in time and produces a <strong>Merkle root</strong> -- a single cryptographic hash that represents the entire file tree. This Merkle root can be verified independently by anyone with access to the same files.</p>
+<p>A CodeQuill snapshot captures the state of a repository at a precise point in time and produces a <strong>Merkle root</strong> - a single cryptographic hash that represents the entire file tree. This Merkle root can be verified independently by anyone with access to the same files.</p>
 <h2 id="how-snapshots-work"><a href="#how-snapshots-work" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>How Snapshots Work</h2>
 <h3 id="step-1-local-manifest-creation"><a href="#step-1-local-manifest-creation" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Step 1: Local Manifest Creation</h3>
 <p>When you run <code>codequill snapshot</code>, the CLI:</p>
 <ol>
 <li>Reads every tracked file in the repository at the specified commit (defaults to HEAD).</li>
 <li>Computes a <code>keccak256</code> hash of each file's contents.</li>
-<li>Computes a salted hash of each file's path (for privacy -- see below).</li>
+<li>Computes a salted hash of each file's path (for privacy - see below).</li>
 <li>Builds a <strong>Merkle tree</strong> from the leaf hashes (each leaf = <code>keccak256(0x00 || path_hash || file_hash)</code>).</li>
 <li>Writes the resulting manifest to <code>.codequill/snapshots/snapshot-&lt;commit&gt;.json</code>.</li>
 </ol>
@@ -425,7 +425,7 @@ tailwind.config = {
 </ol>
 <p>The result is a durable, timestamped record: &quot;This Merkle root, representing this file tree, was anchored at this time by this authority.&quot;</p>
 <h2 id="privacy-model"><a href="#privacy-model" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Privacy Model</h2>
-<p>File paths in a snapshot are <strong>salted</strong> before hashing. The salt is derived from the workspace's encryption key, which itself is bound to a registered <strong>passkey</strong> (WebAuthn). This means snapshot creation requires passkey-based encryption to be set up in the workspace -- the same encryption infrastructure used for preservations and proofs.</p>
+<p>File paths in a snapshot are <strong>salted</strong> before hashing. The salt is derived from the workspace's encryption key, which itself is bound to a registered <strong>passkey</strong> (WebAuthn). This means snapshot creation requires passkey-based encryption to be set up in the workspace - the same encryption infrastructure used for preservations and proofs.</p>
 <p>Because the salt is passkey-derived:</p>
 <ul>
 <li>The manifest reveals <strong>file content hashes</strong> but not file paths in plaintext.</li>

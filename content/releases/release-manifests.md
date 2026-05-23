@@ -6,7 +6,7 @@ order: 3
 
 # Release Manifests
 
-Every anchored release has a manifest -- a structured document that records the full metadata of the release at the time it was published. Manifests are the primary evidence artifact for releases: they are stored on decentralized storage, content-addressed, and independently retrievable by anyone.
+Every anchored release has a manifest - a structured document that records the full metadata of the release at the time it was published. Manifests are the primary evidence artifact for releases: they are stored on decentralized storage, content-addressed, and independently retrievable by anyone.
 
 ## Schema
 
@@ -14,7 +14,7 @@ Release manifests conform to the `codequill-release:v1` schema. This schema is v
 
 ## Storage
 
-Manifests are stored as gzip-compressed JSON on IPFS, pinned to Filecoin via Lighthouse for long-term persistence. Each manifest is identified by its CID (Content Identifier) -- a cryptographic hash of the compressed content. The CID is recorded on-chain as part of the `anchorRelease()` transaction, creating a permanent link between the on-chain release record and its off-chain manifest.
+Manifests are stored as gzip-compressed JSON on IPFS, pinned to Filecoin via Lighthouse for long-term persistence. Each manifest is identified by its CID (Content Identifier) - a cryptographic hash of the compressed content. The CID is recorded on-chain as part of the `anchorRelease()` transaction, creating a permanent link between the on-chain release record and its off-chain manifest.
 
 Because CIDs are content-addressed, the integrity of a manifest is self-verifying: if the content changes, the CID changes. A manifest retrieved by CID either matches its expected content exactly or is corrupt.
 

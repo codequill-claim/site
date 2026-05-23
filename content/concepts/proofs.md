@@ -10,7 +10,7 @@ A proof is a cryptographic Merkle proof-of-inclusion that demonstrates a specifi
 
 ## Why Proofs Exist
 
-Snapshots anchor a Merkle root representing the entire repository state. But sometimes you need to demonstrate that a specific file -- a license, a configuration, a critical module -- was present in a specific version, without disclosing everything else.
+Snapshots anchor a Merkle root representing the entire repository state. But sometimes you need to demonstrate that a specific file - a license, a configuration, a critical module - was present in a specific version, without disclosing everything else.
 
 Proofs let you answer the question: "Was this exact file, with this exact content, included in this snapshot?" The answer is cryptographically verifiable by anyone, without needing access to the full snapshot or the CodeQuill platform.
 
@@ -27,8 +27,8 @@ A Merkle proof-of-inclusion works by providing the minimal set of sibling hashes
 
 Because file paths are salted before hashing, generating a proof requires knowledge of the salt. The salt is derived from the workspace encryption key, which means:
 
-- **Proof generation requires authority** -- You must be a workspace member with passkey access.
-- **Proof verification is public** -- Once generated, anyone can verify the proof without any authentication.
+- **Proof generation requires authority** - You must be a workspace member with passkey access.
+- **Proof verification is public** - Once generated, anyone can verify the proof without any authentication.
 
 When generating a proof, the CLI initiates a device-approval flow (similar to the login flow) where you approve the path resolution using your passkey in the browser. This ensures the salt is never exposed to the CLI directly.
 
@@ -36,7 +36,7 @@ When generating a proof, the CLI initiates a device-approval flow (similar to th
 
 By default, proofs do not include the plaintext file path. They contain only the salted path hash, which is sufficient for cryptographic verification but does not reveal which file was proven.
 
-If you want the proof to include the plaintext path (for human readability), use the `--disclose` flag. This is a privacy tradeoff -- the proof becomes more informative but reveals the file's location in the repository.
+If you want the proof to include the plaintext path (for human readability), use the `--disclose` flag. This is a privacy tradeoff - the proof becomes more informative but reveals the file's location in the repository.
 
 ## Using the CLI
 

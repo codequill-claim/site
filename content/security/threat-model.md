@@ -18,7 +18,7 @@ CodeQuill assumes that the environments in which software is built and distribut
 
 **Platforms and organizations change over time.** GitHub may alter its API, change its terms of service, or cease to exist. Organizations restructure, lose access to accounts, or migrate between providers. Evidence tied exclusively to a platform's internal state does not survive these transitions.
 
-**Build pipelines are trusted by default.** Most development workflows implicitly trust the pipeline: if CI says the build passed and the artifact was published, the artifact is assumed to be legitimate. This default trust is convenient but creates a gap -- there is no independent record of what source code the artifact was supposedly built from.
+**Build pipelines are trusted by default.** Most development workflows implicitly trust the pipeline: if CI says the build passed and the artifact was published, the artifact is assumed to be legitimate. This default trust is convenient but creates a gap - there is no independent record of what source code the artifact was supposedly built from.
 
 ## What CodeQuill Preserves
 
@@ -28,7 +28,7 @@ Under these assumptions, CodeQuill provides:
 
 **Authority and release intent records.** Claims, releases, and governance decisions are recorded on-chain. They establish who claimed authority over a repository, who designated a specific source state as a version, and whether governance approved it. These records are independently retrievable from the blockchain.
 
-**Verifiable anchoring independent of any single system.** On-chain records can be verified by anyone with access to the blockchain. IPFS manifests can be retrieved from any IPFS gateway. Merkle proofs can be validated offline. No single system -- including CodeQuill itself -- must remain available for verification to succeed.
+**Verifiable anchoring independent of any single system.** On-chain records can be verified by anyone with access to the blockchain. IPFS manifests can be retrieved from any IPFS gateway. Merkle proofs can be validated offline. No single system - including CodeQuill itself - must remain available for verification to succeed.
 
 ## What CodeQuill Does Not Solve
 
@@ -48,7 +48,7 @@ For a complete enumeration of what CodeQuill does not guarantee, see [Non-Guaran
 
 CodeQuill is designed to be one layer in a larger security architecture, not a standalone solution. It provides the source-centric reference layer that other tools can point to:
 
-**Reproducible builds** prove that a build process is deterministic -- that given the same source, the same artifact is produced. CodeQuill proves what the source was. Together, they answer both "what was built from?" and "is the build process faithful?"
+**Reproducible builds** prove that a build process is deterministic - that given the same source, the same artifact is produced. CodeQuill proves what the source was. Together, they answer both "what was built from?" and "is the build process faithful?"
 
 **Signing frameworks** (such as Sigstore) attest that an artifact was produced by a specific identity at a specific time. CodeQuill attestations link that artifact back to a specific source release. Together, they connect the signed artifact to a verified source state.
 
@@ -64,6 +64,6 @@ CodeQuill's architecture separates authority configuration from evidence product
 
 - **Evidence is produced locally.** The CLI runs on your machine (or in CI). It reads your source code, computes hashes, builds Merkle trees, encrypts archives, and submits transactions. Source code does not pass through CodeQuill servers.
 
-This separation has a specific security property: **even if CodeQuill servers are compromised, the on-chain records remain independently verifiable.** An attacker who gains access to the CodeQuill web application cannot alter records that have already been anchored on the blockchain. They cannot forge Merkle roots, backdate timestamps, or tamper with IPFS manifests that have already been pinned. The worst case is that future operations are disrupted -- past evidence remains intact and verifiable by anyone.
+This separation has a specific security property: **even if CodeQuill servers are compromised, the on-chain records remain independently verifiable.** An attacker who gains access to the CodeQuill web application cannot alter records that have already been anchored on the blockchain. They cannot forge Merkle roots, backdate timestamps, or tamper with IPFS manifests that have already been pinned. The worst case is that future operations are disrupted - past evidence remains intact and verifiable by anyone.
 
 The encryption model reinforces this boundary. CodeQuill never possesses the private key needed to decrypt preservations. The key is derived from the user's passkey via the WebAuthn PRF extension and never leaves the device. Even full server compromise does not expose preserved source code. See [Encryption Model](/security/encryption-model) for details.

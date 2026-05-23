@@ -16,10 +16,10 @@ The pipeline is split into two distinct phases, each triggered by a different Gi
 
 Triggered on push to `main` (or any branch you configure). This phase uses the **Snapshot Action** (`codequill-claim/actions-snapshot@v1`) to:
 
-1. Run `codequill snapshot` -- compute a deterministic Merkle root of the repository at the current commit.
-2. Run `codequill publish` -- upload the manifest to IPFS and anchor the Merkle root on-chain.
-3. Run `codequill wait` -- block until the on-chain transaction is confirmed.
-4. Optionally run `codequill preserve` -- create an encrypted archive of the source code tied to the published snapshot.
+1. Run `codequill snapshot` - compute a deterministic Merkle root of the repository at the current commit.
+2. Run `codequill publish` - upload the manifest to IPFS and anchor the Merkle root on-chain.
+3. Run `codequill wait` - block until the on-chain transaction is confirmed.
+4. Optionally run `codequill preserve` - create an encrypted archive of the source code tied to the published snapshot.
 
 Phase 1 completes without human intervention. Every push to `main` produces a published snapshot that can be referenced by future releases.
 
@@ -41,7 +41,7 @@ This event is useful for audit trails and notifications. You can add downstream 
 
 ### `release_approved`
 
-Actionable. Indicates that governance has accepted the release -- either a workspace member approved it directly, or a DAO vote concluded in favor. The Attestation Action validates the build artifact, runs `codequill attest`, and records the attestation on-chain.
+Actionable. Indicates that governance has accepted the release - either a workspace member approved it directly, or a DAO vote concluded in favor. The Attestation Action validates the build artifact, runs `codequill attest`, and records the attestation on-chain.
 
 This is the event that bridges governance to deployment. Once attestation succeeds, subsequent CI steps can deploy with confidence that the release was explicitly approved.
 
@@ -49,11 +49,11 @@ This is the event that bridges governance to deployment. Once attestation succee
 
 The communication channel between the CodeQuill platform and your CI pipeline relies on GitHub Issues, which are a public surface. Three verification layers protect against spoofing:
 
-1. **Bot identity check** -- The action verifies that the issue was created by `codequill-authorship[bot]` (exact login match). Issues from any other actor are ignored.
+1. **Bot identity check** - The action verifies that the issue was created by `codequill-authorship[bot]` (exact login match). Issues from any other actor are ignored.
 
-2. **Label verification** -- The action verifies that the issue carries the `codequill:release` label. This prevents unrelated bot activity from triggering the workflow.
+2. **Label verification** - The action verifies that the issue carries the `codequill:release` label. This prevents unrelated bot activity from triggering the workflow.
 
-3. **HMAC-SHA256 payload verification** -- If an `hmac_secret` is configured, the action verifies the issue body's signature against the shared secret. The issue body contains a JSON object with `payload` and `signature` fields. The signature is an HMAC-SHA256 digest of the payload, computed with the shared secret. This is strongly recommended for production use.
+3. **HMAC-SHA256 payload verification** - If an `hmac_secret` is configured, the action verifies the issue body's signature against the shared secret. The issue body contains a JSON object with `payload` and `signature` fields. The signature is an HMAC-SHA256 digest of the payload, computed with the shared secret. This is strongly recommended for production use.
 
 ## Pipeline Topologies
 
@@ -82,7 +82,7 @@ Push code to main
   -> Phase 2: CI attests the build artifact and deploys
 ```
 
-The CI pipeline is identical in both cases. The difference is who approves the release -- a workspace member or a DAO vote. The Attestation Action does not distinguish between approval sources; it responds to `release_approved` regardless of origin.
+The CI pipeline is identical in both cases. The difference is who approves the release - a workspace member or a DAO vote. The Attestation Action does not distinguish between approval sources; it responds to `release_approved` regardless of origin.
 
 ## Environment Variables
 

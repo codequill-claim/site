@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Releases — CodeQuill">
+<meta name="title" content="Releases · CodeQuill">
 <meta name="description" content="Releases bind a single snapshot to a named, versioned package with governance lifecycle. Draft, publish, accept, revoke, and supersede.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/concepts/releases/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/concepts/releases/">
-<meta property="og:title" content="Releases — CodeQuill">
+<meta property="og:title" content="Releases · CodeQuill">
 <meta property="og:description" content="Releases bind a single snapshot to a named, versioned package with governance lifecycle. Draft, publish, accept, revoke, and supersede.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/concepts/releases/">
-<meta name="twitter:title" content="Releases — CodeQuill">
+<meta name="twitter:title" content="Releases · CodeQuill">
 <meta name="twitter:description" content="Releases bind a single snapshot to a named, versioned package with governance lifecycle. Draft, publish, accept, revoke, and supersede.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Releases — CodeQuill</title>
+    <title>Releases · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -404,7 +404,7 @@ tailwind.config = {
         <h1>Releases</h1>
 <p>A release is a named, versioned unit of software that binds a single source snapshot to a governed, auditable package. Releases are the coordination layer between raw evidence (snapshots) and downstream processes (attestations, governance, deployment).</p>
 <h2 id="why-releases-exist"><a href="#why-releases-exist" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Why Releases Exist</h2>
-<p>Snapshots capture what source code existed at a moment. But software is not shipped as snapshots -- it is shipped as releases. A release represents a deliberate act: someone decided that this particular source state, at this particular time, should be treated as a version.</p>
+<p>Snapshots capture what source code existed at a moment. But software is not shipped as snapshots - it is shipped as releases. A release represents a deliberate act: someone decided that this particular source state, at this particular time, should be treated as a version.</p>
 <p>Releases add <strong>intent</strong> to evidence. They say: &quot;This snapshot is not just a point-in-time capture. It is the selected source state for version X, and it carries governance and approval processes.&quot;</p>
 <h2 id="release-lifecycle"><a href="#release-lifecycle" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Release Lifecycle</h2>
 <p>Every release follows a defined lifecycle:</p>
@@ -426,8 +426,8 @@ tailwind.config = {
 <h3 id="governance-accepted-or-rejected"><a href="#governance-accepted-or-rejected" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Governance: Accepted or Rejected</h3>
 <p>After anchoring, the release enters a <strong>governance phase</strong> with status <code>PENDING</code>. The designated governance authority (or DAO executor, if configured) can then:</p>
 <ul>
-<li><strong>Accept</strong> the release -- confirming it as the approved version.</li>
-<li><strong>Reject</strong> the release -- declining it.</li>
+<li><strong>Accept</strong> the release - confirming it as the approved version.</li>
+<li><strong>Reject</strong> the release - declining it.</li>
 </ul>
 <p>Governance decisions are recorded on-chain via the <code>accept()</code> or <code>reject()</code> functions on the <code>CodeQuillReleaseRegistry</code>.</p>
 <p>Importantly: <strong>attestations can only be created against accepted releases.</strong> This means governance approval is a prerequisite for attesting build artifacts.</p>

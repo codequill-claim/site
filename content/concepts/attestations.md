@@ -18,23 +18,23 @@ CodeQuill attestations record three things:
 2. **What** artifact was referenced (its SHA-256 digest).
 3. **When** the claim was made (on-chain timestamp).
 
-An attestation does not prove the artifact was correctly built from the source. It records the claim that it was. The difference matters -- see [Non-Guarantees](/security/non-guarantees).
+An attestation does not prove the artifact was correctly built from the source. It records the claim that it was. The difference matters - see [Non-Guarantees](/security/non-guarantees).
 
 ## What an Attestation Contains
 
 When you attest an artifact, the following is recorded on the `CodeQuillAttestationRegistry` smart contract:
 
-- **Release ID** -- The release this artifact claims to originate from.
-- **Artifact Digest** -- The SHA-256 hash of the build artifact.
-- **Attestation CID** -- IPFS CID of the full attestation manifest.
-- **Author** -- The wallet address that created the attestation.
-- **Timestamp** -- When the attestation was anchored.
+- **Release ID** - The release this artifact claims to originate from.
+- **Artifact Digest** - The SHA-256 hash of the build artifact.
+- **Attestation CID** - IPFS CID of the full attestation manifest.
+- **Author** - The wallet address that created the attestation.
+- **Timestamp** - When the attestation was anchored.
 
 The attestation manifest (stored on IPFS) additionally contains:
 
-- **Subject** -- The artifact's name, version, and Package URL (purl).
-- **Artifact Kind** -- The type of artifact (file, Docker image, npm package, binary).
-- **Upstream Dependencies** -- Other CodeQuill attestations referenced as upstream (for supply-chain graph building).
+- **Subject** - The artifact's name, version, and Package URL (purl).
+- **Artifact Kind** - The type of artifact (file, Docker image, npm package, binary).
+- **Upstream Dependencies** - Other CodeQuill attestations referenced as upstream (for supply-chain graph building).
 
 ## Prerequisites
 
@@ -64,7 +64,7 @@ codequill attest <build-artifact> <release-id>
 |---|---|---|---|
 | `--subject-name <name>` | string | auto | Artifact name (e.g. `my-app`) |
 | `--subject-version <ver>` | string | auto | Artifact version (e.g. `1.0.0`) |
-| `--upstream <purl>` | string | -- | Upstream dependency purl (repeatable) |
+| `--upstream <purl>` | string | - | Upstream dependency purl (repeatable) |
 | `--no-confirm` | boolean | false | Skip confirmation prompt |
 | `--confirmations <n>` | integer | 1 | On-chain confirmations to wait for |
 | `--timeout <ms>` | integer | 300000 | Timeout for confirmation |

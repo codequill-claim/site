@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Settings &amp; Wallets — CodeQuill">
+<meta name="title" content="Settings &amp; Wallets · CodeQuill">
 <meta name="description" content="Connect wallets via SIWE, manage collaborators, configure encryption with passkeys, set DAO executors, and manage workspace settings.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/web-application/settings-wallets/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/web-application/settings-wallets/">
-<meta property="og:title" content="Settings &amp; Wallets — CodeQuill">
+<meta property="og:title" content="Settings &amp; Wallets · CodeQuill">
 <meta property="og:description" content="Connect wallets via SIWE, manage collaborators, configure encryption with passkeys, set DAO executors, and manage workspace settings.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/web-application/settings-wallets/">
-<meta name="twitter:title" content="Settings &amp; Wallets — CodeQuill">
+<meta name="twitter:title" content="Settings &amp; Wallets · CodeQuill">
 <meta name="twitter:description" content="Connect wallets via SIWE, manage collaborators, configure encryption with passkeys, set DAO executors, and manage workspace settings.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Settings &amp; Wallets — CodeQuill</title>
+    <title>Settings &amp; Wallets · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -406,13 +406,13 @@ tailwind.config = {
 <h2 id="settings-overview"><a href="#settings-overview" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Settings Overview</h2>
 <p>The settings page is organized into the following sections:</p>
 <ul>
-<li><strong>Profile</strong> -- Workspace display name, avatar, and description.</li>
-<li><strong>Default Chain</strong> -- The Ethereum network used by default for on-chain operations within the workspace.</li>
-<li><strong>Notifications</strong> -- Telegram notification preferences for workspace events (snapshots, attestations, claims, collaborator activity).</li>
+<li><strong>Profile</strong> - Workspace display name, avatar, and description.</li>
+<li><strong>Default Chain</strong> - The Ethereum network used by default for on-chain operations within the workspace.</li>
+<li><strong>Notifications</strong> - Telegram notification preferences for workspace events (snapshots, attestations, claims, collaborator activity).</li>
 </ul>
 <p>[Screenshot: Settings overview page showing profile, default chain, and notification preferences]</p>
 <h2 id="wallet-management"><a href="#wallet-management" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Wallet Management</h2>
-<p>Wallets are the foundation of on-chain identity in CodeQuill. Every on-chain action -- claiming, snapshotting, attesting, preserving -- is ultimately authorized by a wallet. Wallet management in the web application handles connection, authority initialization, membership, delegation, and identity resolution.</p>
+<p>Wallets are the foundation of on-chain identity in CodeQuill. Every on-chain action - claiming, snapshotting, attesting, preserving - is ultimately authorized by a wallet. Wallet management in the web application handles connection, authority initialization, membership, delegation, and identity resolution.</p>
 <h3 id="connecting-a-wallet"><a href="#connecting-a-wallet" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Connecting a Wallet</h3>
 <p>Wallets are connected via <strong>Sign-In with Ethereum (SIWE)</strong>. The flow is:</p>
 <ol>
@@ -430,27 +430,27 @@ tailwind.config = {
 <p>After a wallet is connected and its role established (authority or member), a <strong>delegation</strong> is registered. Delegations are scoped, time-limited authorizations that allow the CodeQuill backend to submit transactions on behalf of the wallet within defined boundaries.</p>
 <p>Delegation parameters include:</p>
 <ul>
-<li><strong>Scope</strong> -- Which contract functions the delegation covers (e.g., snapshot registration, attestation publishing).</li>
-<li><strong>Expiry</strong> -- A timestamp after which the delegation is no longer valid.</li>
-<li><strong>Caveats</strong> -- Additional constraints specific to the delegation type.</li>
+<li><strong>Scope</strong> - Which contract functions the delegation covers (e.g., snapshot registration, attestation publishing).</li>
+<li><strong>Expiry</strong> - A timestamp after which the delegation is no longer valid.</li>
+<li><strong>Caveats</strong> - Additional constraints specific to the delegation type.</li>
 </ul>
 <p>Delegations can be revoked at any time from the wallet management panel. Expired delegations must be re-registered.</p>
 <h3 id="ens-resolution"><a href="#ens-resolution" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>ENS Resolution</h3>
 <p>For wallets with registered ENS names, CodeQuill resolves and displays:</p>
 <ul>
-<li><strong>ENS name</strong> -- The primary name associated with the address (e.g., <code>alice.eth</code>).</li>
-<li><strong>ENS avatar</strong> -- The avatar record, if set, displayed alongside the wallet address throughout the interface.</li>
+<li><strong>ENS name</strong> - The primary name associated with the address (e.g., <code>alice.eth</code>).</li>
+<li><strong>ENS avatar</strong> - The avatar record, if set, displayed alongside the wallet address throughout the interface.</li>
 </ul>
-<p>ENS resolution is performed at connection time and refreshed periodically. It is purely cosmetic -- all on-chain operations reference the raw Ethereum address.</p>
+<p>ENS resolution is performed at connection time and refreshed periodically. It is purely cosmetic - all on-chain operations reference the raw Ethereum address.</p>
 <h3 id="identicon-generation"><a href="#identicon-generation" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Identicon Generation</h3>
-<p>Wallets without an ENS avatar are assigned a deterministic <strong>identicon</strong> -- a unique visual pattern derived from the wallet address. Identicons provide visual distinction when multiple wallets are connected to a workspace.</p>
+<p>Wallets without an ENS avatar are assigned a deterministic <strong>identicon</strong> - a unique visual pattern derived from the wallet address. Identicons provide visual distinction when multiple wallets are connected to a workspace.</p>
 <h2 id="wallet-onboarding-flow"><a href="#wallet-onboarding-flow" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Wallet Onboarding Flow</h2>
 <p>When a user connects their first wallet, a multi-step onboarding sequence ensures all necessary on-chain primitives are established:</p>
 <ol>
-<li><strong>SIWE Verification</strong> -- The wallet signs a SIWE message to prove ownership.</li>
-<li><strong>Save Wallet</strong> -- The verified address is persisted to the workspace record.</li>
-<li><strong>Initialize On-Chain Authority</strong> -- If this is the first wallet, a transaction is submitted to register the workspace authority on-chain. If the workspace already has an authority, the wallet is added as a member (requiring the authority's EIP-712 signature).</li>
-<li><strong>Register Delegation</strong> -- A delegation is created and registered, enabling the wallet to authorize on-chain actions through the CodeQuill backend.</li>
+<li><strong>SIWE Verification</strong> - The wallet signs a SIWE message to prove ownership.</li>
+<li><strong>Save Wallet</strong> - The verified address is persisted to the workspace record.</li>
+<li><strong>Initialize On-Chain Authority</strong> - If this is the first wallet, a transaction is submitted to register the workspace authority on-chain. If the workspace already has an authority, the wallet is added as a member (requiring the authority's EIP-712 signature).</li>
+<li><strong>Register Delegation</strong> - A delegation is created and registered, enabling the wallet to authorize on-chain actions through the CodeQuill backend.</li>
 </ol>
 <p>Each step must complete before the next begins. If any step fails (e.g., the user rejects a signature request), the flow pauses and can be resumed from the point of failure.</p>
 <p>[Screenshot: Wallet onboarding flow at the delegation registration step]</p>
@@ -530,7 +530,7 @@ tailwind.config = {
 <li>Key material is bound to the physical authenticator.</li>
 <li>Different operations produce different derived keys.</li>
 </ul>
-<p>If a passkey is lost, encrypted preservations created with that passkey cannot be decrypted. There is no recovery mechanism by design -- CodeQuill does not hold key material.</p>
+<p>If a passkey is lost, encrypted preservations created with that passkey cannot be decrypted. There is no recovery mechanism by design - CodeQuill does not hold key material.</p>
 <p>[Screenshot: Encryption settings showing registered passkeys]</p>
 <h2 id="dao-executor-configuration"><a href="#dao-executor-configuration" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>DAO Executor Configuration</h2>
 <p>Workspaces that operate under DAO governance can configure a <strong>DAO executor address</strong>. The executor is a smart contract (typically a Gnosis Safe, Governor, or custom multisig) authorized to perform on-chain operations on behalf of the workspace.</p>

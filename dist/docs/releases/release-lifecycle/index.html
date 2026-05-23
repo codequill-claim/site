@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Release Lifecycle — CodeQuill">
+<meta name="title" content="Release Lifecycle · CodeQuill">
 <meta name="description" content="Understand the full release lifecycle in CodeQuill: draft creation, on-chain anchoring, governance approval, revocation, and supersession.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/releases/release-lifecycle/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/releases/release-lifecycle/">
-<meta property="og:title" content="Release Lifecycle — CodeQuill">
+<meta property="og:title" content="Release Lifecycle · CodeQuill">
 <meta property="og:description" content="Understand the full release lifecycle in CodeQuill: draft creation, on-chain anchoring, governance approval, revocation, and supersession.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/releases/release-lifecycle/">
-<meta name="twitter:title" content="Release Lifecycle — CodeQuill">
+<meta name="twitter:title" content="Release Lifecycle · CodeQuill">
 <meta name="twitter:description" content="Understand the full release lifecycle in CodeQuill: draft creation, on-chain anchoring, governance approval, revocation, and supersession.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Release Lifecycle — CodeQuill</title>
+    <title>Release Lifecycle · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -403,7 +403,7 @@ tailwind.config = {
     <div class="prose">
         <h1>Release Lifecycle</h1>
 <p>Releases are the governed coordination layer between source snapshots and downstream processes such as attestations and deployment. Every release follows a defined lifecycle, from draft creation through governance resolution.</p>
-<p>Releases are created exclusively in the CodeQuill web application. The CLI is not involved in release creation -- its role ends at snapshot publishing. Once a snapshot has been published, the web application takes over for release management.</p>
+<p>Releases are created exclusively in the CodeQuill web application. The CLI is not involved in release creation - its role ends at snapshot publishing. Once a snapshot has been published, the web application takes over for release management.</p>
 <h2 id="lifecycle-overview"><a href="#lifecycle-overview" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Lifecycle Overview</h2>
 <pre><code>Draft  →  Published (Anchored)  →  PENDING  →  Accepted  →  (Attestation eligible)
                                              →  Rejected
@@ -459,7 +459,7 @@ tailwind.config = {
 <h2 id="editing-drafts"><a href="#editing-drafts" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Editing Drafts</h2>
 <p>Before anchoring, a draft release can be edited. You can change the name, notes, governance configuration, and supersession target. The repository and snapshot selection can also be changed while the release remains in draft state.</p>
 <p>[Screenshot: Draft release editing view showing editable fields and the Anchor button]</p>
-<p>Once you are satisfied with the release configuration, you proceed to anchoring. This is an irreversible action -- review the details carefully before proceeding.</p>
+<p>Once you are satisfied with the release configuration, you proceed to anchoring. This is an irreversible action - review the details carefully before proceeding.</p>
 <h2 id="anchoring-publishing"><a href="#anchoring-publishing" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Anchoring (Publishing)</h2>
 <p>Anchoring a release is the transition from draft to on-chain record. When you anchor a release, the following sequence occurs:</p>
 <ol>
@@ -482,8 +482,8 @@ tailwind.config = {
 <p>After anchoring, the release enters the governance phase with status <strong>PENDING</strong>. The release remains in this state until a governance decision is made.</p>
 <p>The designated governance authority can:</p>
 <ul>
-<li><strong>Accept</strong> the release -- confirming it as the approved version for this repository. Acceptance is recorded on-chain via the <code>accept()</code> function on the <code>CodeQuillReleaseRegistry</code>.</li>
-<li><strong>Reject</strong> the release -- declining it. Rejection is recorded on-chain via the <code>reject()</code> function.</li>
+<li><strong>Accept</strong> the release - confirming it as the approved version for this repository. Acceptance is recorded on-chain via the <code>accept()</code> function on the <code>CodeQuillReleaseRegistry</code>.</li>
+<li><strong>Reject</strong> the release - declining it. Rejection is recorded on-chain via the <code>reject()</code> function.</li>
 </ul>
 <p>Who qualifies as the governance authority depends on the release's configuration:</p>
 <ul>
@@ -493,7 +493,7 @@ tailwind.config = {
 <p>Governance decisions are final. A release that has been accepted cannot later be rejected (though it can be revoked). A rejected release cannot be accepted.</p>
 <h3 id="github-issue-on-acceptance"><a href="#github-issue-on-acceptance" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>GitHub Issue on Acceptance</h3>
 <p>When a release is accepted, a second GitHub Issue is created by <code>codequill-authorship[bot]</code>. This issue signals that the release has passed governance and is now eligible for attestation.</p>
-<p>CI/CD workflows can use this acceptance issue to trigger attestation processes -- for example, building the artifact from the approved source snapshot and running <code>codequill attest</code> against the accepted release. This enables a fully automated pipeline from governance approval through attestation to deployment.</p>
+<p>CI/CD workflows can use this acceptance issue to trigger attestation processes - for example, building the artifact from the approved source snapshot and running <code>codequill attest</code> against the accepted release. This enables a fully automated pipeline from governance approval through attestation to deployment.</p>
 <h3 id="attestation-eligibility"><a href="#attestation-eligibility" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Attestation Eligibility</h3>
 <p>Attestations can <strong>only</strong> be created against releases with status ACCEPTED. This is enforced by the <code>CodeQuillAttestationRegistry</code> smart contract. A release that is pending, rejected, or revoked cannot have attestations created against it.</p>
 <p>This constraint ensures that every attestation is backed by an explicit governance approval. There is no way to bypass this requirement.</p>
@@ -507,10 +507,10 @@ tailwind.config = {
 <li>Existing attestations remain on-chain but reference a revoked release, which downstream consumers should treat as a warning signal.</li>
 <li>The release becomes eligible to be superseded by a new release.</li>
 </ul>
-<p>Revocation is a deliberate act. It indicates that the release should no longer be treated as authoritative -- whether due to a discovered vulnerability, a build error, or any other reason.</p>
+<p>Revocation is a deliberate act. It indicates that the release should no longer be treated as authoritative - whether due to a discovered vulnerability, a build error, or any other reason.</p>
 <h2 id="superseding-a-release"><a href="#superseding-a-release" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Superseding a Release</h2>
 <p>When creating a new release, you can optionally designate it as superseding a previously revoked release. This creates an explicit on-chain link from the revoked release to its replacement.</p>
-<p>Supersession provides a clear upgrade path. Systems or users that hold a reference to the revoked release can follow the supersession link to find the designated replacement. Only revoked releases can be superseded -- you cannot supersede an active or pending release.</p>
+<p>Supersession provides a clear upgrade path. Systems or users that hold a reference to the revoked release can follow the supersession link to find the designated replacement. Only revoked releases can be superseded - you cannot supersede an active or pending release.</p>
 <p>The supersession relationship is recorded in both the release manifest (stored on IPFS) and the on-chain registry, ensuring it is independently verifiable.</p>
 <h2 id="summary-of-status-transitions"><a href="#summary-of-status-transitions" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Summary of Status Transitions</h2>
 <table>

@@ -20,10 +20,10 @@ That fact is recorded on-chain, where it persists regardless of what happens to 
 
 When you claim a repository, the following is recorded on the `CodeQuillRepositoryRegistry` smart contract:
 
-- **Repository ID** -- A `bytes32` identifier derived from the GitHub repository's numeric ID.
-- **Context ID** -- The workspace's on-chain identifier.
-- **Owner** -- The wallet address claiming the repository.
-- **Metadata** -- Additional context (typically the repository name).
+- **Repository ID** - A `bytes32` identifier derived from the GitHub repository's numeric ID.
+- **Context ID** - The workspace's on-chain identifier.
+- **Owner** - The wallet address claiming the repository.
+- **Metadata** - Additional context (typically the repository name).
 
 Claims are unique: a repository can only be claimed once. If a repository is already claimed, a new claim will fail unless the existing owner transfers it.
 

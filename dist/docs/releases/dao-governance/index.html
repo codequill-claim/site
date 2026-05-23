@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="DAO Governance — CodeQuill">
+<meta name="title" content="DAO Governance · CodeQuill">
 <meta name="description" content="Configure a DAO executor to require governance approval for releases. Integrate with Aragon, Governor contracts, or multisig wallets.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/releases/dao-governance/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/releases/dao-governance/">
-<meta property="og:title" content="DAO Governance — CodeQuill">
+<meta property="og:title" content="DAO Governance · CodeQuill">
 <meta property="og:description" content="Configure a DAO executor to require governance approval for releases. Integrate with Aragon, Governor contracts, or multisig wallets.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/releases/dao-governance/">
-<meta name="twitter:title" content="DAO Governance — CodeQuill">
+<meta name="twitter:title" content="DAO Governance · CodeQuill">
 <meta name="twitter:description" content="Configure a DAO executor to require governance approval for releases. Integrate with Aragon, Governor contracts, or multisig wallets.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>DAO Governance — CodeQuill</title>
+    <title>DAO Governance · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -403,7 +403,7 @@ tailwind.config = {
     <div class="prose">
         <h1>DAO Governance</h1>
 <p>CodeQuill supports integration with decentralized autonomous organizations (DAOs) and multisig wallets for release governance. When configured, a workspace can require that release approval decisions come from a DAO executor contract rather than an individual governance authority.</p>
-<p>This enables governance pipelines where release acceptance is contingent on collective decision-making -- a DAO vote, a multisig threshold, or any on-chain governance mechanism that resolves to a single executor address.</p>
+<p>This enables governance pipelines where release acceptance is contingent on collective decision-making - a DAO vote, a multisig threshold, or any on-chain governance mechanism that resolves to a single executor address.</p>
 <h2 id="configuring-the-dao-executor"><a href="#configuring-the-dao-executor" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Configuring the DAO Executor</h2>
 <p>The DAO executor address is configured at the workspace level. Navigate to <strong>Settings &gt; DAO</strong> in the web application.</p>
 <p><img src="/docs/assets/images/screens/dao-configuration.png" alt="DAO Configuration" /></p>
@@ -412,11 +412,11 @@ tailwind.config = {
 <h3 id="what-address-to-use"><a href="#what-address-to-use" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>What Address to Use</h3>
 <p>The DAO executor address should be the address that your governance system uses to execute approved proposals. Common examples:</p>
 <ul>
-<li><strong>Aragon OS:</strong> The Aragon DAO's executor contract address. When a vote passes in the Aragon DAO, the executor contract carries out the approved action -- in this case, calling <code>accept()</code> or <code>reject()</code> on the CodeQuill release registry.</li>
+<li><strong>Aragon OS:</strong> The Aragon DAO's executor contract address. When a vote passes in the Aragon DAO, the executor contract carries out the approved action - in this case, calling <code>accept()</code> or <code>reject()</code> on the CodeQuill release registry.</li>
 <li><strong>Governor contracts (OpenZeppelin Governor, Compound Governor):</strong> The Governor contract's executor or timelock address. After a proposal passes and the timelock period elapses, the executor calls the target function.</li>
 <li><strong>Multisig wallets (Gnosis Safe / Safe):</strong> The Safe contract address. When the required number of signers approve, the Safe executes the transaction.</li>
 </ul>
-<p>Any contract or externally owned account (EOA) can serve as a DAO executor. CodeQuill does not enforce any particular governance framework -- it only checks that the caller of <code>accept()</code> or <code>reject()</code> matches the stored executor address.</p>
+<p>Any contract or externally owned account (EOA) can serve as a DAO executor. CodeQuill does not enforce any particular governance framework - it only checks that the caller of <code>accept()</code> or <code>reject()</code> matches the stored executor address.</p>
 <h3 id="clearing-the-dao-executor"><a href="#clearing-the-dao-executor" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Clearing the DAO Executor</h3>
 <p>To remove the DAO executor configuration, clear the address field and save. This sets the on-chain executor address to <code>0x0000000000000000000000000000000000000000</code>, which effectively disables DAO-only governance. Releases created with the DAO-only flag after clearing the executor will have no valid executor, and no address will be able to accept or reject them through the DAO path.</p>
 <h2 id="creating-a-dao-only-release"><a href="#creating-a-dao-only-release" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Creating a DAO-Only Release</h2>
@@ -437,7 +437,7 @@ tailwind.config = {
 <p>The release is anchored on-chain. The <code>anchorRelease()</code> transaction records the release with its DAO-only governance configuration. At this point, a GitHub Issue is created by <code>codequill-authorship[bot]</code>, which can trigger CI/CD build processes.</p>
 <h3 id="4-dao-votes-or-approves"><a href="#4-dao-votes-or-approves" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>4. DAO Votes or Approves</h3>
 <p>The governance process occurs outside CodeQuill. The team submits a proposal to the DAO (via Aragon, Governor, Safe, or whatever governance system is in use). The proposal, when executed, should call <code>accept()</code> on the <code>CodeQuillReleaseRegistry</code> contract with the release ID.</p>
-<p>How the proposal is structured and voted on depends entirely on the DAO's governance framework. CodeQuill does not participate in or observe the voting process -- it only verifies that the <code>accept()</code> or <code>reject()</code> call comes from the registered executor address.</p>
+<p>How the proposal is structured and voted on depends entirely on the DAO's governance framework. CodeQuill does not participate in or observe the voting process - it only verifies that the <code>accept()</code> or <code>reject()</code> call comes from the registered executor address.</p>
 <h3 id="5-dao-executor-calls-accept"><a href="#5-dao-executor-calls-accept" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>5. DAO Executor Calls Accept</h3>
 <p>When the DAO's governance process resolves (vote passes, multisig threshold met, timelock elapses), the DAO executor contract executes the <code>accept()</code> call on the CodeQuill release registry. The contract verifies that the caller matches the stored DAO executor address for the workspace and that the release is configured as DAO-only.</p>
 <p>If the DAO rejects the release, the executor calls <code>reject()</code> instead.</p>
@@ -467,7 +467,7 @@ GitHub Issue created → CI runs attestation → deploys to production
 <p>This pipeline ensures that no release reaches production without explicit DAO approval. The governance decision is recorded on-chain, the attestation links the artifact to the governed source, and the entire chain of evidence is independently verifiable.</p>
 <h2 id="security-considerations"><a href="#security-considerations" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Security Considerations</h2>
 <ul>
-<li><strong>Executor address changes.</strong> If the DAO executor address is changed after a DAO-only release is anchored but before governance is resolved, the new executor address is the one that must act. The release does not retain a reference to the executor address at the time of anchoring -- it references the workspace's current executor at the time of the governance call.</li>
+<li><strong>Executor address changes.</strong> If the DAO executor address is changed after a DAO-only release is anchored but before governance is resolved, the new executor address is the one that must act. The release does not retain a reference to the executor address at the time of anchoring - it references the workspace's current executor at the time of the governance call.</li>
 <li><strong>Zero address.</strong> If the DAO executor is cleared (set to the zero address) while DAO-only releases are pending, those releases become ungovernable through the DAO path. No address can accept or reject them as the DAO executor. Ensure pending DAO-only releases are resolved before clearing the executor.</li>
 <li><strong>Contract upgrades.</strong> If the DAO executor contract is upgraded or migrated to a new address, update the workspace configuration before any pending DAO-only releases require governance action.</li>
 </ul>

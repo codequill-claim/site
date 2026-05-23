@@ -8,7 +8,7 @@ order: 1
 
 Releases are the governed coordination layer between source snapshots and downstream processes such as attestations and deployment. Every release follows a defined lifecycle, from draft creation through governance resolution.
 
-Releases are created exclusively in the CodeQuill web application. The CLI is not involved in release creation -- its role ends at snapshot publishing. Once a snapshot has been published, the web application takes over for release management.
+Releases are created exclusively in the CodeQuill web application. The CLI is not involved in release creation - its role ends at snapshot publishing. Once a snapshot has been published, the web application takes over for release management.
 
 ## Lifecycle Overview
 
@@ -45,7 +45,7 @@ Before anchoring, a draft release can be edited. You can change the name, notes,
 
 [Screenshot: Draft release editing view showing editable fields and the Anchor button]
 
-Once you are satisfied with the release configuration, you proceed to anchoring. This is an irreversible action -- review the details carefully before proceeding.
+Once you are satisfied with the release configuration, you proceed to anchoring. This is an irreversible action - review the details carefully before proceeding.
 
 ## Anchoring (Publishing)
 
@@ -73,8 +73,8 @@ After anchoring, the release enters the governance phase with status **PENDING**
 
 The designated governance authority can:
 
-- **Accept** the release -- confirming it as the approved version for this repository. Acceptance is recorded on-chain via the `accept()` function on the `CodeQuillReleaseRegistry`.
-- **Reject** the release -- declining it. Rejection is recorded on-chain via the `reject()` function.
+- **Accept** the release - confirming it as the approved version for this repository. Acceptance is recorded on-chain via the `accept()` function on the `CodeQuillReleaseRegistry`.
+- **Reject** the release - declining it. Rejection is recorded on-chain via the `reject()` function.
 
 Who qualifies as the governance authority depends on the release's configuration:
 
@@ -87,7 +87,7 @@ Governance decisions are final. A release that has been accepted cannot later be
 
 When a release is accepted, a second GitHub Issue is created by `codequill-authorship[bot]`. This issue signals that the release has passed governance and is now eligible for attestation.
 
-CI/CD workflows can use this acceptance issue to trigger attestation processes -- for example, building the artifact from the approved source snapshot and running `codequill attest` against the accepted release. This enables a fully automated pipeline from governance approval through attestation to deployment.
+CI/CD workflows can use this acceptance issue to trigger attestation processes - for example, building the artifact from the approved source snapshot and running `codequill attest` against the accepted release. This enables a fully automated pipeline from governance approval through attestation to deployment.
 
 ### Attestation Eligibility
 
@@ -108,13 +108,13 @@ Revocation has the following effects:
 - Existing attestations remain on-chain but reference a revoked release, which downstream consumers should treat as a warning signal.
 - The release becomes eligible to be superseded by a new release.
 
-Revocation is a deliberate act. It indicates that the release should no longer be treated as authoritative -- whether due to a discovered vulnerability, a build error, or any other reason.
+Revocation is a deliberate act. It indicates that the release should no longer be treated as authoritative - whether due to a discovered vulnerability, a build error, or any other reason.
 
 ## Superseding a Release
 
 When creating a new release, you can optionally designate it as superseding a previously revoked release. This creates an explicit on-chain link from the revoked release to its replacement.
 
-Supersession provides a clear upgrade path. Systems or users that hold a reference to the revoked release can follow the supersession link to find the designated replacement. Only revoked releases can be superseded -- you cannot supersede an active or pending release.
+Supersession provides a clear upgrade path. Systems or users that hold a reference to the revoked release can follow the supersession link to find the designated replacement. Only revoked releases can be superseded - you cannot supersede an active or pending release.
 
 The supersession relationship is recorded in both the release manifest (stored on IPFS) and the on-chain registry, ensuring it is independently verifiable.
 

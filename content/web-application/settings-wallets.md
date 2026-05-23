@@ -12,15 +12,15 @@ Workspace settings control identity, authorization, collaboration, encryption, a
 
 The settings page is organized into the following sections:
 
-- **Profile** -- Workspace display name, avatar, and description.
-- **Default Chain** -- The Ethereum network used by default for on-chain operations within the workspace.
-- **Notifications** -- Telegram notification preferences for workspace events (snapshots, attestations, claims, collaborator activity).
+- **Profile** - Workspace display name, avatar, and description.
+- **Default Chain** - The Ethereum network used by default for on-chain operations within the workspace.
+- **Notifications** - Telegram notification preferences for workspace events (snapshots, attestations, claims, collaborator activity).
 
 [Screenshot: Settings overview page showing profile, default chain, and notification preferences]
 
 ## Wallet Management
 
-Wallets are the foundation of on-chain identity in CodeQuill. Every on-chain action -- claiming, snapshotting, attesting, preserving -- is ultimately authorized by a wallet. Wallet management in the web application handles connection, authority initialization, membership, delegation, and identity resolution.
+Wallets are the foundation of on-chain identity in CodeQuill. Every on-chain action - claiming, snapshotting, attesting, preserving - is ultimately authorized by a wallet. Wallet management in the web application handles connection, authority initialization, membership, delegation, and identity resolution.
 
 ### Connecting a Wallet
 
@@ -47,9 +47,9 @@ After a wallet is connected and its role established (authority or member), a **
 
 Delegation parameters include:
 
-- **Scope** -- Which contract functions the delegation covers (e.g., snapshot registration, attestation publishing).
-- **Expiry** -- A timestamp after which the delegation is no longer valid.
-- **Caveats** -- Additional constraints specific to the delegation type.
+- **Scope** - Which contract functions the delegation covers (e.g., snapshot registration, attestation publishing).
+- **Expiry** - A timestamp after which the delegation is no longer valid.
+- **Caveats** - Additional constraints specific to the delegation type.
 
 Delegations can be revoked at any time from the wallet management panel. Expired delegations must be re-registered.
 
@@ -57,23 +57,23 @@ Delegations can be revoked at any time from the wallet management panel. Expired
 
 For wallets with registered ENS names, CodeQuill resolves and displays:
 
-- **ENS name** -- The primary name associated with the address (e.g., `alice.eth`).
-- **ENS avatar** -- The avatar record, if set, displayed alongside the wallet address throughout the interface.
+- **ENS name** - The primary name associated with the address (e.g., `alice.eth`).
+- **ENS avatar** - The avatar record, if set, displayed alongside the wallet address throughout the interface.
 
-ENS resolution is performed at connection time and refreshed periodically. It is purely cosmetic -- all on-chain operations reference the raw Ethereum address.
+ENS resolution is performed at connection time and refreshed periodically. It is purely cosmetic - all on-chain operations reference the raw Ethereum address.
 
 ### Identicon Generation
 
-Wallets without an ENS avatar are assigned a deterministic **identicon** -- a unique visual pattern derived from the wallet address. Identicons provide visual distinction when multiple wallets are connected to a workspace.
+Wallets without an ENS avatar are assigned a deterministic **identicon** - a unique visual pattern derived from the wallet address. Identicons provide visual distinction when multiple wallets are connected to a workspace.
 
 ## Wallet Onboarding Flow
 
 When a user connects their first wallet, a multi-step onboarding sequence ensures all necessary on-chain primitives are established:
 
-1. **SIWE Verification** -- The wallet signs a SIWE message to prove ownership.
-2. **Save Wallet** -- The verified address is persisted to the workspace record.
-3. **Initialize On-Chain Authority** -- If this is the first wallet, a transaction is submitted to register the workspace authority on-chain. If the workspace already has an authority, the wallet is added as a member (requiring the authority's EIP-712 signature).
-4. **Register Delegation** -- A delegation is created and registered, enabling the wallet to authorize on-chain actions through the CodeQuill backend.
+1. **SIWE Verification** - The wallet signs a SIWE message to prove ownership.
+2. **Save Wallet** - The verified address is persisted to the workspace record.
+3. **Initialize On-Chain Authority** - If this is the first wallet, a transaction is submitted to register the workspace authority on-chain. If the workspace already has an authority, the wallet is added as a member (requiring the authority's EIP-712 signature).
+4. **Register Delegation** - A delegation is created and registered, enabling the wallet to authorize on-chain actions through the CodeQuill backend.
 
 Each step must complete before the next begins. If any step fails (e.g., the user rejects a signature request), the flow pauses and can be resumed from the point of failure.
 
@@ -135,7 +135,7 @@ Encryption keys are derived using the **PRF (Pseudo-Random Function) extension**
 - Key material is bound to the physical authenticator.
 - Different operations produce different derived keys.
 
-If a passkey is lost, encrypted preservations created with that passkey cannot be decrypted. There is no recovery mechanism by design -- CodeQuill does not hold key material.
+If a passkey is lost, encrypted preservations created with that passkey cannot be decrypted. There is no recovery mechanism by design - CodeQuill does not hold key material.
 
 [Screenshot: Encryption settings showing registered passkeys]
 

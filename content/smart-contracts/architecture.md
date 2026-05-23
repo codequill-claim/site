@@ -14,7 +14,7 @@ The development framework is Hardhat with Ignition for deterministic deployment.
 
 The contracts form a strict four-tier directed acyclic graph. Each tier depends only on tiers below it; no circular references exist.
 
-### Tier 1 -- Identity & Access
+### Tier 1 - Identity & Access
 
 | Contract | Role |
 |---|---|
@@ -23,7 +23,7 @@ The contracts form a strict four-tier directed acyclic graph. Each tier depends 
 
 These contracts have no CodeQuill contract dependencies. They are deployed first and provide the identity and authorization primitives consumed by every tier above.
 
-### Tier 2 -- Repository & Snapshots
+### Tier 2 - Repository & Snapshots
 
 | Contract | Depends on |
 |---|---|
@@ -32,7 +32,7 @@ These contracts have no CodeQuill contract dependencies. They are deployed first
 
 Tier 2 introduces data registration: binding repositories to owners and anchoring cryptographic snapshots of source code.
 
-### Tier 3 -- Releases & Preservations
+### Tier 3 - Releases & Preservations
 
 | Contract | Depends on |
 |---|---|
@@ -41,7 +41,7 @@ Tier 2 introduces data registration: binding repositories to owners and anchorin
 
 Tier 3 builds on snapshot data to support release lifecycle governance and encrypted archive anchoring.
 
-### Tier 4 -- Trust & Verification
+### Tier 4 - Trust & Verification
 
 | Contract | Depends on |
 |---|---|
@@ -77,7 +77,7 @@ There is no `owner`, no `admin` role, no `pause` function. Once deployed, the co
 
 ### 6. Append-only with soft revocation
 
-Records are append-only. Snapshots, releases, attestations, and preservations can never be deleted from contract storage. Where lifecycle transitions are needed -- revoking a release, superseding it with a newer version, or revoking an attestation -- the contract marks the record's status without removing the underlying data.
+Records are append-only. Snapshots, releases, attestations, and preservations can never be deleted from contract storage. Where lifecycle transitions are needed - revoking a release, superseding it with a newer version, or revoking an attestation - the contract marks the record's status without removing the underlying data.
 
 ## Delegation Scopes
 

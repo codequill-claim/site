@@ -8,7 +8,7 @@ order: 2
 
 CodeQuill supports integration with decentralized autonomous organizations (DAOs) and multisig wallets for release governance. When configured, a workspace can require that release approval decisions come from a DAO executor contract rather than an individual governance authority.
 
-This enables governance pipelines where release acceptance is contingent on collective decision-making -- a DAO vote, a multisig threshold, or any on-chain governance mechanism that resolves to a single executor address.
+This enables governance pipelines where release acceptance is contingent on collective decision-making - a DAO vote, a multisig threshold, or any on-chain governance mechanism that resolves to a single executor address.
 
 ## Configuring the DAO Executor
 
@@ -24,11 +24,11 @@ When you save the configuration, the web application calls `setDaoExecutor()` on
 
 The DAO executor address should be the address that your governance system uses to execute approved proposals. Common examples:
 
-- **Aragon OS:** The Aragon DAO's executor contract address. When a vote passes in the Aragon DAO, the executor contract carries out the approved action -- in this case, calling `accept()` or `reject()` on the CodeQuill release registry.
+- **Aragon OS:** The Aragon DAO's executor contract address. When a vote passes in the Aragon DAO, the executor contract carries out the approved action - in this case, calling `accept()` or `reject()` on the CodeQuill release registry.
 - **Governor contracts (OpenZeppelin Governor, Compound Governor):** The Governor contract's executor or timelock address. After a proposal passes and the timelock period elapses, the executor calls the target function.
 - **Multisig wallets (Gnosis Safe / Safe):** The Safe contract address. When the required number of signers approve, the Safe executes the transaction.
 
-Any contract or externally owned account (EOA) can serve as a DAO executor. CodeQuill does not enforce any particular governance framework -- it only checks that the caller of `accept()` or `reject()` matches the stored executor address.
+Any contract or externally owned account (EOA) can serve as a DAO executor. CodeQuill does not enforce any particular governance framework - it only checks that the caller of `accept()` or `reject()` matches the stored executor address.
 
 ### Clearing the DAO Executor
 
@@ -65,7 +65,7 @@ The release is anchored on-chain. The `anchorRelease()` transaction records the 
 
 The governance process occurs outside CodeQuill. The team submits a proposal to the DAO (via Aragon, Governor, Safe, or whatever governance system is in use). The proposal, when executed, should call `accept()` on the `CodeQuillReleaseRegistry` contract with the release ID.
 
-How the proposal is structured and voted on depends entirely on the DAO's governance framework. CodeQuill does not participate in or observe the voting process -- it only verifies that the `accept()` or `reject()` call comes from the registered executor address.
+How the proposal is structured and voted on depends entirely on the DAO's governance framework. CodeQuill does not participate in or observe the voting process - it only verifies that the `accept()` or `reject()` call comes from the registered executor address.
 
 ### 5. DAO Executor Calls Accept
 
@@ -105,6 +105,6 @@ This pipeline ensures that no release reaches production without explicit DAO ap
 
 ## Security Considerations
 
-- **Executor address changes.** If the DAO executor address is changed after a DAO-only release is anchored but before governance is resolved, the new executor address is the one that must act. The release does not retain a reference to the executor address at the time of anchoring -- it references the workspace's current executor at the time of the governance call.
+- **Executor address changes.** If the DAO executor address is changed after a DAO-only release is anchored but before governance is resolved, the new executor address is the one that must act. The release does not retain a reference to the executor address at the time of anchoring - it references the workspace's current executor at the time of the governance call.
 - **Zero address.** If the DAO executor is cleared (set to the zero address) while DAO-only releases are pending, those releases become ungovernable through the DAO path. No address can accept or reject them as the DAO executor. Ensure pending DAO-only releases are resolved before clearing the executor.
 - **Contract upgrades.** If the DAO executor contract is upgraded or migrated to a new address, update the workspace configuration before any pending DAO-only releases require governance action.

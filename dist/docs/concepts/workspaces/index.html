@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Workspaces — CodeQuill">
+<meta name="title" content="Workspaces · CodeQuill">
 <meta name="description" content="Workspaces are the top-level organizational unit in CodeQuill, binding wallets, collaborators, and repositories under a single on-chain identity.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/concepts/workspaces/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/concepts/workspaces/">
-<meta property="og:title" content="Workspaces — CodeQuill">
+<meta property="og:title" content="Workspaces · CodeQuill">
 <meta property="og:description" content="Workspaces are the top-level organizational unit in CodeQuill, binding wallets, collaborators, and repositories under a single on-chain identity.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/concepts/workspaces/">
-<meta name="twitter:title" content="Workspaces — CodeQuill">
+<meta name="twitter:title" content="Workspaces · CodeQuill">
 <meta name="twitter:description" content="Workspaces are the top-level organizational unit in CodeQuill, binding wallets, collaborators, and repositories under a single on-chain identity.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Workspaces — CodeQuill</title>
+    <title>Workspaces · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -404,40 +404,40 @@ tailwind.config = {
         <h1>Workspaces</h1>
 <p>A workspace is the top-level organizational unit in CodeQuill. It maps to a GitHub organization or user account and serves as the boundary for authority, collaboration, and on-chain identity.</p>
 <h2 id="what-a-workspace-represents"><a href="#what-a-workspace-represents" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>What a Workspace Represents</h2>
-<p>Every action in CodeQuill -- claiming a repository, creating a snapshot, anchoring a release, or attesting an artifact -- happens within the context of a workspace. The workspace defines:</p>
+<p>Every action in CodeQuill - claiming a repository, creating a snapshot, anchoring a release, or attesting an artifact - happens within the context of a workspace. The workspace defines:</p>
 <ul>
-<li><strong>Who has authority</strong> -- Which wallets are authorized to act on behalf of this workspace.</li>
-<li><strong>Who can collaborate</strong> -- Which team members have access, and at what level.</li>
-<li><strong>What chain to use</strong> -- The default blockchain network for on-chain operations.</li>
-<li><strong>What plan is active</strong> -- Quotas for claims, snapshots, attestations, and collaborators.</li>
-<li><strong>How governance works</strong> -- Whether a DAO executor controls release approvals.</li>
+<li><strong>Who has authority</strong> - Which wallets are authorized to act on behalf of this workspace.</li>
+<li><strong>Who can collaborate</strong> - Which team members have access, and at what level.</li>
+<li><strong>What chain to use</strong> - The default blockchain network for on-chain operations.</li>
+<li><strong>What plan is active</strong> - Quotas for claims, snapshots, attestations, and collaborators.</li>
+<li><strong>How governance works</strong> - Whether a DAO executor controls release approvals.</li>
 </ul>
 <h2 id="on-chain-identity"><a href="#on-chain-identity" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>On-Chain Identity</h2>
-<p>Each workspace has a <strong>context ID</strong> -- a <code>keccak256</code> hash of the workspace's internal identifier. This context ID is used across all smart contracts to scope operations to the correct workspace.</p>
+<p>Each workspace has a <strong>context ID</strong> - a <code>keccak256</code> hash of the workspace's internal identifier. This context ID is used across all smart contracts to scope operations to the correct workspace.</p>
 <p>The on-chain workspace model has two roles:</p>
 <ul>
-<li><strong>Authority</strong> -- A single wallet address that controls the workspace. The authority can add or remove members, transfer authority to a new wallet, and manage delegations. The authority is set during initial wallet onboarding and is recorded on the <code>CodeQuillWorkspaceRegistry</code> contract.</li>
-<li><strong>Members</strong> -- Additional wallet addresses that can perform operations on behalf of the workspace. Members are added by the authority via EIP-712 signed messages.</li>
+<li><strong>Authority</strong> - A single wallet address that controls the workspace. The authority can add or remove members, transfer authority to a new wallet, and manage delegations. The authority is set during initial wallet onboarding and is recorded on the <code>CodeQuillWorkspaceRegistry</code> contract.</li>
+<li><strong>Members</strong> - Additional wallet addresses that can perform operations on behalf of the workspace. Members are added by the authority via EIP-712 signed messages.</li>
 </ul>
 <p>The authority is the root of trust. If you control the authority wallet, you control the workspace's on-chain identity.</p>
 <h2 id="delegation"><a href="#delegation" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Delegation</h2>
 <p>To avoid requiring users to pay gas or be online for every operation, CodeQuill uses a <strong>delegation system</strong>. Workspace members sign an EIP-712 message granting the platform's relayer permission to submit transactions on their behalf.</p>
 <p>Delegations are:</p>
 <ul>
-<li><strong>Scoped</strong> -- You can grant permission for specific operations (claim, snapshot, attest, release, preservation) or all operations.</li>
-<li><strong>Time-bound</strong> -- Every delegation has an expiry timestamp.</li>
-<li><strong>Revocable</strong> -- Delegations can be revoked at any time by the owner.</li>
+<li><strong>Scoped</strong> - You can grant permission for specific operations (claim, snapshot, attest, release, preservation) or all operations.</li>
+<li><strong>Time-bound</strong> - Every delegation has an expiry timestamp.</li>
+<li><strong>Revocable</strong> - Delegations can be revoked at any time by the owner.</li>
 </ul>
 <p>This means the CodeQuill platform can submit on-chain transactions for you (gasless from your perspective), but only within the scope and timeframe you authorized.</p>
 <h2 id="workspace-settings"><a href="#workspace-settings" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Workspace Settings</h2>
 <p>Workspaces are configured through the web application at <a href="https://app.codequill.xyz">app.codequill.xyz</a>. Key settings include:</p>
 <ul>
-<li><strong>Profile</strong> -- Workspace name, default blockchain network, notification preferences.</li>
-<li><strong>Wallets</strong> -- Connect wallets via Sign-In with Ethereum (SIWE), manage authority, extend delegations.</li>
-<li><strong>Collaborators</strong> -- Invite team members, assign workspace-level roles (owner, admin, member) and repository-level roles (viewer, publisher, attester, maintainer).</li>
-<li><strong>DAO Executor</strong> -- Set an external DAO executor address for governance-controlled releases. See <a href="/docs/releases/dao-governance">DAO Governance</a>.</li>
-<li><strong>Encryption</strong> -- Register passkeys for workspace encryption (used for snapshots, preservations, and proofs).</li>
-<li><strong>Plan &amp; Quota</strong> -- View your subscription tier and current usage.</li>
+<li><strong>Profile</strong> - Workspace name, default blockchain network, notification preferences.</li>
+<li><strong>Wallets</strong> - Connect wallets via Sign-In with Ethereum (SIWE), manage authority, extend delegations.</li>
+<li><strong>Collaborators</strong> - Invite team members, assign workspace-level roles (owner, admin, member) and repository-level roles (viewer, publisher, attester, maintainer).</li>
+<li><strong>DAO Executor</strong> - Set an external DAO executor address for governance-controlled releases. See <a href="/docs/releases/dao-governance">DAO Governance</a>.</li>
+<li><strong>Encryption</strong> - Register passkeys for workspace encryption (used for snapshots, preservations, and proofs).</li>
+<li><strong>Plan &amp; Quota</strong> - View your subscription tier and current usage.</li>
 </ul>
 <h2 id="multi-workspace-support"><a href="#multi-workspace-support" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Multi-Workspace Support</h2>
 <p>Users can belong to multiple workspaces (one per GitHub organization or user account). The web application allows switching between workspaces, and each workspace maintains its own independent set of wallets, claims, snapshots, releases, and quotas.</p>
@@ -451,7 +451,7 @@ tailwind.config = {
 </ul>
 <p>Public profiles allow anyone to inspect the evidence trail associated with a workspace without needing an account.</p>
 <h3 id="opting-out"><a href="#opting-out" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Opting Out</h3>
-<p>Public profiles are enabled by default, but workspaces can opt out at any time from <strong>Settings</strong>. Organizations that prefer to remain invisible can disable their public profile, and re-enable it whenever they choose. The on-chain evidence records remain independently verifiable regardless of profile visibility -- opting out only hides the workspace from the CodeQuill web interface.</p>
+<p>Public profiles are enabled by default, but workspaces can opt out at any time from <strong>Settings</strong>. Organizations that prefer to remain invisible can disable their public profile, and re-enable it whenever they choose. The on-chain evidence records remain independently verifiable regardless of profile visibility - opting out only hides the workspace from the CodeQuill web interface.</p>
 
     </div>
 

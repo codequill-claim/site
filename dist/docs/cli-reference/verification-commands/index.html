@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Verification Commands — CodeQuill">
+<meta name="title" content="Verification Commands · CodeQuill">
 <meta name="description" content="CLI commands for verification: attest build artifacts, generate Merkle proofs-of-inclusion, verify proofs offline, and preserve source code.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/cli-reference/verification-commands/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/cli-reference/verification-commands/">
-<meta property="og:title" content="Verification Commands — CodeQuill">
+<meta property="og:title" content="Verification Commands · CodeQuill">
 <meta property="og:description" content="CLI commands for verification: attest build artifacts, generate Merkle proofs-of-inclusion, verify proofs offline, and preserve source code.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/cli-reference/verification-commands/">
-<meta name="twitter:title" content="Verification Commands — CodeQuill">
+<meta name="twitter:title" content="Verification Commands · CodeQuill">
 <meta name="twitter:description" content="CLI commands for verification: attest build artifacts, generate Merkle proofs-of-inclusion, verify proofs offline, and preserve source code.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Verification Commands — CodeQuill</title>
+    <title>Verification Commands · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -458,7 +458,7 @@ tailwind.config = {
 <td><code>--upstream &lt;purl&gt;</code></td>
 <td>string</td>
 <td><em>(none)</em></td>
-<td>Package URL (purl) of an upstream dependency. <strong>Repeatable</strong> -- pass multiple times to declare multiple upstreams.</td>
+<td>Package URL (purl) of an upstream dependency. <strong>Repeatable</strong> - pass multiple times to declare multiple upstreams.</td>
 </tr>
 <tr>
 <td><code>--confirmations &lt;n&gt;</code></td>
@@ -609,7 +609,7 @@ Proof generated.
 <ul>
 <li>This command requires passkey approval. Your browser will prompt you to verify with your registered passkey (biometric, hardware key, or platform authenticator). The passkey is used to derive the decryption keys needed to access the snapshot's salt.</li>
 <li>By default, the proof does <strong>not</strong> include the plaintext file path. This means a verifier can confirm that <em>some</em> file with a specific content hash was included in the snapshot, but cannot determine which file it was. Use <code>--disclose</code> to include the path when transparency is preferred over privacy.</li>
-<li>The proof manifest is a self-contained JSON file that can be shared with any third party. It contains the Merkle proof siblings, the leaf hash, and the root -- everything needed for independent verification.</li>
+<li>The proof manifest is a self-contained JSON file that can be shared with any third party. It contains the Merkle proof siblings, the leaf hash, and the root - everything needed for independent verification.</li>
 <li>Verification of the proof does not require authentication or contact with CodeQuill servers. See <code>codequill verify-proof</code>.</li>
 </ul>
 <hr />
@@ -656,7 +656,7 @@ Verification: PASSED
 <li>This is a <strong>pure local verification</strong>. No network requests are made, no authentication is required, and no data is sent to any server. Anyone with the CLI installed can verify a proof.</li>
 <li>The command checks that the Merkle proof siblings, combined with the leaf hash along the specified path, reconstruct the Merkle root declared in the manifest.</li>
 <li>It does <strong>not</strong> verify that the Merkle root itself is anchored on-chain. To confirm on-chain anchoring, cross-reference the root with the snapshot's on-chain record using a block explorer or <code>codequill log</code>.</li>
-<li>A failing verification indicates that the proof is invalid -- either the file was not part of the snapshot, or the proof has been tampered with.</li>
+<li>A failing verification indicates that the proof is invalid - either the file was not part of the snapshot, or the proof has been tampered with.</li>
 </ul>
 <hr />
 <h2 id="codequill-preserve"><a href="#codequill-preserve" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>codequill preserve</h2>

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Trust Index — CodeQuill">
+<meta name="title" content="Trust Index · CodeQuill">
 <meta name="description" content="The Trust Index is an evidence-based reputation signal computed from verifiable source activity. Learn how it works, what it measures, and how to improve your score.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/concepts/trust-index/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/concepts/trust-index/">
-<meta property="og:title" content="Trust Index — CodeQuill">
+<meta property="og:title" content="Trust Index · CodeQuill">
 <meta property="og:description" content="The Trust Index is an evidence-based reputation signal computed from verifiable source activity. Learn how it works, what it measures, and how to improve your score.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/concepts/trust-index/">
-<meta name="twitter:title" content="Trust Index — CodeQuill">
+<meta name="twitter:title" content="Trust Index · CodeQuill">
 <meta name="twitter:description" content="The Trust Index is an evidence-based reputation signal computed from verifiable source activity. Learn how it works, what it measures, and how to improve your score.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Trust Index — CodeQuill</title>
+    <title>Trust Index · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -405,14 +405,14 @@ tailwind.config = {
 <p>The CodeQuill Trust Index is a non-transferable, evidence-based reputation signal computed from verifiable, on-chain source activity. It produces a score from 0 to 100 that summarizes the breadth, depth, and consistency of a repository's evidence footprint.</p>
 <p>The Trust Index is computed at two levels:</p>
 <ul>
-<li><strong>Per-repository</strong> -- the primary unit of computation, derived from a repository's snapshots, releases, attestations, preservations, and dependency graph.</li>
-<li><strong>Per-workspace</strong> -- a weighted aggregate of all repository scores within a workspace.</li>
+<li><strong>Per-repository</strong> - the primary unit of computation, derived from a repository's snapshots, releases, attestations, preservations, and dependency graph.</li>
+<li><strong>Per-workspace</strong> - a weighted aggregate of all repository scores within a workspace.</li>
 </ul>
 <p>Scores are recomputed daily and displayed across the CodeQuill platform: on repository pages, the dashboard, public workspace profiles, and certificate pages.</p>
 <hr />
 <h2 id="why-the-trust-index-exists"><a href="#why-the-trust-index-exists" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Why the Trust Index Exists</h2>
 <p>Software trust today relies on indirect, social signals: GitHub stars, download counts, brand recognition, team reputation. These signals are valuable but fundamentally <strong>disconnected from verifiable evidence</strong>. A popular project may have no on-chain evidence of its source history. A lesser-known project may have 18 months of continuous, verified snapshots with external attestors.</p>
-<p>The Trust Index is designed to complement -- not replace -- social signals by asking a more specific question:</p>
+<p>The Trust Index is designed to complement - not replace - social signals by asking a more specific question:</p>
 <blockquote>
 <p><em>&quot;How much verifiable, long-lived, independently referenced source evidence exists for this repository?&quot;</em></p>
 </blockquote>
@@ -425,7 +425,7 @@ tailwind.config = {
 <li>Does it have a credible team? <em>(Social signals, brand)</em></li>
 </ol>
 <p>None of these answer: &quot;Can I verify what source code was used to produce the build artifact I'm about to install?&quot; or &quot;Has this project consistently published cryptographic evidence of its source state?&quot;</p>
-<p>The Trust Index fills this gap. It measures the <strong>observable evidence</strong> of a project's commitment to verifiable software practices -- and it does so using records that are immutable, timestamped, and independently verifiable.</p>
+<p>The Trust Index fills this gap. It measures the <strong>observable evidence</strong> of a project's commitment to verifiable software practices - and it does so using records that are immutable, timestamped, and independently verifiable.</p>
 <hr />
 <h2 id="the-six-factors"><a href="#the-six-factors" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>The Six Factors</h2>
 <p>The Trust Index is computed as a weighted sum of six independent subscores. Each factor captures a different dimension of verifiable software evidence.</p>
@@ -458,11 +458,11 @@ tailwind.config = {
 <td>None</td>
 </tr>
 <tr>
-<td>91 -- 180 days</td>
+<td>91 - 180 days</td>
 <td>20% reduction</td>
 </tr>
 <tr>
-<td>181 -- 365 days</td>
+<td>181 - 365 days</td>
 <td>40% reduction</td>
 </tr>
 <tr>
@@ -473,7 +473,7 @@ tailwind.config = {
 </table>
 <p>This means a repository that published snapshots for 12 months but then went silent for a year will score lower than one with 12 months of continuous activity. The Continuity factor rewards sustained commitment to evidence production.</p>
 <h3 id="release-governance-20"><a href="#release-governance-20" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Release Governance (20%)</h3>
-<p>Snapshots capture raw evidence. Releases represent <strong>intent</strong> -- a deliberate decision that a particular source state should be treated as a versioned unit. The Release Governance factor measures release maturity, cadence, and governance outcomes.</p>
+<p>Snapshots capture raw evidence. Releases represent <strong>intent</strong> - a deliberate decision that a particular source state should be treated as a versioned unit. The Release Governance factor measures release maturity, cadence, and governance outcomes.</p>
 <p>Three components contribute to the score:</p>
 <ol>
 <li><strong>Release cadence</strong> (50% of this factor): The number of distinct months with at least one published release, up to 12 months for a full subscore.</li>
@@ -486,7 +486,7 @@ tailwind.config = {
 <p>Three components contribute:</p>
 <ol>
 <li><strong>Self-attestation volume</strong> (30%): Total attestations, log-scaled. This captures the project's own attestation discipline.</li>
-<li><strong>External attestors</strong> (40%): The number of unique external workspaces that have attested artifacts. This is the most valuable signal -- it represents independent verification by third parties.</li>
+<li><strong>External attestors</strong> (40%): The number of unique external workspaces that have attested artifacts. This is the most valuable signal - it represents independent verification by third parties.</li>
 <li><strong>Attestation cadence</strong> (30%): Distinct months with at least one attestation, up to 12 months.</li>
 </ol>
 <p>The external attestor component is deliberately weighted highest because it represents something the repository owner cannot fabricate: independent, third-party verification. Without any external attestors, the maximum Attestation subscore is capped at approximately 60% of its potential.</p>
@@ -517,27 +517,27 @@ tailwind.config = {
 </thead>
 <tbody>
 <tr>
-<td>0 -- 20</td>
+<td>0 - 20</td>
 <td><strong>New</strong></td>
 <td>Recently started publishing evidence. Limited history.</td>
 </tr>
 <tr>
-<td>21 -- 40</td>
+<td>21 - 40</td>
 <td><strong>Emerging</strong></td>
 <td>Building a track record. Some verifiable activity over time.</td>
 </tr>
 <tr>
-<td>41 -- 60</td>
+<td>41 - 60</td>
 <td><strong>Established</strong></td>
 <td>Consistent evidence production with governance and preservation.</td>
 </tr>
 <tr>
-<td>61 -- 80</td>
+<td>61 - 80</td>
 <td><strong>Trusted</strong></td>
 <td>Strong, long-lived evidence footprint with external verification.</td>
 </tr>
 <tr>
-<td>81 -- 100</td>
+<td>81 - 100</td>
 <td><strong>Proven</strong></td>
 <td>Exceptional evidence record with sustained external reliance.</td>
 </tr>
@@ -564,7 +564,7 @@ tailwind.config = {
 </ul>
 <p>Volume alone cannot push a score to the top. Sustained activity over time, governance decisions, and external verification are required.</p>
 <h3 id="self-only-ceiling"><a href="#self-only-ceiling" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Self-Only Ceiling</h3>
-<p>A repository that only produces evidence about itself -- snapshots, releases, self-attestations, preservations -- without any external attestors or downstream dependents can achieve a maximum Trust Index of approximately <strong>70 out of 100</strong>.</p>
+<p>A repository that only produces evidence about itself - snapshots, releases, self-attestations, preservations - without any external attestors or downstream dependents can achieve a maximum Trust Index of approximately <strong>70 out of 100</strong>.</p>
 <p>Reaching the highest tiers (Trusted and Proven) requires independent external signals: other workspaces attesting your artifacts or declaring your repository as an upstream dependency. This ceiling ensures that the Trust Index reflects real-world reliance, not just self-assertion.</p>
 <h3 id="uniqueness-enforcement"><a href="#uniqueness-enforcement" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Uniqueness Enforcement</h3>
 <p>External signals are counted once per workspace. If the same external workspace attests 100 artifacts from your repository, it counts as one external attestor. This prevents collusion between two parties from inflating scores.</p>
@@ -572,7 +572,7 @@ tailwind.config = {
 <p>The Trust Index accounts for projects that were once active but have become dormant. If no new snapshots, releases, or attestations are published for 6 months:</p>
 <ul>
 <li>The score begins decaying at 5% per quarter (every 3 months).</li>
-<li>The minimum decay floor is 50% of the computed score -- historical evidence retains baseline value even if the project becomes inactive.</li>
+<li>The minimum decay floor is 50% of the computed score - historical evidence retains baseline value even if the project becomes inactive.</li>
 <li>Any new evidence activity (a single snapshot, release, or attestation) immediately resets the decay clock.</li>
 </ul>
 <p>This ensures that the Trust Index reflects <strong>current</strong> evidence production, not just historical activity. A project that was highly active two years ago but has published nothing since will see its score gradually decrease, while still retaining credit for its historical evidence.</p>

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="FAQ — CodeQuill">
+<meta name="title" content="FAQ · CodeQuill">
 <meta name="description" content="Frequently asked questions about CodeQuill: what problem it solves, how it compares to Sigstore, whether it guarantees build security, and more.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/reference/faq/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/reference/faq/">
-<meta property="og:title" content="FAQ — CodeQuill">
+<meta property="og:title" content="FAQ · CodeQuill">
 <meta property="og:description" content="Frequently asked questions about CodeQuill: what problem it solves, how it compares to Sigstore, whether it guarantees build security, and more.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/reference/faq/">
-<meta name="twitter:title" content="FAQ — CodeQuill">
+<meta name="twitter:title" content="FAQ · CodeQuill">
 <meta name="twitter:description" content="Frequently asked questions about CodeQuill: what problem it solves, how it compares to Sigstore, whether it guarantees build security, and more.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>FAQ — CodeQuill</title>
+    <title>FAQ · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -404,10 +404,10 @@ tailwind.config = {
         <h1>FAQ</h1>
 <h2 id="what-problem-does-codequill-solve"><a href="#what-problem-does-codequill-solve" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>What problem does CodeQuill solve?</h2>
 <p>CodeQuill creates durable, verifiable evidence about source code. It answers questions that existing tools leave unaddressed: &quot;What source code existed at this moment?&quot;, &quot;Who claimed authority over this repository?&quot;, &quot;Was this artifact attested against a governed release?&quot;</p>
-<p>Source code is mutable. Repositories are deleted, commits are amended, platforms change their terms or shut down. CodeQuill produces cryptographic records -- anchored on a blockchain, stored on IPFS -- that survive these events. The evidence is independently verifiable by anyone, without requiring CodeQuill's continued availability.</p>
+<p>Source code is mutable. Repositories are deleted, commits are amended, platforms change their terms or shut down. CodeQuill produces cryptographic records - anchored on a blockchain, stored on IPFS - that survive these events. The evidence is independently verifiable by anyone, without requiring CodeQuill's continued availability.</p>
 <p>This is useful for open-source maintainers who need to prove authorship, organizations with audit obligations, DAOs that govern software releases, and anyone who needs a durable record of what source code existed and who spoke for it.</p>
 <h2 id="is-codequill-a-single-point-of-trust"><a href="#is-codequill-a-single-point-of-trust" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Is CodeQuill a single point of trust?</h2>
-<p>No. CodeQuill's architecture is designed so that no single system -- including CodeQuill itself -- must remain trustworthy for past evidence to remain valid.</p>
+<p>No. CodeQuill's architecture is designed so that no single system - including CodeQuill itself - must remain trustworthy for past evidence to remain valid.</p>
 <p><strong>On-chain records are independent.</strong> Snapshot Merkle roots, release anchors, attestation records, and preservation hashes are stored on the blockchain. They can be read by anyone with access to the chain, without interacting with CodeQuill.</p>
 <p><strong>IPFS manifests are retrievable.</strong> Snapshot manifests, release manifests, and attestation manifests are stored on IPFS. They can be fetched from any IPFS gateway, not only through CodeQuill's infrastructure.</p>
 <p><strong>Proofs are verifiable offline.</strong> A Merkle proof-of-inclusion can be verified with nothing more than the proof file and the on-chain Merkle root. No network request to CodeQuill is required.</p>
@@ -415,8 +415,8 @@ tailwind.config = {
 <p>If CodeQuill were to cease operating, all previously anchored evidence would remain accessible and verifiable through the blockchain and IPFS directly.</p>
 <h2 id="how-does-codequill-compare-to-sigstore"><a href="#how-does-codequill-compare-to-sigstore" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>How does CodeQuill compare to Sigstore?</h2>
 <p>Sigstore and CodeQuill operate at different layers and are complementary.</p>
-<p><strong>Sigstore</strong> signs artifacts at the output layer. It answers: &quot;Who signed this artifact, and when?&quot; Sigstore provides keyless signing, a transparency log (Rekor), and certificate-based identity binding. It is focused on the artifact -- the binary, container image, or package that is distributed.</p>
-<p><strong>CodeQuill</strong> preserves evidence at the input layer. It answers: &quot;What source code existed, who claimed authority over it, and what release was this artifact attested against?&quot; CodeQuill is focused on the source -- the code that the artifact was supposedly built from.</p>
+<p><strong>Sigstore</strong> signs artifacts at the output layer. It answers: &quot;Who signed this artifact, and when?&quot; Sigstore provides keyless signing, a transparency log (Rekor), and certificate-based identity binding. It is focused on the artifact - the binary, container image, or package that is distributed.</p>
+<p><strong>CodeQuill</strong> preserves evidence at the input layer. It answers: &quot;What source code existed, who claimed authority over it, and what release was this artifact attested against?&quot; CodeQuill is focused on the source - the code that the artifact was supposedly built from.</p>
 <p>Together, they create a chain: CodeQuill anchors the source state, a build process produces an artifact, Sigstore signs the artifact, and a CodeQuill attestation links the signed artifact back to the governed source release. Neither tool alone provides this full chain.</p>
 <h2 id="does-codequill-guarantee-my-builds-are-secure"><a href="#does-codequill-guarantee-my-builds-are-secure" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Does CodeQuill guarantee my builds are secure?</h2>
 <p>No. CodeQuill does not observe, validate, or constrain build processes. It does not verify that a build is correct, deterministic, or free from tampering.</p>
@@ -424,12 +424,12 @@ tailwind.config = {
 <p>For build security, consider reproducible build frameworks, build provenance standards (SLSA), and CI pipeline hardening. CodeQuill provides the source reference that these tools can point to. See <a href="/docs/security/non-guarantees">Non-Guarantees</a> for a full discussion.</p>
 <h2 id="do-i-need-reproducible-builds-to-use-codequill"><a href="#do-i-need-reproducible-builds-to-use-codequill" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Do I need reproducible builds to use CodeQuill?</h2>
 <p>No. CodeQuill operates independently of how your software is built.</p>
-<p>Reproducible builds and CodeQuill are complementary. Reproducible builds prove that a build process is deterministic -- given the same inputs, the same output is produced. CodeQuill proves what the inputs were -- which source code existed at the time of the snapshot.</p>
+<p>Reproducible builds and CodeQuill are complementary. Reproducible builds prove that a build process is deterministic - given the same inputs, the same output is produced. CodeQuill proves what the inputs were - which source code existed at the time of the snapshot.</p>
 <p>You can use CodeQuill without reproducible builds to establish a durable record of source state, govern releases, and attest artifacts. You can use reproducible builds without CodeQuill to verify build determinism. Using both together provides the strongest evidence chain: verified source state, verified build determinism, and a recorded link between them.</p>
 <h2 id="is-source-code-stored-on-the-blockchain"><a href="#is-source-code-stored-on-the-blockchain" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Is source code stored on the blockchain?</h2>
 <p>No. Only cryptographic hashes and identifiers are stored on-chain.</p>
 <p>Specifically, the blockchain stores: Merkle roots (representing file tree state), manifest CIDs (pointers to IPFS-stored manifests), commit hashes, wallet addresses, timestamps, and governance decisions. No file contents, file paths, or source code are written to the blockchain.</p>
-<p>Snapshot manifests -- which contain per-file hashes and salted path hashes, but not file contents -- are stored on IPFS. The actual source code remains on your local machine or in your repository. If you create a <a href="/docs/concepts/preservations">preservation</a>, an encrypted copy of the source archive is stored on IPFS, but it is encrypted with keys that only the workspace authority possesses.</p>
+<p>Snapshot manifests - which contain per-file hashes and salted path hashes, but not file contents - are stored on IPFS. The actual source code remains on your local machine or in your repository. If you create a <a href="/docs/concepts/preservations">preservation</a>, an encrypted copy of the source archive is stored on IPFS, but it is encrypted with keys that only the workspace authority possesses.</p>
 <h2 id="is-preservation-mandatory"><a href="#is-preservation-mandatory" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Is preservation mandatory?</h2>
 <p>No. Preservation is an optional feature. Snapshots, releases, attestations, and proofs all function independently of preservation.</p>
 <p>A snapshot captures the cryptographic state of your source code without storing the source itself. This is sufficient for most evidence needs: proving what existed, governing releases, and attesting artifacts.</p>

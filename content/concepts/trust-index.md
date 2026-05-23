@@ -10,8 +10,8 @@ The CodeQuill Trust Index is a non-transferable, evidence-based reputation signa
 
 The Trust Index is computed at two levels:
 
-- **Per-repository** -- the primary unit of computation, derived from a repository's snapshots, releases, attestations, preservations, and dependency graph.
-- **Per-workspace** -- a weighted aggregate of all repository scores within a workspace.
+- **Per-repository** - the primary unit of computation, derived from a repository's snapshots, releases, attestations, preservations, and dependency graph.
+- **Per-workspace** - a weighted aggregate of all repository scores within a workspace.
 
 Scores are recomputed daily and displayed across the CodeQuill platform: on repository pages, the dashboard, public workspace profiles, and certificate pages.
 
@@ -21,7 +21,7 @@ Scores are recomputed daily and displayed across the CodeQuill platform: on repo
 
 Software trust today relies on indirect, social signals: GitHub stars, download counts, brand recognition, team reputation. These signals are valuable but fundamentally **disconnected from verifiable evidence**. A popular project may have no on-chain evidence of its source history. A lesser-known project may have 18 months of continuous, verified snapshots with external attestors.
 
-The Trust Index is designed to complement -- not replace -- social signals by asking a more specific question:
+The Trust Index is designed to complement - not replace - social signals by asking a more specific question:
 
 > *"How much verifiable, long-lived, independently referenced source evidence exists for this repository?"*
 
@@ -37,7 +37,7 @@ When a developer evaluates a dependency, they typically check:
 
 None of these answer: "Can I verify what source code was used to produce the build artifact I'm about to install?" or "Has this project consistently published cryptographic evidence of its source state?"
 
-The Trust Index fills this gap. It measures the **observable evidence** of a project's commitment to verifiable software practices -- and it does so using records that are immutable, timestamped, and independently verifiable.
+The Trust Index fills this gap. It measures the **observable evidence** of a project's commitment to verifiable software practices - and it does so using records that are immutable, timestamped, and independently verifiable.
 
 ---
 
@@ -69,15 +69,15 @@ The score increases with more active months (up to 18 months of active evidence 
 | Maximum gap | Penalty |
 |-------------|---------|
 | 90 days or less | None |
-| 91 -- 180 days | 20% reduction |
-| 181 -- 365 days | 40% reduction |
+| 91 - 180 days | 20% reduction |
+| 181 - 365 days | 40% reduction |
 | Over 365 days | 60% reduction |
 
 This means a repository that published snapshots for 12 months but then went silent for a year will score lower than one with 12 months of continuous activity. The Continuity factor rewards sustained commitment to evidence production.
 
 ### Release Governance (20%)
 
-Snapshots capture raw evidence. Releases represent **intent** -- a deliberate decision that a particular source state should be treated as a versioned unit. The Release Governance factor measures release maturity, cadence, and governance outcomes.
+Snapshots capture raw evidence. Releases represent **intent** - a deliberate decision that a particular source state should be treated as a versioned unit. The Release Governance factor measures release maturity, cadence, and governance outcomes.
 
 Three components contribute to the score:
 
@@ -94,7 +94,7 @@ Attestations bind build artifacts to source releases. This factor measures both 
 Three components contribute:
 
 1. **Self-attestation volume** (30%): Total attestations, log-scaled. This captures the project's own attestation discipline.
-2. **External attestors** (40%): The number of unique external workspaces that have attested artifacts. This is the most valuable signal -- it represents independent verification by third parties.
+2. **External attestors** (40%): The number of unique external workspaces that have attested artifacts. This is the most valuable signal - it represents independent verification by third parties.
 3. **Attestation cadence** (30%): Distinct months with at least one attestation, up to 12 months.
 
 The external attestor component is deliberately weighted highest because it represents something the repository owner cannot fabricate: independent, third-party verification. Without any external attestors, the maximum Attestation subscore is capped at approximately 60% of its potential.
@@ -130,11 +130,11 @@ Scores are mapped to human-readable tiers that provide an at-a-glance reputation
 
 | Score | Tier | Meaning |
 |-------|------|---------|
-| 0 -- 20 | **New** | Recently started publishing evidence. Limited history. |
-| 21 -- 40 | **Emerging** | Building a track record. Some verifiable activity over time. |
-| 41 -- 60 | **Established** | Consistent evidence production with governance and preservation. |
-| 61 -- 80 | **Trusted** | Strong, long-lived evidence footprint with external verification. |
-| 81 -- 100 | **Proven** | Exceptional evidence record with sustained external reliance. |
+| 0 - 20 | **New** | Recently started publishing evidence. Limited history. |
+| 21 - 40 | **Emerging** | Building a track record. Some verifiable activity over time. |
+| 41 - 60 | **Established** | Consistent evidence production with governance and preservation. |
+| 61 - 80 | **Trusted** | Strong, long-lived evidence footprint with external verification. |
+| 81 - 100 | **Proven** | Exceptional evidence record with sustained external reliance. |
 
 These labels are displayed on repository pages, certificates, public profiles, and badges.
 
@@ -172,7 +172,7 @@ Volume alone cannot push a score to the top. Sustained activity over time, gover
 
 ### Self-Only Ceiling
 
-A repository that only produces evidence about itself -- snapshots, releases, self-attestations, preservations -- without any external attestors or downstream dependents can achieve a maximum Trust Index of approximately **70 out of 100**.
+A repository that only produces evidence about itself - snapshots, releases, self-attestations, preservations - without any external attestors or downstream dependents can achieve a maximum Trust Index of approximately **70 out of 100**.
 
 Reaching the highest tiers (Trusted and Proven) requires independent external signals: other workspaces attesting your artifacts or declaring your repository as an upstream dependency. This ceiling ensures that the Trust Index reflects real-world reliance, not just self-assertion.
 
@@ -185,7 +185,7 @@ External signals are counted once per workspace. If the same external workspace 
 The Trust Index accounts for projects that were once active but have become dormant. If no new snapshots, releases, or attestations are published for 6 months:
 
 - The score begins decaying at 5% per quarter (every 3 months).
-- The minimum decay floor is 50% of the computed score -- historical evidence retains baseline value even if the project becomes inactive.
+- The minimum decay floor is 50% of the computed score - historical evidence retains baseline value even if the project becomes inactive.
 - Any new evidence activity (a single snapshot, release, or attestation) immediately resets the decay clock.
 
 This ensures that the Trust Index reflects **current** evidence production, not just historical activity. A project that was highly active two years ago but has published nothing since will see its score gradually decrease, while still retaining credit for its historical evidence.

@@ -6,7 +6,7 @@ order: 6
 
 # Preservations
 
-A preservation is an encrypted archive of a repository's full source code, tied to a specific published snapshot. It enables long-term source survival without requiring trust in any custodian -- not even CodeQuill.
+A preservation is an encrypted archive of a repository's full source code, tied to a specific published snapshot. It enables long-term source survival without requiring trust in any custodian - not even CodeQuill.
 
 ## Why Preservations Exist
 
@@ -32,10 +32,10 @@ To decrypt, the workspace authority uses their passkey to derive the X25519 priv
 
 Key properties:
 
-- **Zero-custody** -- CodeQuill never possesses the decryption key.
-- **Passkey-bound** -- The encryption key is derived from a WebAuthn passkey using the PRF extension.
-- **No admin backdoor** -- There is no recovery mechanism. If the passkey is lost, the preservation cannot be decrypted.
-- **Snapshot-bound** -- Each preservation is linked to a specific snapshot, with the content root verified before encryption.
+- **Zero-custody** - CodeQuill never possesses the decryption key.
+- **Passkey-bound** - The encryption key is derived from a WebAuthn passkey using the PRF extension.
+- **No admin backdoor** - There is no recovery mechanism. If the passkey is lost, the preservation cannot be decrypted.
+- **Snapshot-bound** - Each preservation is linked to a specific snapshot, with the content root verified before encryption.
 
 For full technical details, see [Encryption Model](/security/encryption-model).
 
@@ -104,10 +104,10 @@ Preservation complete.
 
 The `CodeQuillPreservationRegistry` smart contract stores:
 
-- **Snapshot Merkle Root** -- Links the preservation to a specific snapshot.
-- **Archive SHA-256** -- Hash of the plaintext archive (before encryption), proving content integrity.
-- **Metadata SHA-256** -- Hash of the preservation metadata.
-- **Preservation CID** -- IPFS CID of the encrypted payload.
+- **Snapshot Merkle Root** - Links the preservation to a specific snapshot.
+- **Archive SHA-256** - Hash of the plaintext archive (before encryption), proving content integrity.
+- **Metadata SHA-256** - Hash of the preservation metadata.
+- **Preservation CID** - IPFS CID of the encrypted payload.
 - **Author and timestamp**.
 
 The on-chain record proves that an encrypted archive with a specific plaintext hash was stored at a specific time. It does not reveal the archive contents.

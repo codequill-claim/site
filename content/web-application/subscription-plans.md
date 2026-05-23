@@ -26,7 +26,7 @@ The Starter plan provides baseline access for individual developers evaluating C
 | CI/CD repositories | 0 |
 | Collaborators | 0 |
 
-The Starter plan has no cost and no time limit. It is intended for initial exploration -- claiming a few public repositories and recording a small number of snapshots to understand the system before committing to a paid tier.
+The Starter plan has no cost and no time limit. It is intended for initial exploration - claiming a few public repositories and recording a small number of snapshots to understand the system before committing to a paid tier.
 
 ### Builder ($9/month or $97/year)
 

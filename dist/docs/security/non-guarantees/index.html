@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Non-Guarantees — CodeQuill">
+<meta name="title" content="Non-Guarantees · CodeQuill">
 <meta name="description" content="Five things CodeQuill explicitly does not guarantee: build causality, build correctness, reproducible builds, supply-chain security, and code quality.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/security/non-guarantees/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/security/non-guarantees/">
-<meta property="og:title" content="Non-Guarantees — CodeQuill">
+<meta property="og:title" content="Non-Guarantees · CodeQuill">
 <meta property="og:description" content="Five things CodeQuill explicitly does not guarantee: build causality, build correctness, reproducible builds, supply-chain security, and code quality.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/security/non-guarantees/">
-<meta name="twitter:title" content="Non-Guarantees — CodeQuill">
+<meta name="twitter:title" content="Non-Guarantees · CodeQuill">
 <meta name="twitter:description" content="Five things CodeQuill explicitly does not guarantee: build causality, build correctness, reproducible builds, supply-chain security, and code quality.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Non-Guarantees — CodeQuill</title>
+    <title>Non-Guarantees · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -422,10 +422,10 @@ tailwind.config = {
 <p>Software supply-chain security encompasses source integrity, build integrity, distribution integrity, and runtime integrity. CodeQuill addresses one layer: source integrity. It anchors evidence about what source code existed and who claimed authority over it.</p>
 <p>A complete supply-chain security posture requires additional layers:</p>
 <ul>
-<li><strong>Artifact signing</strong> -- Cryptographic signatures on build outputs (e.g., Sigstore, GPG).</li>
-<li><strong>Software Bills of Materials (SBOMs)</strong> -- Inventories of components and dependencies.</li>
-<li><strong>Build provenance</strong> -- Attestations about the build environment and process (e.g., SLSA provenance).</li>
-<li><strong>Runtime verification</strong> -- Admission controllers, integrity monitoring, and policy enforcement at deployment time.</li>
+<li><strong>Artifact signing</strong> - Cryptographic signatures on build outputs (e.g., Sigstore, GPG).</li>
+<li><strong>Software Bills of Materials (SBOMs)</strong> - Inventories of components and dependencies.</li>
+<li><strong>Build provenance</strong> - Attestations about the build environment and process (e.g., SLSA provenance).</li>
+<li><strong>Runtime verification</strong> - Admission controllers, integrity monitoring, and policy enforcement at deployment time.</li>
 </ul>
 <p>CodeQuill is designed to compose with these layers. Attestations can reference upstream dependencies, creating a supply-chain graph. Releases can be gated by governance. But CodeQuill alone does not constitute supply-chain security. It is the source layer in a multi-layer architecture.</p>
 <h2 id="5-no-code-quality-or-safety-validation"><a href="#5-no-code-quality-or-safety-validation" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>5. No Code Quality or Safety Validation</h2>
@@ -477,7 +477,7 @@ tailwind.config = {
 </ul>
 <h2 id="why-this-matters"><a href="#why-this-matters" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Why This Matters</h2>
 <p>These non-guarantees are not disclaimers added as an afterthought. They are structural boundaries that define where CodeQuill's evidence is strong and where other tools must contribute.</p>
-<p>A system that claims to solve everything invites misplaced trust. A system that is precise about its scope -- &quot;we prove source state, not build correctness; we record claims, not proofs of causality&quot; -- gives users and auditors the information they need to build appropriate trust models.</p>
+<p>A system that claims to solve everything invites misplaced trust. A system that is precise about its scope - &quot;we prove source state, not build correctness; we record claims, not proofs of causality&quot; - gives users and auditors the information they need to build appropriate trust models.</p>
 <p>CodeQuill's guarantees are meaningful precisely because they are bounded. A snapshot's claim that &quot;this file tree existed at this time&quot; is strong because it does not overreach into claims about what was done with that file tree. An attestation's claim that &quot;this party asserted this relationship&quot; is useful because it does not pretend to be proof that the relationship is truthful.</p>
 <p>Explicit scoping enables composition. When each layer in a security architecture is honest about its boundaries, the layers can be combined with confidence. CodeQuill provides the source layer. Reproducible builds provide the build layer. Signing frameworks provide the distribution layer. Together, they form a chain of evidence that is stronger than any single tool could offer alone.</p>
 

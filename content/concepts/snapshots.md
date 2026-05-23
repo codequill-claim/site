@@ -6,13 +6,13 @@ order: 3
 
 # Snapshots
 
-A snapshot is a deterministic cryptographic fingerprint of a repository's source code at a specific git commit. It is the foundational building block of CodeQuill -- releases, attestations, and preservations all reference snapshots.
+A snapshot is a deterministic cryptographic fingerprint of a repository's source code at a specific git commit. It is the foundational building block of CodeQuill - releases, attestations, and preservations all reference snapshots.
 
 ## Why Snapshots Exist
 
 Source code is mutable. Files change, commits are amended, branches are rebased, repositories are deleted. When you need to answer "what source code existed at this moment?", the answer often depends on systems that may no longer be available.
 
-A CodeQuill snapshot captures the state of a repository at a precise point in time and produces a **Merkle root** -- a single cryptographic hash that represents the entire file tree. This Merkle root can be verified independently by anyone with access to the same files.
+A CodeQuill snapshot captures the state of a repository at a precise point in time and produces a **Merkle root** - a single cryptographic hash that represents the entire file tree. This Merkle root can be verified independently by anyone with access to the same files.
 
 ## How Snapshots Work
 
@@ -22,7 +22,7 @@ When you run `codequill snapshot`, the CLI:
 
 1. Reads every tracked file in the repository at the specified commit (defaults to HEAD).
 2. Computes a `keccak256` hash of each file's contents.
-3. Computes a salted hash of each file's path (for privacy -- see below).
+3. Computes a salted hash of each file's path (for privacy - see below).
 4. Builds a **Merkle tree** from the leaf hashes (each leaf = `keccak256(0x00 || path_hash || file_hash)`).
 5. Writes the resulting manifest to `.codequill/snapshots/snapshot-<commit>.json`.
 
@@ -39,7 +39,7 @@ The result is a durable, timestamped record: "This Merkle root, representing thi
 
 ## Privacy Model
 
-File paths in a snapshot are **salted** before hashing. The salt is derived from the workspace's encryption key, which itself is bound to a registered **passkey** (WebAuthn). This means snapshot creation requires passkey-based encryption to be set up in the workspace -- the same encryption infrastructure used for preservations and proofs.
+File paths in a snapshot are **salted** before hashing. The salt is derived from the workspace's encryption key, which itself is bound to a registered **passkey** (WebAuthn). This means snapshot creation requires passkey-based encryption to be set up in the workspace - the same encryption infrastructure used for preservations and proofs.
 
 Because the salt is passkey-derived:
 

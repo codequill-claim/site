@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Attestations — CodeQuill">
+<meta name="title" content="Attestations · CodeQuill">
 <meta name="description" content="Attestations record that a build artifact claims lineage from a specific release. Learn how to create and verify artifact-to-source links.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/concepts/attestations/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/concepts/attestations/">
-<meta property="og:title" content="Attestations — CodeQuill">
+<meta property="og:title" content="Attestations · CodeQuill">
 <meta property="og:description" content="Attestations record that a build artifact claims lineage from a specific release. Learn how to create and verify artifact-to-source links.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/concepts/attestations/">
-<meta name="twitter:title" content="Attestations — CodeQuill">
+<meta name="twitter:title" content="Attestations · CodeQuill">
 <meta name="twitter:description" content="Attestations record that a build artifact claims lineage from a specific release. Learn how to create and verify artifact-to-source links.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Attestations — CodeQuill</title>
+    <title>Attestations · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -411,21 +411,21 @@ tailwind.config = {
 <li><strong>What</strong> artifact was referenced (its SHA-256 digest).</li>
 <li><strong>When</strong> the claim was made (on-chain timestamp).</li>
 </ol>
-<p>An attestation does not prove the artifact was correctly built from the source. It records the claim that it was. The difference matters -- see <a href="/docs/security/non-guarantees">Non-Guarantees</a>.</p>
+<p>An attestation does not prove the artifact was correctly built from the source. It records the claim that it was. The difference matters - see <a href="/docs/security/non-guarantees">Non-Guarantees</a>.</p>
 <h2 id="what-an-attestation-contains"><a href="#what-an-attestation-contains" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>What an Attestation Contains</h2>
 <p>When you attest an artifact, the following is recorded on the <code>CodeQuillAttestationRegistry</code> smart contract:</p>
 <ul>
-<li><strong>Release ID</strong> -- The release this artifact claims to originate from.</li>
-<li><strong>Artifact Digest</strong> -- The SHA-256 hash of the build artifact.</li>
-<li><strong>Attestation CID</strong> -- IPFS CID of the full attestation manifest.</li>
-<li><strong>Author</strong> -- The wallet address that created the attestation.</li>
-<li><strong>Timestamp</strong> -- When the attestation was anchored.</li>
+<li><strong>Release ID</strong> - The release this artifact claims to originate from.</li>
+<li><strong>Artifact Digest</strong> - The SHA-256 hash of the build artifact.</li>
+<li><strong>Attestation CID</strong> - IPFS CID of the full attestation manifest.</li>
+<li><strong>Author</strong> - The wallet address that created the attestation.</li>
+<li><strong>Timestamp</strong> - When the attestation was anchored.</li>
 </ul>
 <p>The attestation manifest (stored on IPFS) additionally contains:</p>
 <ul>
-<li><strong>Subject</strong> -- The artifact's name, version, and Package URL (purl).</li>
-<li><strong>Artifact Kind</strong> -- The type of artifact (file, Docker image, npm package, binary).</li>
-<li><strong>Upstream Dependencies</strong> -- Other CodeQuill attestations referenced as upstream (for supply-chain graph building).</li>
+<li><strong>Subject</strong> - The artifact's name, version, and Package URL (purl).</li>
+<li><strong>Artifact Kind</strong> - The type of artifact (file, Docker image, npm package, binary).</li>
+<li><strong>Upstream Dependencies</strong> - Other CodeQuill attestations referenced as upstream (for supply-chain graph building).</li>
 </ul>
 <h2 id="prerequisites"><a href="#prerequisites" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Prerequisites</h2>
 <p>Attestations have strict prerequisites:</p>
@@ -485,7 +485,7 @@ tailwind.config = {
 <tr>
 <td><code>--upstream &lt;purl&gt;</code></td>
 <td>string</td>
-<td>--</td>
+<td>-</td>
 <td>Upstream dependency purl (repeatable)</td>
 </tr>
 <tr>

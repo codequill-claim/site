@@ -44,10 +44,10 @@ Software supply-chain security encompasses source integrity, build integrity, di
 
 A complete supply-chain security posture requires additional layers:
 
-- **Artifact signing** -- Cryptographic signatures on build outputs (e.g., Sigstore, GPG).
-- **Software Bills of Materials (SBOMs)** -- Inventories of components and dependencies.
-- **Build provenance** -- Attestations about the build environment and process (e.g., SLSA provenance).
-- **Runtime verification** -- Admission controllers, integrity monitoring, and policy enforcement at deployment time.
+- **Artifact signing** - Cryptographic signatures on build outputs (e.g., Sigstore, GPG).
+- **Software Bills of Materials (SBOMs)** - Inventories of components and dependencies.
+- **Build provenance** - Attestations about the build environment and process (e.g., SLSA provenance).
+- **Runtime verification** - Admission controllers, integrity monitoring, and policy enforcement at deployment time.
 
 CodeQuill is designed to compose with these layers. Attestations can reference upstream dependencies, creating a supply-chain graph. Releases can be gated by governance. But CodeQuill alone does not constitute supply-chain security. It is the source layer in a multi-layer architecture.
 
@@ -93,7 +93,7 @@ When evaluating CodeQuill evidence, auditors should distinguish between what the
 
 These non-guarantees are not disclaimers added as an afterthought. They are structural boundaries that define where CodeQuill's evidence is strong and where other tools must contribute.
 
-A system that claims to solve everything invites misplaced trust. A system that is precise about its scope -- "we prove source state, not build correctness; we record claims, not proofs of causality" -- gives users and auditors the information they need to build appropriate trust models.
+A system that claims to solve everything invites misplaced trust. A system that is precise about its scope - "we prove source state, not build correctness; we record claims, not proofs of causality" - gives users and auditors the information they need to build appropriate trust models.
 
 CodeQuill's guarantees are meaningful precisely because they are bounded. A snapshot's claim that "this file tree existed at this time" is strong because it does not overreach into claims about what was done with that file tree. An attestation's claim that "this party asserted this relationship" is useful because it does not pretend to be proof that the relationship is truthful.
 

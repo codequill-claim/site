@@ -33,7 +33,7 @@ codequill attest <build> <releaseId> [options]
 |---|---|---|---|
 | `--subject-name <name>` | string | _(none)_ | Human-readable name for the artifact subject |
 | `--subject-version <version>` | string | _(none)_ | Version string for the artifact subject |
-| `--upstream <purl>` | string | _(none)_ | Package URL (purl) of an upstream dependency. **Repeatable** -- pass multiple times to declare multiple upstreams. |
+| `--upstream <purl>` | string | _(none)_ | Package URL (purl) of an upstream dependency. **Repeatable** - pass multiple times to declare multiple upstreams. |
 | `--confirmations <n>` | integer | `1` | Number of on-chain confirmations to wait for |
 | `--timeout <ms>` | integer | `300000` | Maximum time in milliseconds to wait for confirmation |
 | `--no-wait` | boolean | `false` | Submit the transaction and return immediately without waiting for confirmation |
@@ -151,7 +151,7 @@ codequill prove src/index.ts snap_abc123 --disclose --out ./my-proof.json
 
 - This command requires passkey approval. Your browser will prompt you to verify with your registered passkey (biometric, hardware key, or platform authenticator). The passkey is used to derive the decryption keys needed to access the snapshot's salt.
 - By default, the proof does **not** include the plaintext file path. This means a verifier can confirm that *some* file with a specific content hash was included in the snapshot, but cannot determine which file it was. Use `--disclose` to include the path when transparency is preferred over privacy.
-- The proof manifest is a self-contained JSON file that can be shared with any third party. It contains the Merkle proof siblings, the leaf hash, and the root -- everything needed for independent verification.
+- The proof manifest is a self-contained JSON file that can be shared with any third party. It contains the Merkle proof siblings, the leaf hash, and the root - everything needed for independent verification.
 - Verification of the proof does not require authentication or contact with CodeQuill servers. See `codequill verify-proof`.
 
 ---
@@ -203,7 +203,7 @@ codequill verify-proof ./received-proof.json
 - This is a **pure local verification**. No network requests are made, no authentication is required, and no data is sent to any server. Anyone with the CLI installed can verify a proof.
 - The command checks that the Merkle proof siblings, combined with the leaf hash along the specified path, reconstruct the Merkle root declared in the manifest.
 - It does **not** verify that the Merkle root itself is anchored on-chain. To confirm on-chain anchoring, cross-reference the root with the snapshot's on-chain record using a block explorer or `codequill log`.
-- A failing verification indicates that the proof is invalid -- either the file was not part of the snapshot, or the proof has been tampered with.
+- A failing verification indicates that the proof is invalid - either the file was not part of the snapshot, or the proof has been tampered with.
 
 ---
 

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Overview — CodeQuill">
+<meta name="title" content="Overview · CodeQuill">
 <meta name="description" content="CodeQuill provides two GitHub Actions for CI/CD: automated snapshots on push and attestations triggered by governance-approved releases.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/ci-cd/overview/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/ci-cd/overview/">
-<meta property="og:title" content="Overview — CodeQuill">
+<meta property="og:title" content="Overview · CodeQuill">
 <meta property="og:description" content="CodeQuill provides two GitHub Actions for CI/CD: automated snapshots on push and attestations triggered by governance-approved releases.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/ci-cd/overview/">
-<meta name="twitter:title" content="Overview — CodeQuill">
+<meta name="twitter:title" content="Overview · CodeQuill">
 <meta name="twitter:description" content="CodeQuill provides two GitHub Actions for CI/CD: automated snapshots on push and attestations triggered by governance-approved releases.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Overview — CodeQuill</title>
+    <title>Overview · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -408,10 +408,10 @@ tailwind.config = {
 <h3 id="phase-1-snapshot--publish"><a href="#phase-1-snapshot--publish" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Phase 1: Snapshot &amp; Publish</h3>
 <p>Triggered on push to <code>main</code> (or any branch you configure). This phase uses the <strong>Snapshot Action</strong> (<code>codequill-claim/actions-snapshot@v1</code>) to:</p>
 <ol>
-<li>Run <code>codequill snapshot</code> -- compute a deterministic Merkle root of the repository at the current commit.</li>
-<li>Run <code>codequill publish</code> -- upload the manifest to IPFS and anchor the Merkle root on-chain.</li>
-<li>Run <code>codequill wait</code> -- block until the on-chain transaction is confirmed.</li>
-<li>Optionally run <code>codequill preserve</code> -- create an encrypted archive of the source code tied to the published snapshot.</li>
+<li>Run <code>codequill snapshot</code> - compute a deterministic Merkle root of the repository at the current commit.</li>
+<li>Run <code>codequill publish</code> - upload the manifest to IPFS and anchor the Merkle root on-chain.</li>
+<li>Run <code>codequill wait</code> - block until the on-chain transaction is confirmed.</li>
+<li>Optionally run <code>codequill preserve</code> - create an encrypted archive of the source code tied to the published snapshot.</li>
 </ol>
 <p>Phase 1 completes without human intervention. Every push to <code>main</code> produces a published snapshot that can be referenced by future releases.</p>
 <h3 id="phase-2-attestation"><a href="#phase-2-attestation" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Phase 2: Attestation</h3>
@@ -423,19 +423,19 @@ tailwind.config = {
 <p>Informational. Indicates that a release has been created and anchored on-chain. The Attestation Action logs the event, closes the issue with a success comment, and returns early. No attestation is performed.</p>
 <p>This event is useful for audit trails and notifications. You can add downstream steps (Slack alerts, dashboard updates) that trigger on this event type.</p>
 <h3 id="releaseapproved"><a href="#releaseapproved" class="heading-permalink" aria-hidden="true" title="Permalink">#</a><code>release_approved</code></h3>
-<p>Actionable. Indicates that governance has accepted the release -- either a workspace member approved it directly, or a DAO vote concluded in favor. The Attestation Action validates the build artifact, runs <code>codequill attest</code>, and records the attestation on-chain.</p>
+<p>Actionable. Indicates that governance has accepted the release - either a workspace member approved it directly, or a DAO vote concluded in favor. The Attestation Action validates the build artifact, runs <code>codequill attest</code>, and records the attestation on-chain.</p>
 <p>This is the event that bridges governance to deployment. Once attestation succeeds, subsequent CI steps can deploy with confidence that the release was explicitly approved.</p>
 <h2 id="security-model"><a href="#security-model" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Security Model</h2>
 <p>The communication channel between the CodeQuill platform and your CI pipeline relies on GitHub Issues, which are a public surface. Three verification layers protect against spoofing:</p>
 <ol>
 <li>
-<p><strong>Bot identity check</strong> -- The action verifies that the issue was created by <code>codequill-authorship[bot]</code> (exact login match). Issues from any other actor are ignored.</p>
+<p><strong>Bot identity check</strong> - The action verifies that the issue was created by <code>codequill-authorship[bot]</code> (exact login match). Issues from any other actor are ignored.</p>
 </li>
 <li>
-<p><strong>Label verification</strong> -- The action verifies that the issue carries the <code>codequill:release</code> label. This prevents unrelated bot activity from triggering the workflow.</p>
+<p><strong>Label verification</strong> - The action verifies that the issue carries the <code>codequill:release</code> label. This prevents unrelated bot activity from triggering the workflow.</p>
 </li>
 <li>
-<p><strong>HMAC-SHA256 payload verification</strong> -- If an <code>hmac_secret</code> is configured, the action verifies the issue body's signature against the shared secret. The issue body contains a JSON object with <code>payload</code> and <code>signature</code> fields. The signature is an HMAC-SHA256 digest of the payload, computed with the shared secret. This is strongly recommended for production use.</p>
+<p><strong>HMAC-SHA256 payload verification</strong> - If an <code>hmac_secret</code> is configured, the action verifies the issue body's signature against the shared secret. The issue body contains a JSON object with <code>payload</code> and <code>signature</code> fields. The signature is an HMAC-SHA256 digest of the payload, computed with the shared secret. This is strongly recommended for production use.</p>
 </li>
 </ol>
 <h2 id="pipeline-topologies"><a href="#pipeline-topologies" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Pipeline Topologies</h2>
@@ -456,7 +456,7 @@ tailwind.config = {
   -&gt; DAO votes to approve the release
   -&gt; Phase 2: CI attests the build artifact and deploys
 </code></pre>
-<p>The CI pipeline is identical in both cases. The difference is who approves the release -- a workspace member or a DAO vote. The Attestation Action does not distinguish between approval sources; it responds to <code>release_approved</code> regardless of origin.</p>
+<p>The CI pipeline is identical in both cases. The difference is who approves the release - a workspace member or a DAO vote. The Attestation Action does not distinguish between approval sources; it responds to <code>release_approved</code> regardless of origin.</p>
 <h2 id="environment-variables"><a href="#environment-variables" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Environment Variables</h2>
 <p>Both actions require the following environment configuration:</p>
 <table>

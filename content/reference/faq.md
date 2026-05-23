@@ -10,13 +10,13 @@ order: 3
 
 CodeQuill creates durable, verifiable evidence about source code. It answers questions that existing tools leave unaddressed: "What source code existed at this moment?", "Who claimed authority over this repository?", "Was this artifact attested against a governed release?"
 
-Source code is mutable. Repositories are deleted, commits are amended, platforms change their terms or shut down. CodeQuill produces cryptographic records -- anchored on a blockchain, stored on IPFS -- that survive these events. The evidence is independently verifiable by anyone, without requiring CodeQuill's continued availability.
+Source code is mutable. Repositories are deleted, commits are amended, platforms change their terms or shut down. CodeQuill produces cryptographic records - anchored on a blockchain, stored on IPFS - that survive these events. The evidence is independently verifiable by anyone, without requiring CodeQuill's continued availability.
 
 This is useful for open-source maintainers who need to prove authorship, organizations with audit obligations, DAOs that govern software releases, and anyone who needs a durable record of what source code existed and who spoke for it.
 
 ## Is CodeQuill a single point of trust?
 
-No. CodeQuill's architecture is designed so that no single system -- including CodeQuill itself -- must remain trustworthy for past evidence to remain valid.
+No. CodeQuill's architecture is designed so that no single system - including CodeQuill itself - must remain trustworthy for past evidence to remain valid.
 
 **On-chain records are independent.** Snapshot Merkle roots, release anchors, attestation records, and preservation hashes are stored on the blockchain. They can be read by anyone with access to the chain, without interacting with CodeQuill.
 
@@ -32,9 +32,9 @@ If CodeQuill were to cease operating, all previously anchored evidence would rem
 
 Sigstore and CodeQuill operate at different layers and are complementary.
 
-**Sigstore** signs artifacts at the output layer. It answers: "Who signed this artifact, and when?" Sigstore provides keyless signing, a transparency log (Rekor), and certificate-based identity binding. It is focused on the artifact -- the binary, container image, or package that is distributed.
+**Sigstore** signs artifacts at the output layer. It answers: "Who signed this artifact, and when?" Sigstore provides keyless signing, a transparency log (Rekor), and certificate-based identity binding. It is focused on the artifact - the binary, container image, or package that is distributed.
 
-**CodeQuill** preserves evidence at the input layer. It answers: "What source code existed, who claimed authority over it, and what release was this artifact attested against?" CodeQuill is focused on the source -- the code that the artifact was supposedly built from.
+**CodeQuill** preserves evidence at the input layer. It answers: "What source code existed, who claimed authority over it, and what release was this artifact attested against?" CodeQuill is focused on the source - the code that the artifact was supposedly built from.
 
 Together, they create a chain: CodeQuill anchors the source state, a build process produces an artifact, Sigstore signs the artifact, and a CodeQuill attestation links the signed artifact back to the governed source release. Neither tool alone provides this full chain.
 
@@ -50,7 +50,7 @@ For build security, consider reproducible build frameworks, build provenance sta
 
 No. CodeQuill operates independently of how your software is built.
 
-Reproducible builds and CodeQuill are complementary. Reproducible builds prove that a build process is deterministic -- given the same inputs, the same output is produced. CodeQuill proves what the inputs were -- which source code existed at the time of the snapshot.
+Reproducible builds and CodeQuill are complementary. Reproducible builds prove that a build process is deterministic - given the same inputs, the same output is produced. CodeQuill proves what the inputs were - which source code existed at the time of the snapshot.
 
 You can use CodeQuill without reproducible builds to establish a durable record of source state, govern releases, and attest artifacts. You can use reproducible builds without CodeQuill to verify build determinism. Using both together provides the strongest evidence chain: verified source state, verified build determinism, and a recorded link between them.
 
@@ -60,7 +60,7 @@ No. Only cryptographic hashes and identifiers are stored on-chain.
 
 Specifically, the blockchain stores: Merkle roots (representing file tree state), manifest CIDs (pointers to IPFS-stored manifests), commit hashes, wallet addresses, timestamps, and governance decisions. No file contents, file paths, or source code are written to the blockchain.
 
-Snapshot manifests -- which contain per-file hashes and salted path hashes, but not file contents -- are stored on IPFS. The actual source code remains on your local machine or in your repository. If you create a [preservation](/concepts/preservations), an encrypted copy of the source archive is stored on IPFS, but it is encrypted with keys that only the workspace authority possesses.
+Snapshot manifests - which contain per-file hashes and salted path hashes, but not file contents - are stored on IPFS. The actual source code remains on your local machine or in your repository. If you create a [preservation](/concepts/preservations), an encrypted copy of the source archive is stored on IPFS, but it is encrypted with keys that only the workspace authority possesses.
 
 ## Is preservation mandatory?
 

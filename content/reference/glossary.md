@@ -16,7 +16,7 @@ The act of recording a cryptographic hash or identifier on a blockchain. Anchori
 ---
 
 **Artifact**
-A build output -- a compiled binary, a Docker image, an npm package, a tarball, or any other distributable file produced from source code. CodeQuill does not produce or validate artifacts. It records claims about them via [attestations](#attestation).
+A build output - a compiled binary, a Docker image, an npm package, a tarball, or any other distributable file produced from source code. CodeQuill does not produce or validate artifacts. It records claims about them via [attestations](#attestation).
 
 ---
 
@@ -26,12 +26,12 @@ An on-chain record that a specific party asserted a relationship between a build
 ---
 
 **Authority**
-The wallet address that controls a workspace's on-chain identity. The authority can add or remove workspace members, transfer control to a new wallet, and manage delegations. The authority is the root of trust for a workspace -- if you control the authority wallet, you control the workspace's on-chain operations. Set during wallet onboarding and recorded on the `CodeQuillWorkspaceRegistry` contract.
+The wallet address that controls a workspace's on-chain identity. The authority can add or remove workspace members, transfer control to a new wallet, and manage delegations. The authority is the root of trust for a workspace - if you control the authority wallet, you control the workspace's on-chain operations. Set during wallet onboarding and recorded on the `CodeQuillWorkspaceRegistry` contract.
 
 ---
 
 **Claim**
-An on-chain evidence record that links a GitHub repository to a workspace authority. A claim establishes who is authorized to speak for a repository within CodeQuill. It does not assert ownership, copyright, or authorship -- it records an association. A repository can only be claimed once. See [Claims](/concepts/claims).
+An on-chain evidence record that links a GitHub repository to a workspace authority. A claim establishes who is authorized to speak for a repository within CodeQuill. It does not assert ownership, copyright, or authorship - it records an association. A repository can only be claimed once. See [Claims](/concepts/claims).
 
 ---
 
@@ -81,7 +81,7 @@ A named, versioned designation of a specific snapshot as an official version of 
 ---
 
 **Snapshot**
-A deterministic cryptographic fingerprint of a repository's source code at a specific git commit. The CLI reads every tracked file, computes per-file hashes, builds a Merkle tree, and produces a manifest. The Merkle root is anchored on-chain. No source code leaves the local machine during snapshot creation. Snapshots are the foundational evidence record in CodeQuill -- releases, attestations, and preservations all reference them. See [Snapshots](/concepts/snapshots).
+A deterministic cryptographic fingerprint of a repository's source code at a specific git commit. The CLI reads every tracked file, computes per-file hashes, builds a Merkle tree, and produces a manifest. The Merkle root is anchored on-chain. No source code leaves the local machine during snapshot creation. Snapshots are the foundational evidence record in CodeQuill - releases, attestations, and preservations all reference them. See [Snapshots](/concepts/snapshots).
 
 ---
 
@@ -91,7 +91,7 @@ A JSON document (following the `codequill-snapshot:v1` schema) that contains the
 ---
 
 **Workspace**
-The top-level organizational unit in CodeQuill. A workspace maps to a GitHub organization or user account and defines the boundary for authority, collaboration, and on-chain identity. All CodeQuill operations -- claims, snapshots, releases, attestations, preservations -- occur within a workspace context. See [Workspaces](/concepts/workspaces).
+The top-level organizational unit in CodeQuill. A workspace maps to a GitHub organization or user account and defines the boundary for authority, collaboration, and on-chain identity. All CodeQuill operations - claims, snapshots, releases, attestations, preservations - occur within a workspace context. See [Workspaces](/concepts/workspaces).
 
 ---
 

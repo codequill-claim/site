@@ -43,8 +43,8 @@ The CLI behavior can be customized through environment variables:
 | `CODEQUILL_API_BASE_URL` | Backend API base URL | `https://api.codequill.xyz` |
 | `CODEQUILL_BASE_URL` | Web application URL (used for display links) | `https://app.codequill.xyz` |
 | `CODEQUILL_CONFIG_DIR` | Override the directory for authentication tokens | `~/.config/codequill` |
-| `CODEQUILL_TOKEN` | Bearer token for CI/non-interactive use (bypasses login) | -- |
-| `CODEQUILL_GITHUB_ID` | GitHub repository numeric ID (used with `CODEQUILL_TOKEN`) | -- |
+| `CODEQUILL_TOKEN` | Bearer token for CI/non-interactive use (bypasses login) | - |
+| `CODEQUILL_GITHUB_ID` | GitHub repository numeric ID (used with `CODEQUILL_TOKEN`) | - |
 
 ### CI Authentication
 

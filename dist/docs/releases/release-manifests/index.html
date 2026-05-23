@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Release Manifests — CodeQuill">
+<meta name="title" content="Release Manifests · CodeQuill">
 <meta name="description" content="Release manifests are structured documents stored on IPFS that contain all metadata for a published release. Learn the schema and verification process.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/releases/release-manifests/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/releases/release-manifests/">
-<meta property="og:title" content="Release Manifests — CodeQuill">
+<meta property="og:title" content="Release Manifests · CodeQuill">
 <meta property="og:description" content="Release manifests are structured documents stored on IPFS that contain all metadata for a published release. Learn the schema and verification process.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/releases/release-manifests/">
-<meta name="twitter:title" content="Release Manifests — CodeQuill">
+<meta name="twitter:title" content="Release Manifests · CodeQuill">
 <meta name="twitter:description" content="Release manifests are structured documents stored on IPFS that contain all metadata for a published release. Learn the schema and verification process.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Release Manifests — CodeQuill</title>
+    <title>Release Manifests · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -402,11 +402,11 @@ tailwind.config = {
 <article class="docs-content">
     <div class="prose">
         <h1>Release Manifests</h1>
-<p>Every anchored release has a manifest -- a structured document that records the full metadata of the release at the time it was published. Manifests are the primary evidence artifact for releases: they are stored on decentralized storage, content-addressed, and independently retrievable by anyone.</p>
+<p>Every anchored release has a manifest - a structured document that records the full metadata of the release at the time it was published. Manifests are the primary evidence artifact for releases: they are stored on decentralized storage, content-addressed, and independently retrievable by anyone.</p>
 <h2 id="schema"><a href="#schema" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Schema</h2>
 <p>Release manifests conform to the <code>codequill-release:v1</code> schema. This schema is versioned to allow future evolution while preserving backward compatibility with existing manifests.</p>
 <h2 id="storage"><a href="#storage" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Storage</h2>
-<p>Manifests are stored as gzip-compressed JSON on IPFS, pinned to Filecoin via Lighthouse for long-term persistence. Each manifest is identified by its CID (Content Identifier) -- a cryptographic hash of the compressed content. The CID is recorded on-chain as part of the <code>anchorRelease()</code> transaction, creating a permanent link between the on-chain release record and its off-chain manifest.</p>
+<p>Manifests are stored as gzip-compressed JSON on IPFS, pinned to Filecoin via Lighthouse for long-term persistence. Each manifest is identified by its CID (Content Identifier) - a cryptographic hash of the compressed content. The CID is recorded on-chain as part of the <code>anchorRelease()</code> transaction, creating a permanent link between the on-chain release record and its off-chain manifest.</p>
 <p>Because CIDs are content-addressed, the integrity of a manifest is self-verifying: if the content changes, the CID changes. A manifest retrieved by CID either matches its expected content exactly or is corrupt.</p>
 <h2 id="manifest-structure"><a href="#manifest-structure" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Manifest Structure</h2>
 <p>A <code>codequill-release:v1</code> manifest contains the following sections:</p>

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Attestation Action — CodeQuill">
+<meta name="title" content="Attestation Action · CodeQuill">
 <meta name="description" content="The Attestation Action handles release events from GitHub Issues, verifies bot identity and HMAC signatures, and runs codequill attest.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://codequill.xyz/docs/ci-cd/attestation-action/">
@@ -19,18 +19,18 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codequill.xyz/docs/ci-cd/attestation-action/">
-<meta property="og:title" content="Attestation Action — CodeQuill">
+<meta property="og:title" content="Attestation Action · CodeQuill">
 <meta property="og:description" content="The Attestation Action handles release events from GitHub Issues, verifies bot identity and HMAC signatures, and runs codequill attest.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
+<meta property="og:image:alt" content="CodeQuill - The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://codequill.xyz/docs/ci-cd/attestation-action/">
-<meta name="twitter:title" content="Attestation Action — CodeQuill">
+<meta name="twitter:title" content="Attestation Action · CodeQuill">
 <meta name="twitter:description" content="The Attestation Action handles release events from GitHub Issues, verifies bot identity and HMAC signatures, and runs codequill attest.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Attestation Action — CodeQuill</title>
+    <title>Attestation Action · CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -408,13 +408,13 @@ tailwind.config = {
 <p>The two phases are:</p>
 <ol>
 <li>
-<p><strong>Release Anchored</strong> — The release has been submitted to the blockchain. Use this event to build your project and deploy to a <strong>staging</strong> environment. This gives you the opportunity to validate the release before governance accepts it.</p>
+<p><strong>Release Anchored</strong> - The release has been submitted to the blockchain. Use this event to build your project and deploy to a <strong>staging</strong> environment. This gives you the opportunity to validate the release before governance accepts it.</p>
 </li>
 <li>
-<p><strong>Release Approved</strong> — Governance has accepted the release. This is when you deploy to <strong>production</strong> and run <code>codequill attest</code> to create a verifiable, on-chain link between your build artifacts and the approved source release.</p>
+<p><strong>Release Approved</strong> - Governance has accepted the release. This is when you deploy to <strong>production</strong> and run <code>codequill attest</code> to create a verifiable, on-chain link between your build artifacts and the approved source release.</p>
 </li>
 </ol>
-<p>Attestation only runs during the approval phase. The anchoring phase is informational -- it signals that a release exists and is pending governance, giving your CI pipeline a head start on building and validating.</p>
+<p>Attestation only runs during the approval phase. The anchoring phase is informational - it signals that a release exists and is pending governance, giving your CI pipeline a head start on building and validating.</p>
 <h2 id="inputs"><a href="#inputs" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Inputs</h2>
 <table>
 <thead>
@@ -429,13 +429,13 @@ tailwind.config = {
 <tr>
 <td><code>token</code></td>
 <td>Yes</td>
-<td>—</td>
+<td>-</td>
 <td>CodeQuill repo-scoped bearer token.</td>
 </tr>
 <tr>
 <td><code>github_id</code></td>
 <td>Yes</td>
-<td>—</td>
+<td>-</td>
 <td>GitHub repository numeric ID.</td>
 </tr>
 <tr>
@@ -513,23 +513,23 @@ tailwind.config = {
 <p>When the triggering GitHub event is <code>issues</code>, the action performs verification checks:</p>
 <ol>
 <li>
-<p><strong>Bot identity</strong> — Verifies that the issue was created by <code>codequill-authorship[bot]</code> (exact login match). If the issue author is any other user or bot, the action exits silently.</p>
+<p><strong>Bot identity</strong> - Verifies that the issue was created by <code>codequill-authorship[bot]</code> (exact login match). If the issue author is any other user or bot, the action exits silently.</p>
 </li>
 <li>
-<p><strong>Label verification</strong> — Verifies that the issue carries the <code>codequill:release</code> label.</p>
+<p><strong>Label verification</strong> - Verifies that the issue carries the <code>codequill:release</code> label.</p>
 </li>
 <li>
-<p><strong>Payload parsing</strong> — Parses the issue body as JSON. The body contains an object with two fields: <code>payload</code> (the event data) and <code>signature</code> (the HMAC-SHA256 digest).</p>
+<p><strong>Payload parsing</strong> - Parses the issue body as JSON. The body contains an object with two fields: <code>payload</code> (the event data) and <code>signature</code> (the HMAC-SHA256 digest).</p>
 </li>
 <li>
-<p><strong>HMAC verification</strong> — If <code>hmac_secret</code> is provided, the action computes the HMAC-SHA256 of the <code>payload</code> field using the shared secret and compares it against the <code>signature</code> field. If verification fails, the action exits with an error.</p>
+<p><strong>HMAC verification</strong> - If <code>hmac_secret</code> is provided, the action computes the HMAC-SHA256 of the <code>payload</code> field using the shared secret and compares it against the <code>signature</code> field. If verification fails, the action exits with an error.</p>
 </li>
 </ol>
 <h3 id="2-set-outputs"><a href="#2-set-outputs" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>2. Set Outputs</h3>
 <p>The action sets two outputs from the parsed payload:</p>
 <ul>
-<li><code>event_type</code> — either <code>release_anchored</code> or <code>release_approved</code>.</li>
-<li><code>release_id</code> — the unique identifier of the release.</li>
+<li><code>event_type</code> - either <code>release_anchored</code> or <code>release_approved</code>.</li>
+<li><code>release_id</code> - the unique identifier of the release.</li>
 </ul>
 <p>These outputs are available to subsequent workflow steps for conditional logic. This is how you differentiate between the two phases in your pipeline.</p>
 <h3 id="3-handle-releaseanchored"><a href="#3-handle-releaseanchored" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>3. Handle <code>release_anchored</code></h3>
@@ -540,7 +540,7 @@ tailwind.config = {
 <li>Closes the issue.</li>
 <li>Returns early. <strong>No attestation is performed.</strong></li>
 </ol>
-<p>This is the staging phase. The action itself does not build or deploy anything -- it simply sets the <code>event_type</code> output so your downstream workflow steps can react. Use this event to build your project, run tests, and deploy to a staging environment for validation.</p>
+<p>This is the staging phase. The action itself does not build or deploy anything - it simply sets the <code>event_type</code> output so your downstream workflow steps can react. Use this event to build your project, run tests, and deploy to a staging environment for validation.</p>
 <h3 id="4-handle-releaseapproved"><a href="#4-handle-releaseapproved" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>4. Handle <code>release_approved</code></h3>
 <p>If the event type is <code>release_approved</code>, the action:</p>
 <ol>
@@ -554,8 +554,8 @@ tailwind.config = {
 <p>This is the production phase. Attestation creates an on-chain record linking your build artifact to the governance-approved source release. Only run production deployments on this event.</p>
 <h3 id="5-issue-lifecycle"><a href="#5-issue-lifecycle" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>5. Issue Lifecycle</h3>
 <ul>
-<li><strong>On success</strong> — The action comments on the issue with a success message and closes it.</li>
-<li><strong>On failure</strong> — The action comments on the issue with the error details but does <strong>not</strong> close it. The issue remains open for investigation.</li>
+<li><strong>On success</strong> - The action comments on the issue with a success message and closes it.</li>
+<li><strong>On failure</strong> - The action comments on the issue with the error details but does <strong>not</strong> close it. The issue remains open for investigation.</li>
 </ul>
 <h2 id="workflow-example"><a href="#workflow-example" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Workflow Example</h2>
 <p>The recommended workflow implements the two-phase conformity pipeline. Your CI reacts differently depending on whether the release was just anchored (pending governance) or approved (governance accepted):</p>
@@ -609,10 +609,10 @@ jobs:
 <h3 id="how-it-works"><a href="#how-it-works" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>How It Works</h3>
 <ol>
 <li>
-<p><strong>On <code>release_anchored</code></strong> — The attestation step verifies the issue, sets the outputs, closes the issue, and returns without performing attestation. The &quot;Build and deploy to staging&quot; step runs, giving you the chance to validate the release in a staging environment before governance decides.</p>
+<p><strong>On <code>release_anchored</code></strong> - The attestation step verifies the issue, sets the outputs, closes the issue, and returns without performing attestation. The &quot;Build and deploy to staging&quot; step runs, giving you the chance to validate the release in a staging environment before governance decides.</p>
 </li>
 <li>
-<p><strong>On <code>release_approved</code></strong> — The attestation step verifies the issue, runs <code>codequill attest</code> to create the on-chain attestation, and closes the issue. The &quot;Deploy to production&quot; step runs, deploying the governance-approved release to production.</p>
+<p><strong>On <code>release_approved</code></strong> - The attestation step verifies the issue, runs <code>codequill attest</code> to create the on-chain attestation, and closes the issue. The &quot;Deploy to production&quot; step runs, deploying the governance-approved release to production.</p>
 </li>
 </ol>
 <p>This two-phase pattern ensures that:</p>
