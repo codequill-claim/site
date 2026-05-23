@@ -99,7 +99,8 @@ Full details in the [authentication reference](/cli-reference/authentication).
 
 ## Limits and gotchas
 
-- `prove` and `preserve` require the workspace authority's passkey. Agents cannot unilaterally decrypt preservations or sign proofs; those operations always loop a human in via a device-code prompt.
+- `prove` requires the workspace authority's passkey via a second device-code flow. The agent runs the command, the user approves in the browser, the agent picks up the proof.
+- `preserve` runs unattended. It uses the workspace's public X25519 key to wrap the per-archive DEK, so an agent (or CI) can preserve a snapshot without any passkey prompt. **Decrypting** a preservation is the operation that needs the passkey, and that happens in the web app, not from the CLI.
 - `attest` requires the release in ACCEPTED state. Governance is human-driven by design; an agent cannot self-approve a release before attesting against it.
 - Agents must not commit `~/.codequill/tokens.json` or any environment-set `CODEQUILL_TOKEN` to the repo. The skill reinforces this rule, but it is worth restating.
 - The CLI is the integration surface today. Agents shell out; there is no separate "agent API" yet. Treat the CLI commands as your interface contract.

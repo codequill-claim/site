@@ -470,7 +470,8 @@ tailwind.config = {
 <p>Full details in the <a href="/docs/cli-reference/authentication">authentication reference</a>.</p>
 <h2 id="limits-and-gotchas"><a href="#limits-and-gotchas" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Limits and gotchas</h2>
 <ul>
-<li><code>prove</code> and <code>preserve</code> require the workspace authority's passkey. Agents cannot unilaterally decrypt preservations or sign proofs; those operations always loop a human in via a device-code prompt.</li>
+<li><code>prove</code> requires the workspace authority's passkey via a second device-code flow. The agent runs the command, the user approves in the browser, the agent picks up the proof.</li>
+<li><code>preserve</code> runs unattended. It uses the workspace's public X25519 key to wrap the per-archive DEK, so an agent (or CI) can preserve a snapshot without any passkey prompt. <strong>Decrypting</strong> a preservation is the operation that needs the passkey, and that happens in the web app, not from the CLI.</li>
 <li><code>attest</code> requires the release in ACCEPTED state. Governance is human-driven by design; an agent cannot self-approve a release before attesting against it.</li>
 <li>Agents must not commit <code>~/.codequill/tokens.json</code> or any environment-set <code>CODEQUILL_TOKEN</code> to the repo. The skill reinforces this rule, but it is worth restating.</li>
 <li>The CLI is the integration surface today. Agents shell out; there is no separate &quot;agent API&quot; yet. Treat the CLI commands as your interface contract.</li>
