@@ -403,6 +403,26 @@
         ]
     },
     {
+        "title": "AI Agents",
+        "section": "integrations",
+        "url": "\/docs\/integrations\/ai-agents",
+        "excerpt": "AI agents generate and edit code. CodeQuill records what existed and who authorized it. This page explains how to connect the two so an agent's output can be backed by on-chain evidence inside the same loop — no separate &quot;now run CodeQuill&quot; step required. #Why this matters Agent-generated ...",
+        "headings": [
+            "Why this matters",
+            "The CodeQuill Claude Code skill",
+            "Install in Claude Code",
+            "Use from the Anthropic API or SDKs",
+            "What the skill teaches the agent",
+            "Example prompts",
+            "1. \"Claim this repository and publish a snapshot\"",
+            "2. \"Attest the build at dist\/cli.tgz against release v0.11.0\"",
+            "3. \"Prove that src\/main.ts was in snapshot <snapshotId>\"",
+            "Authentication notes",
+            "Limits and gotchas",
+            "References"
+        ]
+    },
+    {
         "title": "FAQ",
         "section": "reference",
         "url": "\/docs\/reference\/faq",

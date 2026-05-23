@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="leaf-base-url" content="/docs">
-<meta name="title" content="Installation — CodeQuill">
-<meta name="description" content="Install the CodeQuill CLI via npm, configure environment variables, and set up authentication for local and CI environments.">
+<meta name="title" content="AI Agents — CodeQuill">
+<meta name="description" content="Wire AI coding agents (Claude Code, Anthropic API) to CodeQuill so they can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://codequill.xyz/docs/getting-started/installation/">
+<link rel="canonical" href="https://codequill.xyz/docs/integrations/ai-agents/">
 
 <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
@@ -18,9 +18,9 @@
 <link rel="manifest" href="/favicon/site.webmanifest">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://codequill.xyz/docs/getting-started/installation/">
-<meta property="og:title" content="Installation — CodeQuill">
-<meta property="og:description" content="Install the CodeQuill CLI via npm, configure environment variables, and set up authentication for local and CI environments.">
+<meta property="og:url" content="https://codequill.xyz/docs/integrations/ai-agents/">
+<meta property="og:title" content="AI Agents — CodeQuill">
+<meta property="og:description" content="Wire AI coding agents (Claude Code, Anthropic API) to CodeQuill so they can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
 <meta property="og:site_name" content="CodeQuill">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://codequill.xyz/social-card.png">
@@ -29,9 +29,9 @@
 <meta property="og:image:alt" content="CodeQuill — The evidence layer for software">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://codequill.xyz/docs/getting-started/installation/">
-<meta name="twitter:title" content="Installation — CodeQuill">
-<meta name="twitter:description" content="Install the CodeQuill CLI via npm, configure environment variables, and set up authentication for local and CI environments.">
+<meta name="twitter:url" content="https://codequill.xyz/docs/integrations/ai-agents/">
+<meta name="twitter:title" content="AI Agents — CodeQuill">
+<meta name="twitter:description" content="Wire AI coding agents (Claude Code, Anthropic API) to CodeQuill so they can claim repositories, snapshot source, attest builds, and preserve archives without leaving the agent loop.">
 <meta name="twitter:image" content="https://codequill.xyz/social-card.png">
 <meta name="twitter:site" content="@CodeQuillClaim">
 
@@ -83,7 +83,7 @@ tailwind.config = {
 <script src="/assets/js/theme.js"></script>
 
 <script defer src="https://analytics.ophelios.com/script.js" data-website-id="157c177b-9f53-406b-80d3-44548fc264e3"></script>
-    <title>Installation — CodeQuill</title>
+    <title>AI Agents — CodeQuill</title>
 </head>
 <body class="bg-deep text-body antialiased font-body">
 
@@ -148,7 +148,7 @@ tailwind.config = {
                 </li>
                 <li>
                     <a href="/docs/getting-started/installation"
-                       class="sidebar-link active">
+                       class="sidebar-link">
                         Installation
                     </a>
                 </li>
@@ -316,7 +316,7 @@ tailwind.config = {
             <ul class="sidebar-links">
                 <li>
                     <a href="/docs/integrations/ai-agents"
-                       class="sidebar-link">
+                       class="sidebar-link active">
                         AI Agents
                     </a>
                 </li>
@@ -401,90 +401,109 @@ tailwind.config = {
         <main class="docs-main">
 <article class="docs-content">
     <div class="prose">
-        <h1>Installation</h1>
-<p>The CodeQuill CLI is a Node.js application distributed via npm. It runs on macOS, Linux, and Windows.</p>
-<h2 id="requirements"><a href="#requirements" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Requirements</h2>
+        <p>AI agents generate and edit code. CodeQuill records what existed and who authorized it. This page explains how to connect the two so an agent's output can be backed by on-chain evidence inside the same loop — no separate &quot;now run CodeQuill&quot; step required.</p>
+<h2 id="why-this-matters"><a href="#why-this-matters" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Why this matters</h2>
 <ul>
-<li><strong>Node.js</strong> 18.0 or later</li>
-<li><strong>Git</strong> installed and available in your PATH</li>
-<li>A GitHub remote configured for your repository (the CLI auto-detects the repository name from the git origin)</li>
+<li><strong>Agent-generated code needs the same provenance guarantees as human-written code.</strong> If your release pipeline already requires snapshots and attestations, agent-driven contributions should not bypass that requirement.</li>
+<li><strong>The CodeQuill CLI is the integration surface.</strong> Agents invoke <code>codequill</code> exactly the way a developer would. There is no separate &quot;agent API&quot; — anything documented in the <a href="/docs/cli-reference/authentication">CLI Reference</a> works.</li>
+<li><strong>A pre-written skill primes the agent</strong> so you don't need to re-teach CodeQuill in every session. The skill ships triggers, the seven primitives, the CLI surface, and the gotchas.</li>
 </ul>
-<h2 id="install-via-npm"><a href="#install-via-npm" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Install via npm</h2>
-<pre><code class="language-bash">npm install -g codequill
+<h2 id="the-codequill-claude-code-skill"><a href="#the-codequill-claude-code-skill" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>The CodeQuill Claude Code skill</h2>
+<p>A maintained <a href="https://claude.com/claude-code">Claude Code</a> skill lives at:</p>
+<p><strong><a href="https://github.com/ophelios-studio/skills/tree/main/skills/codequill">github.com/ophelios-studio/skills/tree/main/skills/codequill</a></strong></p>
+<p>License: MIT. The skill is a single <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus a markdown body. The <code>description</code> field encodes the trigger surface — Claude reads it on every session and decides when the skill is relevant. The body teaches CodeQuill's concepts, CLI surface, manifest schemas, and known gotchas.</p>
+<h2 id="install-in-claude-code"><a href="#install-in-claude-code" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Install in Claude Code</h2>
+<p>Drop the skill folder into your Claude Code skills directory:</p>
+<pre><code class="language-bash">mkdir -p ~/.claude/skills
+git clone https://github.com/ophelios-studio/skills.git /tmp/ophelios-skills
+cp -R /tmp/ophelios-skills/skills/codequill ~/.claude/skills/codequill
 </code></pre>
-<p>Verify the installation:</p>
-<pre><code class="language-bash">codequill --version
+<p>Or pull just the CodeQuill subtree directly:</p>
+<pre><code class="language-bash">mkdir -p ~/.claude/skills/codequill
+curl -fsSL https://raw.githubusercontent.com/ophelios-studio/skills/main/skills/codequill/SKILL.md \
+  -o ~/.claude/skills/codequill/SKILL.md
 </code></pre>
-<h2 id="install-a-specific-version"><a href="#install-a-specific-version" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Install a Specific Version</h2>
-<p>To pin to a specific version (useful for CI environments):</p>
-<pre><code class="language-bash">npm install -g codequill@0.8.1
-</code></pre>
-<h2 id="environment-variables"><a href="#environment-variables" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Environment Variables</h2>
-<p>The CLI behavior can be customized through environment variables:</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>CODEQUILL_API_BASE_URL</code></td>
-<td>Backend API base URL</td>
-<td><code>https://api.codequill.xyz</code></td>
-</tr>
-<tr>
-<td><code>CODEQUILL_BASE_URL</code></td>
-<td>Web application URL (used for display links)</td>
-<td><code>https://app.codequill.xyz</code></td>
-</tr>
-<tr>
-<td><code>CODEQUILL_CONFIG_DIR</code></td>
-<td>Override the directory for authentication tokens</td>
-<td><code>~/.config/codequill</code></td>
-</tr>
-<tr>
-<td><code>CODEQUILL_TOKEN</code></td>
-<td>Bearer token for CI/non-interactive use (bypasses login)</td>
-<td>--</td>
-</tr>
-<tr>
-<td><code>CODEQUILL_GITHUB_ID</code></td>
-<td>GitHub repository numeric ID (used with <code>CODEQUILL_TOKEN</code>)</td>
-<td>--</td>
-</tr>
-</tbody>
-</table>
-<h3 id="ci-authentication"><a href="#ci-authentication" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>CI Authentication</h3>
-<p>In CI environments (GitHub Actions, GitLab CI, etc.), you can bypass the interactive login flow by setting <code>CODEQUILL_TOKEN</code>:</p>
-<pre><code class="language-bash">export CODEQUILL_TOKEN=&quot;your-repo-scoped-token&quot;
-export CODEQUILL_GITHUB_ID=&quot;${{ github.repository_id }}&quot;
-</code></pre>
-<p>When <code>CODEQUILL_TOKEN</code> is set, the CLI uses it directly as a bearer token instead of reading from stored credentials. The <code>CODEQUILL_GITHUB_ID</code> is sent as an <code>X-GITHUB-ID</code> header to identify the repository context.</p>
-<p>Repo-scoped tokens can be generated from the web application's repository settings.</p>
-<h2 id="uninstall"><a href="#uninstall" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Uninstall</h2>
-<pre><code class="language-bash">npm uninstall -g codequill
-</code></pre>
-<p>To also remove stored credentials:</p>
-<pre><code class="language-bash">rm -rf ~/.config/codequill
-</code></pre>
-<p>To remove local repository data:</p>
-<pre><code class="language-bash">rm -rf .codequill
-</code></pre>
+<p>Restart Claude Code (or open a new session) and the skill is auto-discovered. Claude will pull it into context when your prompt mentions any CodeQuill command, primitive, or framing.</p>
+<p>To verify it loaded, start a session and ask: <em>&quot;What CodeQuill skill do you have available?&quot;</em> — Claude should respond with the skill name and a one-line summary.</p>
+<h2 id="use-from-the-anthropic-api-or-sdks"><a href="#use-from-the-anthropic-api-or-sdks" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Use from the Anthropic API or SDKs</h2>
+<p>The same <code>SKILL.md</code> is portable beyond Claude Code:</p>
+<ul>
+<li><strong>Anthropic API Skills</strong>: load <code>SKILL.md</code> as a skill resource for <code>claude-sonnet</code>, <code>claude-opus</code>, etc. See Anthropic's <a href="https://docs.anthropic.com/en/docs/build-with-claude/skills">Skills documentation</a> for the request shape.</li>
+<li><strong>Inline system prompt</strong>: paste <code>SKILL.md</code> into a <code>system</code> message. Cheap and effective when you can't yet use the Skills API.</li>
+<li><strong>Agent SDK / framework of your choice</strong>: any framework that supports tool descriptions or system primers will accept the markdown verbatim.</li>
+</ul>
+<h2 id="what-the-skill-teaches-the-agent"><a href="#what-the-skill-teaches-the-agent" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>What the skill teaches the agent</h2>
+<p>Once loaded, the skill primes the agent with:</p>
+<ul>
+<li><strong>The seven primitives</strong> — claims, snapshots, releases, attestations, preservations, proofs, and the trust index — and the order in which they apply.</li>
+<li><strong>The full 16-command CLI surface</strong> — <code>login</code>, <code>who</code>, <code>quota</code>, <code>status</code>, <code>log</code>, <code>claim</code>, <code>snapshot</code>, <code>publish</code>, <code>pull</code>, <code>attest</code>, <code>prove</code>, <code>verify-proof</code>, <code>verify-attestation</code>, <code>preserve</code>, <code>wait</code>, <code>why</code> — with their flags and what they touch.</li>
+<li><strong>The two GitHub Actions</strong> — <code>codequill-claim/actions-snapshot@v1</code> and <code>codequill-claim/actions-attest@v1</code> — for CI-driven evidence.</li>
+<li><strong>The workspace layout</strong> — what lives in <code>.codequill/</code> (snapshots, proofs, config, index) and how repo-local config beats global.</li>
+<li><strong>The manifest schemas</strong> — <code>codequill-snapshot:v1</code>, <code>codequill-attestation:v1</code>, <code>codequill-proof:v1</code>, <code>codequill-backup:v1</code>, <code>codequill-envelope:v1</code>.</li>
+<li><strong>The loud non-guarantees</strong> — what CodeQuill does <em>not</em> prove, so the agent doesn't oversell.</li>
+</ul>
+<p>The full reference lives in the <a href="https://github.com/ophelios-studio/skills/tree/main/skills/codequill">skill source</a>.</p>
+<h2 id="example-prompts"><a href="#example-prompts" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Example prompts</h2>
+<p>Three concrete prompts and what the agent should do in response.</p>
+<h3 id="1-claim-this-repository-and-publish-a-snapshot"><a href="#1-claim-this-repository-and-publish-a-snapshot" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>1. &quot;Claim this repository and publish a snapshot&quot;</h3>
+<p>The agent will:</p>
+<ol>
+<li>Run <code>codequill login</code> if no valid token is on disk.</li>
+<li>Run <code>codequill claim</code> to bind the GitHub repository to the workspace authority (gasless, one-time).</li>
+<li>Run <code>codequill snapshot --commit &lt;sha&gt;</code> to compute the deterministic source state locally.</li>
+<li>Run <code>codequill publish</code> to upload the manifest to IPFS and anchor the Merkle root on Ethereum.</li>
+<li>Report back the snapshot ID and the published transaction.</li>
+</ol>
+<h3 id="2-attest-the-build-at-distclitgz-against-release-v0110"><a href="#2-attest-the-build-at-distclitgz-against-release-v0110" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>2. &quot;Attest the build at <code>dist/cli.tgz</code> against release v0.11.0&quot;</h3>
+<p>The agent will:</p>
+<ol>
+<li>Resolve <code>v0.11.0</code> to a release ID and confirm it is in <strong>ACCEPTED</strong> state (a server-side requirement).</li>
+<li>Run <code>codequill attest dist/cli.tgz &lt;releaseId&gt;</code> to record the artifact-to-release lineage on-chain.</li>
+<li>Report back the attestation ID.</li>
+</ol>
+<p>If the release is not yet ACCEPTED, the agent stops and asks you to drive the governance step in the <a href="https://app.codequill.xyz">web app</a>. Attestations cannot bypass governance.</p>
+<h3 id="3-prove-that-srcmaints-was-in-snapshot-snapshotid"><a href="#3-prove-that-srcmaints-was-in-snapshot-snapshotid" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>3. &quot;Prove that <code>src/main.ts</code> was in snapshot <code>&lt;snapshotId&gt;</code>&quot;</h3>
+<p>The agent will:</p>
+<ol>
+<li>Run <code>codequill prove src/main.ts &lt;snapshotId&gt;</code>.</li>
+<li>Walk you through the second device-code flow — <code>prove</code> requires the workspace authority's passkey to derive the path-salted hash.</li>
+<li>Save the resulting proof under <code>.codequill/proofs/</code> and report its filename so you can share or verify it offline.</li>
+</ol>
+<h2 id="authentication-notes"><a href="#authentication-notes" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Authentication notes</h2>
+<p>The agent uses the same auth flow as a human:</p>
+<ul>
+<li>First run: <code>codequill login</code> opens a browser device-code flow. Tokens land in <code>~/.codequill/tokens.json</code> (path overridable via <code>CODEQUILL_CONFIG_DIR</code>).</li>
+<li>Subsequent runs: refresh is automatic, serialized by an on-disk lock to avoid token-rotation races.</li>
+<li><strong>Headless / CI / sandboxed agents</strong>: set <code>CODEQUILL_TOKEN</code> to a pre-minted token instead of running the device flow.</li>
+</ul>
+<p>Full details in the <a href="/docs/cli-reference/authentication">authentication reference</a>.</p>
+<h2 id="limits-and-gotchas"><a href="#limits-and-gotchas" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Limits and gotchas</h2>
+<ul>
+<li><strong><code>prove</code> and <code>preserve</code> require the workspace authority's passkey.</strong> Agents cannot unilaterally decrypt preservations or sign proofs — those operations always loop a human in via a device-code prompt.</li>
+<li><strong><code>attest</code> requires the release in ACCEPTED state.</strong> Governance is human-driven by design; an agent cannot self-approve a release before attesting against it.</li>
+<li><strong>Don't commit secrets.</strong> <code>~/.codequill/tokens.json</code> and any environment-set <code>CODEQUILL_TOKEN</code> must stay out of the repo. The skill reinforces this rule, but it's worth restating.</li>
+<li><strong>The CLI is the integration surface today.</strong> Agents shell out; there is no separate &quot;agent API&quot; yet. Treat the CLI commands as your interface contract.</li>
+</ul>
+<h2 id="references"><a href="#references" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>References</h2>
+<ul>
+<li><strong>Skill repository</strong> — <a href="https://github.com/ophelios-studio/skills/tree/main/skills/codequill">github.com/ophelios-studio/skills/tree/main/skills/codequill</a></li>
+<li><strong>CLI package</strong> — <a href="https://www.npmjs.com/package/codequill">npmjs.com/package/codequill</a></li>
+<li><strong>CLI reference</strong> — <a href="/docs/cli-reference/authentication">Authentication</a>, <a href="/docs/cli-reference/source-commands">Source commands</a>, <a href="/docs/cli-reference/verification-commands">Verification commands</a></li>
+<li><strong>CI/CD</strong> — <a href="/docs/ci-cd/overview">Overview</a>, <a href="/docs/ci-cd/snapshot-action">Snapshot action</a>, <a href="/docs/ci-cd/attestation-action">Attestation action</a></li>
+<li><strong>Anthropic Skills documentation</strong> — <a href="https://docs.anthropic.com/en/docs/build-with-claude/skills">docs.anthropic.com — Skills</a></li>
+</ul>
 
     </div>
 
     <nav class="docs-pagination">
-        <a href="/docs/getting-started/quickstart" class="pagination-link pagination-prev">
+        <a href="/docs/ci-cd/attestation-action" class="pagination-link pagination-prev">
             <span class="pagination-label">&larr; Previous</span>
-            <span class="pagination-title">Quickstart</span>
+            <span class="pagination-title">Attestation Action</span>
         </a>
 
-        <a href="/docs/getting-started/configuration" class="pagination-link pagination-next">
+        <a href="/docs/smart-contracts/architecture" class="pagination-link pagination-next">
             <span class="pagination-label">Next &rarr;</span>
-            <span class="pagination-title">Configuration</span>
+            <span class="pagination-title">Architecture</span>
         </a>
     </nav>
 </article>
@@ -494,22 +513,40 @@ export CODEQUILL_GITHUB_ID=&quot;${{ github.repository_id }}&quot;
         <h4 class="toc-title">On this page</h4>
         <ul class="toc-links">
             <li class="toc-item">
-                <a href="#requirements" class="toc-link">Requirements</a>
+                <a href="#why-this-matters" class="toc-link">Why this matters</a>
             </li>
             <li class="toc-item">
-                <a href="#install-via-npm" class="toc-link">Install via npm</a>
+                <a href="#the-codequill-claude-code-skill" class="toc-link">The CodeQuill Claude Code skill</a>
             </li>
             <li class="toc-item">
-                <a href="#install-a-specific-version" class="toc-link">Install a Specific Version</a>
+                <a href="#install-in-claude-code" class="toc-link">Install in Claude Code</a>
             </li>
             <li class="toc-item">
-                <a href="#environment-variables" class="toc-link">Environment Variables</a>
+                <a href="#use-from-the-anthropic-api-or-sdks" class="toc-link">Use from the Anthropic API or SDKs</a>
+            </li>
+            <li class="toc-item">
+                <a href="#what-the-skill-teaches-the-agent" class="toc-link">What the skill teaches the agent</a>
+            </li>
+            <li class="toc-item">
+                <a href="#example-prompts" class="toc-link">Example prompts</a>
             </li>
             <li class="toc-item toc-item-sub">
-                <a href="#ci-authentication" class="toc-link">CI Authentication</a>
+                <a href="#1-claim-this-repository-and-publish-a-snapshot" class="toc-link">1. "Claim this repository and publish a snapshot"</a>
+            </li>
+            <li class="toc-item toc-item-sub">
+                <a href="#2-attest-the-build-at-distclitgz-against-release-v0110" class="toc-link">2. "Attest the build at dist/cli.tgz against release v0.11.0"</a>
+            </li>
+            <li class="toc-item toc-item-sub">
+                <a href="#3-prove-that-srcmaints-was-in-snapshot-snapshotid" class="toc-link">3. "Prove that src/main.ts was in snapshot &lt;snapshotId&gt;"</a>
             </li>
             <li class="toc-item">
-                <a href="#uninstall" class="toc-link">Uninstall</a>
+                <a href="#authentication-notes" class="toc-link">Authentication notes</a>
+            </li>
+            <li class="toc-item">
+                <a href="#limits-and-gotchas" class="toc-link">Limits and gotchas</a>
+            </li>
+            <li class="toc-item">
+                <a href="#references" class="toc-link">References</a>
             </li>
         </ul>
     </div>
