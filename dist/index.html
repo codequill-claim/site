@@ -980,6 +980,14 @@ tailwind.config = {
         font-size: 11px;
         color: rgba(255, 255, 255, 0.5);
     }
+    .landing-footer-copy-link {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .landing-footer-copy-link:hover {
+        color: rgba(255, 255, 255, 0.85);
+    }
     .landing-footer-status {
         display: none;
         align-items: center;
@@ -1048,7 +1056,7 @@ tailwind.config = {
             <span data-status-label>All Systems Operational</span>
         </a>
 
-        <span class="landing-footer-copy">&copy; 2026 Ophelios Studio</span>
+        <span class="landing-footer-copy">&copy; 2026 <a href="https://ophelios.com" target="_blank" rel="noopener noreferrer" class="landing-footer-copy-link">Ophelios Studio</a></span>
     </div>
 </footer>
 
