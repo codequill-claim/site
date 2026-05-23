@@ -1,5 +1,5 @@
 LEAF ?= leaf
-DOCS_SECTIONS := getting-started concepts releases web-application cli-reference ci-cd smart-contracts security reference
+DOCS_SECTIONS := getting-started concepts releases web-application cli-reference ci-cd integrations smart-contracts security reference
 
 .PHONY: dev build clean check preview post-build
 
