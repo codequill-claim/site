@@ -34,6 +34,7 @@ leaf:
     web-application: "Web Application"
     cli-reference: "CLI Reference"
     ci-cd: "CI/CD Integration"
+    integrations: "Integrations"
     smart-contracts: "Smart Contracts"
     security: "Security"
     reference: "Reference"
