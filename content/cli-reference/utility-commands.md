@@ -71,6 +71,56 @@ codequill wait 0xabc123def456789... --confirmations 5 --timeout 600000
 
 ---
 
+## codequill releases
+
+List the releases registered against the current repository. Useful when you need to find a release UUID to pass to `codequill attest`, or to confirm a release's governance state before automating an attestation.
+
+### Syntax
+
+```bash
+codequill releases [options]
+```
+
+### Options
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `--repo <owner/name>` | string | git remote | Override the repository name. Defaults to parsing the `origin` git remote. |
+| `--accepted` | flag | off | Only show releases whose governance is `ACCEPTED` (the ones `attest` can target). |
+| `--json` | flag | off | Emit raw `ReleaseResult[]` as JSON for piping (e.g. into `jq`). |
+
+### Default output
+
+A table with the columns **NAME**, **STATUS**, **GOVERNANCE**, **PUBLISHED**, **ID** (truncated). Status colours: `PUBLISHED` green, `DRAFT` dim, `REVOKED` red, `SUPERSEDED` yellow. Governance colours: `ACCEPTED` green, `PENDING` yellow, `REFUSED` red.
+
+### Examples
+
+List every release for the current repository:
+
+```bash
+codequill releases
+```
+
+Show only the releases that can be attested against:
+
+```bash
+codequill releases --accepted
+```
+
+Pipe through `jq` to extract a single release UUID by name:
+
+```bash
+RELEASE_ID=$(codequill releases --accepted --json | jq -r '.[] | select(.name=="v0.11.0") | .release_id')
+```
+
+### Notes
+
+- The command derives the repo name from `git remote get-url origin` unless `--repo` is set. The repository must be claimed (`codequill claim`) before any release will exist.
+- Returns `{ releases: ReleaseResult[] }`. Each `ReleaseResult` contains `release_id`, `name`, `status`, `gouvernance`, `published_at`, `manifest_cid`, `tx_hash`, and other on-chain fields.
+- For most workflows you do **not** need to resolve UUIDs manually — `codequill attest <build> <name>` accepts a release name and resolves it via this same endpoint internally. Use the explicit command when scripting around governance state or when you want to surface a list to a human.
+
+---
+
 ## codequill why
 
 Explain why CodeQuill works the way it does. This command prints explanatory content about core concepts and design decisions directly in your terminal. It is intended for onboarding, learning, and quick reference.

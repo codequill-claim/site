@@ -85,3 +85,7 @@ When a release is anchored or accepted, CodeQuill can trigger GitHub Actions wor
 2. Release is accepted by governance → GitHub Issue created → CI runs attestation → deploys to production.
 
 See [CI/CD Integration](/ci-cd/overview) for the complete workflow.
+
+## Listing releases from the CLI
+
+To enumerate a repository's releases from the command line (and resolve a release name to a UUID for scripting), see [`codequill releases`](/cli-reference/utility-commands). `codequill attest` also accepts a release name directly and resolves it against the same endpoint.
