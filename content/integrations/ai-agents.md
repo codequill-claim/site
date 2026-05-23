@@ -4,6 +4,8 @@ description: Wire AI coding agents (Claude Code, Anthropic API) to CodeQuill so 
 order: 1
 ---
 
+# AI Agents
+
 AI agents generate and edit code. CodeQuill records what existed and who authorized it. This page explains how to connect the two so an agent's output can be backed by on-chain evidence inside the same loop — no separate "now run CodeQuill" step required.
 
 ## Why this matters
